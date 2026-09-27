@@ -1,0 +1,66 @@
+{
+  "Llama-3.2-1B-Instruct/tokenizer_config.json": {
+    "repository": "LLM-Research/Llama-3.2-1B-Instruct",
+    "revision": "f8e6bf8fec8194d75228ef38e85fda45c6046fbd"
+  },
+  "Llama-3.2-1B-Instruct/tokenizer.json": {
+    "repository": "LLM-Research/Llama-3.2-1B-Instruct",
+    "revision": "f8e6bf8fec8194d75228ef38e85fda45c6046fbd"
+  },
+  "Llama-3.2-1B-Instruct/config.json": {
+    "repository": "LLM-Research/Llama-3.2-1B-Instruct",
+    "revision": "f8e6bf8fec8194d75228ef38e85fda45c6046fbd"
+  },
+  "Llama-3.2-1B-Instruct/generation_config.json": {
+    "repository": "LLM-Research/Llama-3.2-1B-Instruct",
+    "revision": "f8e6bf8fec8194d75228ef38e85fda45c6046fbd"
+  },
+  "Llama-3.2-1B-Instruct/special_tokens_map.json": {
+    "repository": "LLM-Research/Llama-3.2-1B-Instruct",
+    "revision": "f8e6bf8fec8194d75228ef38e85fda45c6046fbd"
+  },
+  "Llama-3.2-1B-Instruct/model.safetensors": {
+    "repository": "LLM-Research/Llama-3.2-1B-Instruct",
+    "revision": "f8e6bf8fec8194d75228ef38e85fda45c6046fbd"
+  },
+  "Llama-3.1-8B-Instruct/model.safetensors.index.json": {
+    "repository": "LLM-Research/Meta-Llama-3.1-8B-Instruct",
+    "revision": "043efdca396f2b6f4b5714d76d70df7840856ed7"
+  },
+  "Llama-3.1-8B-Instruct/model-00001-of-00004.safetensors": {
+    "repository": "LLM-Research/Meta-Llama-3.1-8B-Instruct",
+    "revision": "043efdca396f2b6f4b5714d76d70df7840856ed7"
+  },
+  "Llama-3.1-8B-Instruct/tokenizer_config.json": {
+    "repository": "LLM-Research/Meta-Llama-3.1-8B-Instruct",
+    "revision": "d02f94ee4a1a317d00309c1a9019f89428034720"
+  },
+  "Llama-3.1-8B-Instruct/model-00003-of-00004.safetensors": {
+    "repository": "LLM-Research/Meta-Llama-3.1-8B-Instruct",
+    "revision": "043efdca396f2b6f4b5714d76d70df7840856ed7"
+  },
+  "Llama-3.1-8B-Instruct/model-00002-of-00004.safetensors": {
+    "repository": "LLM-Research/Meta-Llama-3.1-8B-Instruct",
+    "revision": "043efdca396f2b6f4b5714d76d70df7840856ed7"
+  },
+  "Llama-3.1-8B-Instruct/tokenizer.json": {
+    "repository": "LLM-Research/Meta-Llama-3.1-8B-Instruct",
+    "revision": "86283db58aba4be4ffa058c48e36fa3eb53e3dfd"
+  },
+  "Llama-3.1-8B-Instruct/config.json": {
+    "repository": "LLM-Research/Meta-Llama-3.1-8B-Instruct",
+    "revision": "043efdca396f2b6f4b5714d76d70df7840856ed7"
+  },
+  "Llama-3.1-8B-Instruct/generation_config.json": {
+    "repository": "LLM-Research/Meta-Llama-3.1-8B-Instruct",
+    "revision": "043efdca396f2b6f4b5714d76d70df7840856ed7"
+  },
+  "Llama-3.1-8B-Instruct/special_tokens_map.json": {
+    "repository": "LLM-Research/Meta-Llama-3.1-8B-Instruct",
+    "revision": "86283db58aba4be4ffa058c48e36fa3eb53e3dfd"
+  },
+  "Llama-3.1-8B-Instruct/model-00004-of-00004.safetensors": {
+    "repository": "LLM-Research/Meta-Llama-3.1-8B-Instruct",
+    "revision": "043efdca396f2b6f4b5714d76d70df7840856ed7"
+  }
+}

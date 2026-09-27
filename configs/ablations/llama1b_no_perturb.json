@@ -1,0 +1,12 @@
+{
+  "extends": "../main/llama1b_adamw_smat.json",
+  "name": "llama1b_no_perturb",
+  "train": {
+    "smat": {
+      "components": [
+        "scale",
+        "mask"
+      ]
+    }
+  }
+}

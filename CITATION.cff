@@ -1,0 +1,34 @@
+cff-version: 1.2.0
+message: "If you use SMAT, please cite the accompanying paper."
+type: software
+title: "SMAT: Simple and Efficient Merge-Aware Training"
+authors:
+  - family-names: Gu
+    given-names: Yanggan
+    affiliation: The Hong Kong Polytechnic University
+  - family-names: Wang
+    given-names: Yuanyi
+    affiliation: The Hong Kong Polytechnic University
+  - family-names: Li
+    given-names: Zhen
+    affiliation: The Hong Kong Polytechnic University
+  - family-names: Cai
+    given-names: Shuo
+    affiliation: The Hong Kong Polytechnic University
+  - family-names: Liu
+    given-names: Yuhang
+    affiliation: The Hong Kong Polytechnic University
+  - family-names: Li
+    given-names: Junzhuo
+    affiliation: The Hong Kong University of Science and Technology (Guangzhou)
+  - family-names: Wang
+    given-names: Zihao
+    affiliation: The Chinese University of Hong Kong
+  - family-names: Yang
+    given-names: Hongxia
+    affiliation: The Hong Kong Polytechnic University; PolyU-Daya Bay Technology and Innovation Research Institute; InfiX.ai
+    email: hongxia.yang@polyu.edu.hk
+repository-code: https://github.com/egangu/smat
+url: https://github.com/egangu/smat
+license: MIT
+version: 1.0.0

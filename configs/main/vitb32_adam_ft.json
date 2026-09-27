@@ -1,0 +1,52 @@
+{
+  "experiment": "clip8_vit",
+  "seed": 42,
+  "tasks": [
+    "Cars",
+    "DTD",
+    "EuroSAT",
+    "GTSRB",
+    "MNIST",
+    "RESISC45",
+    "SUN397",
+    "SVHN"
+  ],
+  "train": {
+    "batch_size": 128,
+    "fused": true,
+    "learning_rate": 1e-05,
+    "log_every": 20,
+    "max_steps": 4000,
+    "method": "ft",
+    "num_workers": 8,
+    "optimizer": "adam",
+    "schedule": "cosine",
+    "warmup_steps": 0,
+    "weight_decay": 0.0
+  },
+  "evaluation": {
+    "batch_size": 256,
+    "num_workers": 8,
+    "repeats": 1,
+    "save_samples": true,
+    "split": "test"
+  },
+  "data": {
+    "train_full_split": true
+  },
+  "name": "vitb32_adam_ft",
+  "base_model": "${MODEL_ROOT}/clip-vit-base-patch32",
+  "data_root": "${DATA_ROOT}/clip8",
+  "work_root": "${OUTPUT_ROOT}/training",
+  "merging": {
+    "scale": 0.2,
+    "ties_scale": 0.2,
+    "dare_scale": 0.2,
+    "della_scale": 0.9,
+    "ties_retention": 0.5,
+    "dare_drop": 0.3,
+    "della_drop": 0.1,
+    "della_window": 0.14,
+    "seed": 42
+  }
+}

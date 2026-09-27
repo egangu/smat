@@ -1,0 +1,10 @@
+{
+  "stanford_cars": {"repo_id": "tanganke/stanford_cars", "revision": "9abf6cf7d6dfa7b95152a0d6e791ea9435b47a40"},
+  "dtd": {"repo_id": "tanganke/dtd", "revision": "d2afa97d9f335b1a6b3b09c637aef667f98f966e"},
+  "eurosat": {"repo_id": "tanganke/eurosat", "revision": "43750fc422c7fbd4289e2df3f7473617a5937acc"},
+  "gtsrb": {"repo_id": "tanganke/gtsrb", "revision": "ea889fff70dda7b09e94a4b207dded438deca549"},
+  "mnist": {"repo_id": "ylecun/mnist", "revision": "77f3279092a1c1579b2250db8eafed0ad422088c"},
+  "resisc45": {"repo_id": "tanganke/resisc45", "revision": "5c484982a196dcb501b8e79c6cf4680dc6f2ccdf"},
+  "sun397": {"repo_id": "tanganke/sun397", "revision": "9c4afd6174afa3974f209a0ef099dbbe244dfd27"},
+  "svhn": {"repo_id": "ufldl-stanford/svhn", "revision": "f9e1717d73324ebbc1ece84267ccd80d0aca0690"}
+}

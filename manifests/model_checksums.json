@@ -1,0 +1,134 @@
+{
+  "clip-vit-base-patch32/merges.txt": {
+    "bytes": 524657,
+    "sha256": "f526393189112391ce6f9795d4695f704121ce452c3aad1f5335cc41337eba85"
+  },
+  "clip-vit-base-patch32/tokenizer_config.json": {
+    "bytes": 592,
+    "sha256": "34b7336e4bee12e0a9730eaf5189f582ef3c3eea5027f65730e5717256755aad"
+  },
+  "clip-vit-base-patch32/vocab.json": {
+    "bytes": 862328,
+    "sha256": "5047b556ce86ccaf6aa22b3ffccfc52d391ea4accdab9c2f2407da5b742d4363"
+  },
+  "clip-vit-base-patch32/tokenizer.json": {
+    "bytes": 2224041,
+    "sha256": "b556ac8c99757ffb677208af34bc8c6721572114111a6e0aaf5fa69ff0b8d842"
+  },
+  "clip-vit-base-patch32/config.json": {
+    "bytes": 4186,
+    "sha256": "b575ef3c36f2a057fa19e221650105052d61cc9c1a972ec15019c6261ec98770"
+  },
+  "clip-vit-base-patch32/preprocessor_config.json": {
+    "bytes": 316,
+    "sha256": "910e70b3956ac9879ebc90b22fb3bc8a75b6a0677814500101a4c072bd7857bd"
+  },
+  "clip-vit-base-patch32/special_tokens_map.json": {
+    "bytes": 389,
+    "sha256": "f8c0d6c39aee3f8431078ef6646567b0aba7f2246e9c54b8b99d55c22b707cbf"
+  },
+  "clip-vit-base-patch32/pytorch_model.bin": {
+    "bytes": 605247071,
+    "sha256": "a63082132ba4f97a80bea76823f544493bffa8082296d62d71581a4feff1576f"
+  },
+  "Llama-3.1-8B-Instruct/model.safetensors.index.json": {
+    "bytes": 23950,
+    "sha256": "146776fce3f6db1103aa6f249e65ee5544c5923ce6f971b092eee79aa6e5d37b"
+  },
+  "Llama-3.1-8B-Instruct/model-00001-of-00004.safetensors": {
+    "bytes": 4976698672,
+    "sha256": "2b1879f356aed350030bb40eb45ad362c89d9891096f79a3ab323d3ba5607668"
+  },
+  "Llama-3.1-8B-Instruct/tokenizer_config.json": {
+    "bytes": 55351,
+    "sha256": "177c7b61e616fecb84c17ce0591acb92c6c4d60e9ac5ababfb940ff23bbcd424"
+  },
+  "Llama-3.1-8B-Instruct/model-00003-of-00004.safetensors": {
+    "bytes": 4915916176,
+    "sha256": "fc1cdddd6bfa91128d6e94ee73d0ce62bfcdb7af29e978ddcab30c66ae9ea7fa"
+  },
+  "Llama-3.1-8B-Instruct/model-00002-of-00004.safetensors": {
+    "bytes": 4999802720,
+    "sha256": "09d433f650646834a83c580877bd60c6d1f88f7755305c12576b5c7058f9af15"
+  },
+  "Llama-3.1-8B-Instruct/tokenizer.json": {
+    "bytes": 9085657,
+    "sha256": "79e3e522635f3171300913bb421464a87de6222182a0570b9b2ccba2a964b2b4"
+  },
+  "Llama-3.1-8B-Instruct/config.json": {
+    "bytes": 855,
+    "sha256": "29e4c210b0d6ac178b16b2a255a568bdb23b581e50ca1ef6a6d071dd85704e6e"
+  },
+  "Llama-3.1-8B-Instruct/generation_config.json": {
+    "bytes": 184,
+    "sha256": "189fb0c0d7fd8a527db217c0a60a0e013f0394cd8800f9697a666a9e75e5f7fd"
+  },
+  "Llama-3.1-8B-Instruct/special_tokens_map.json": {
+    "bytes": 296,
+    "sha256": "6f38c73729248f6c127296386e3cdde96e254636cc58b4169d3fd32328d9a8ec"
+  },
+  "Llama-3.1-8B-Instruct/model-00004-of-00004.safetensors": {
+    "bytes": 1168138808,
+    "sha256": "92ecfe1a2414458b4821ac8c13cf8cb70aed66b5eea8dc5ad9eeb4ff309d6d7b"
+  },
+  "Llama-3.2-1B-Instruct/tokenizer_config.json": {
+    "bytes": 54528,
+    "sha256": "9823dcfdc1121869029da45192238e85cf44f0b232a6d9dc20e4fe6f4242a14e"
+  },
+  "Llama-3.2-1B-Instruct/tokenizer.json": {
+    "bytes": 9085657,
+    "sha256": "79e3e522635f3171300913bb421464a87de6222182a0570b9b2ccba2a964b2b4"
+  },
+  "Llama-3.2-1B-Instruct/config.json": {
+    "bytes": 877,
+    "sha256": "2febf68cea25bf4611be02b7536f2488a5ba523bb1134986e3610152abe74fdb"
+  },
+  "Llama-3.2-1B-Instruct/generation_config.json": {
+    "bytes": 189,
+    "sha256": "88effbb63300dbbc7390143fbbdd9d9fa50587b37e8bfd16c8c90d4970a74a36"
+  },
+  "Llama-3.2-1B-Instruct/special_tokens_map.json": {
+    "bytes": 296,
+    "sha256": "6f38c73729248f6c127296386e3cdde96e254636cc58b4169d3fd32328d9a8ec"
+  },
+  "Llama-3.2-1B-Instruct/model.safetensors": {
+    "bytes": 2471645608,
+    "sha256": "1ff795ff6a07e6a68085d206fb84417da2f083f68391c2843cd2b8ac6df8538f"
+  },
+  "clip-vit-large-patch14/merges.txt": {
+    "bytes": 524619,
+    "sha256": "9fd691f7c8039210e0fced15865466c65820d09b63988b0174bfe25de299051a"
+  },
+  "clip-vit-large-patch14/tokenizer_config.json": {
+    "bytes": 905,
+    "sha256": "deef455e52fa5e8151e339add0582e4235f066009601360999d3a9cda83b1129"
+  },
+  "clip-vit-large-patch14/vocab.json": {
+    "bytes": 961143,
+    "sha256": "3f0c4f7d2086b61b38487075278ea9ed04edb53a03cbb045b86c27190fa8fb69"
+  },
+  "clip-vit-large-patch14/tokenizer.json": {
+    "bytes": 2224003,
+    "sha256": "a83e0809aa4c3af7208b2df632a7a69668c6d48775b3c3fe4e1b1199d1f8b8f4"
+  },
+  "clip-vit-large-patch14/config.json": {
+    "bytes": 4519,
+    "sha256": "8a09b467700c58138c29d53c605b34ebc69beaadd13274a8a2af8ad2c2f4032a"
+  },
+  "clip-vit-large-patch14/preprocessor_config.json": {
+    "bytes": 316,
+    "sha256": "910e70b3956ac9879ebc90b22fb3bc8a75b6a0677814500101a4c072bd7857bd"
+  },
+  "clip-vit-large-patch14/special_tokens_map.json": {
+    "bytes": 389,
+    "sha256": "f8c0d6c39aee3f8431078ef6646567b0aba7f2246e9c54b8b99d55c22b707cbf"
+  },
+  "clip-vit-large-patch14/model.safetensors": {
+    "bytes": 1710540580,
+    "sha256": "a2bf730a0c7debf160f7a6b50b3aaf3703e7e88ac73de7a314903141db026dcb"
+  },
+  "clip-vit-large-patch14/pytorch_model.bin": {
+    "bytes": 1710671599,
+    "sha256": "f1a17cdbe0f36fec524f5cafb1c261ea3bbbc13e346e0f74fc9eb0460dedd0d3"
+  }
+}

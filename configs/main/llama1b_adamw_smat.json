@@ -1,0 +1,68 @@
+{
+  "experiment": "trace_llm",
+  "seed": 42,
+  "tasks": [
+    "C-STANCE",
+    "FOMC",
+    "MeetingBank",
+    "ScienceQA",
+    "NumGLUE-cm",
+    "NumGLUE-ds",
+    "20Minuten"
+  ],
+  "train": {
+    "append_eos": true,
+    "backend": "fast",
+    "batch_size": 8,
+    "fused": true,
+    "gradient_checkpointing": false,
+    "learning_rate": 2e-05,
+    "log_every": 20,
+    "mask": {
+      "embedding_probability": 0,
+      "probability": 0.5,
+      "scope": "block-linear"
+    },
+    "max_grad_norm": 1.0,
+    "max_length": 512,
+    "method": "smat",
+    "optimizer": "adamw",
+    "padding": "dynamic",
+    "perturb": {
+      "rms": 0.002
+    },
+    "scale": {
+      "alpha_min": 0.2,
+      "scope": "global"
+    },
+    "schedule": "constant",
+    "smat": {
+      "interval": 4,
+      "mode": "joint"
+    },
+    "weight_decay": 0.001,
+    "offload_base": true
+  },
+  "evaluation": {
+    "concurrency": 32,
+    "numglue_cm_include_test": false,
+    "repeats": 3,
+    "save_samples": true,
+    "split": "eval"
+  },
+  "name": "llama1b_adamw_smat",
+  "base_model": "${MODEL_ROOT}/Llama-3.2-1B-Instruct",
+  "data_root": "${DATA_ROOT}/trace",
+  "work_root": "${OUTPUT_ROOT}/training",
+  "merging": {
+    "scale": 0.3,
+    "ties_scale": 0.2,
+    "dare_scale": 0.3,
+    "della_scale": 0.8,
+    "ties_retention": 0.5,
+    "dare_drop": 0.3,
+    "della_drop": 0.5,
+    "della_window": 0.14,
+    "seed": 42
+  }
+}

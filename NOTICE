@@ -1,0 +1,22 @@
+This release contains the FT/SMAT experiment implementation.
+
+The model and data interfaces use PyTorch, Hugging Face Transformers/Datasets,
+Triton and SGLang. These dependencies retain their respective licenses.
+
+WA, TA, TIES and DARE numerical conventions follow FusionBench
+(https://github.com/tanganke/fusion_bench), reference revision
+54c9e8c9d9621620c720452cd8533332a32d3689. DELLA follows its rank-magnitude
+sampler and normalized sign-consensus aggregation
+(https://github.com/declare-lab/della).
+TRACE metrics, task schedules and data follow the public TRACE benchmark
+(https://github.com/BeyonderXX/TRACE). Vision datasets use the published
+FusionBench/Hugging Face collections listed in manifests/data_sources.json.
+These upstream names and URLs identify third-party resources.
+
+No model weights or dataset content are redistributed. Llama access requires
+accepting Meta's model terms. Each dataset remains subject to its original terms.
+
+The vision adapter's static zero-shot prompt templates are transcribed from
+SAFT-Merge (https://github.com/baiklab/SAFT-Merge),
+sgd_saft/src/tv_datasets/templates.py. This is third-party template provenance;
+no SAFT training implementation or runtime dependency is included.

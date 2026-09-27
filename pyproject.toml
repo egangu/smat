@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "smat"
+version = "1.0.0"
+description = "Scale, Mask and Perturb for merge-aware fine-tuning"
+requires-python = ">=3.10"
+readme = "README.md"
+license = {file = "LICENSE"}
+dependencies = ["aiohttp", "datasets", "numpy", "pillow", "rouge", "sacrebleu", "safetensors", "scipy", "packaging", "torch>=2.9", "torchvision", "transformers>=4.57,<6", "accelerate"]
+
+[project.urls]
+Homepage = "https://github.com/egangu/smat"
+Repository = "https://github.com/egangu/smat"
+Issues = "https://github.com/egangu/smat/issues"
+
+[project.scripts]
+smat = "smat.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["smat*"]

@@ -1,0 +1,71 @@
+{
+  "experiment": "clip8_vit",
+  "seed": 42,
+  "tasks": [
+    "Cars",
+    "DTD",
+    "EuroSAT",
+    "GTSRB",
+    "MNIST",
+    "RESISC45",
+    "SUN397",
+    "SVHN"
+  ],
+  "train": {
+    "backend": "fast",
+    "batch_size": 128,
+    "fused": true,
+    "gradient_checkpointing": false,
+    "learning_rate": 1e-05,
+    "log_every": 20,
+    "mask": {
+      "embedding_probability": 0,
+      "probability": 0.5,
+      "scope": "block-linear"
+    },
+    "max_steps": 4000,
+    "method": "smat",
+    "num_workers": 8,
+    "optimizer": "adam",
+    "perturb": {
+      "rms": 0.001
+    },
+    "scale": {
+      "alpha_min": 0.1,
+      "scope": "global"
+    },
+    "schedule": "cosine",
+    "smat": {
+      "interval": 4,
+      "mode": "joint"
+    },
+    "warmup_steps": 0,
+    "weight_decay": 0.0,
+    "offload_base": true
+  },
+  "evaluation": {
+    "batch_size": 64,
+    "num_workers": 8,
+    "repeats": 1,
+    "save_samples": true,
+    "split": "test"
+  },
+  "data": {
+    "train_full_split": true
+  },
+  "name": "vitl14_adam_smat",
+  "base_model": "${MODEL_ROOT}/clip-vit-large-patch14",
+  "data_root": "${DATA_ROOT}/clip8",
+  "work_root": "${OUTPUT_ROOT}/training",
+  "merging": {
+    "scale": 0.2,
+    "ties_scale": 0.2,
+    "dare_scale": 0.2,
+    "della_scale": 0.7,
+    "ties_retention": 0.5,
+    "dare_drop": 0.3,
+    "della_drop": 0.1,
+    "della_window": 0.14,
+    "seed": 42
+  }
+}
