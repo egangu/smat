@@ -1,4 +1,4 @@
-"""Download the frozen SMAT Table 1 data or experts at pinned Hub revisions."""
+"""Download the frozen SMAT Table 1/2 data or experts at pinned Hub revisions."""
 
 import argparse
 import hashlib
@@ -8,7 +8,9 @@ from pathlib import Path
 from huggingface_hub import hf_hub_download, snapshot_download
 
 ROOT = Path(__file__).resolve().parents[1]
-TASKS = ["C-STANCE", "FOMC", "MeetingBank", "ScienceQA", "NumGLUE-cm", "NumGLUE-ds", "20Minuten"]
+TRACE_TASKS = ["C-STANCE", "FOMC", "MeetingBank", "ScienceQA", "NumGLUE-cm", "NumGLUE-ds", "20Minuten"]
+
+CLIP_TASKS = ["Cars", "DTD", "EuroSAT", "GTSRB", "MNIST", "RESISC45", "SUN397", "SVHN"]
 
 
 def check(path, expected):
@@ -53,24 +55,32 @@ def download_expert(record, directory):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     commands = parser.add_subparsers(dest="command", required=True)
-    data = commands.add_parser("data", help="download the exact train/dev/eval JSON files")
+    data = commands.add_parser("data", help="download frozen TRACE or CLIP8 splits")
     data.add_argument("--data-root", required=True, type=Path)
+    data.add_argument("--suite", choices=["trace", "clip8"], default="trace")
     experts = commands.add_parser("experts", help="download trained FT or SMAT task experts")
     experts.add_argument("--output-root", required=True, type=Path)
-    experts.add_argument("--model", choices=["llama1b", "llama8b"], required=True)
+    experts.add_argument("--model", choices=["llama1b", "llama8b", "vitb32", "vitl14"], required=True)
     experts.add_argument("--method", choices=["ft", "smat"], required=True)
     for command in (data, experts):
-        command.add_argument("--tasks", nargs="+", choices=TASKS, default=TASKS)
+        command.add_argument("--tasks", nargs="+", choices=TRACE_TASKS + CLIP_TASKS)
     args = parser.parse_args()
     manifest = json.loads((ROOT / "manifests/hf_release.json").read_text())
+    vision = args.suite == "clip8" if args.command == "data" else args.model.startswith("vit")
+    tasks = CLIP_TASKS if vision else TRACE_TASKS
+    args.tasks = args.tasks or tasks
+    if set(args.tasks) - set(tasks):
+        parser.error("Tasks do not match the selected suite/model")
     if args.command == "data":
-        download_data(manifest["dataset"], args.data_root.expanduser(), args.tasks)
+        download_data(manifest["vision_dataset" if vision else "dataset"], args.data_root.expanduser(), args.tasks)
     else:
-        case = f"{args.model.removeprefix('llama')}_adamw_{args.method}"
+        backbone = args.model.removeprefix("vit" if vision else "llama")
+        optimizer = "adam" if vision else "adamw"
+        case = f"{backbone}_{optimizer}_{args.method}"
         selected = [m for m in manifest["models"] if m["case"].startswith(case + "_") and m["task"] in args.tasks]
         if len(selected) != len(set(args.tasks)):
             raise ValueError("The release manifest does not contain every requested expert")
-        run = f"{args.model}_adamw_{args.method}"
+        run = f"{args.model}_{optimizer}_{args.method}"
         for model in selected:
             download_expert(model, args.output_root.expanduser() / "training/experts" / run / model["task"])
 

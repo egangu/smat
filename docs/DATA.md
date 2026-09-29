@@ -47,7 +47,21 @@ python scripts/download_hf.py data --data-root "$DATA_ROOT"
 This replaces raw TRACE downloading and split preparation. The helper verifies
 the exact frozen bytes. See [HF examples](HUGGINGFACE.md) for released experts and
 training/evaluation commands. The raw-data workflow below remains available for
-rebuilding the split and for vision experiments.
+reconstructing the TRACE and vision splits from their original sources.
+
+## Prepared CLIP8 data on Hugging Face
+
+For Table 2, download the frozen image train/dev/test splits directly:
+
+```bash
+python scripts/download_hf.py data --suite clip8 --data-root "$DATA_ROOT"
+```
+
+The prepared Parquet shards preserve original image bytes and labels. The
+included manifests use paths relative to each task directory, so the downloaded
+data can be moved without changing the split. This replaces both raw vision
+downloading and split preparation. See [HF examples](HUGGINGFACE.md#table-2-clip-vision-experts-and-data)
+for the 32 released FT/SMAT experts and training/evaluation commands.
 
 ## Raw data layout
 

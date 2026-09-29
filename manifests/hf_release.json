@@ -1,5 +1,5 @@
 {
-  "collection": "https://huggingface.co/collections/yanggangu/smat-table-1-experts-and-data-6abb7826f636ba703e4f532e",
+  "collection": "https://huggingface.co/collections/yanggangu/smat-simple-and-efficient-merge-aware-training-6abb7826f636ba703e4f532e",
   "dataset": {
     "repo_id": "yanggangu/SMAT-TRACE",
     "revision": "efac812091ec6a4cd039329d85cca3598840c6f0",
@@ -1007,6 +1007,1166 @@
           "size": 352
         }
       }
+    },
+    {
+      "repo_id": "yanggangu/CLIP-ViT-base-patch32-FT-Cars",
+      "revision": "beaf887f6539a4b9b4af6321edfa25150639b2cb",
+      "case": "b32_adam_ft_s42",
+      "task": "Cars",
+      "files": {
+        "encoder.pt": {
+          "sha256": "ddbe1ebcfc615e4046ec1d3a38586c25d7bb18598f10735aa1ebefcabdd0fd36",
+          "size": 349896625
+        },
+        "metadata.json": {
+          "sha256": "ed76429000af9a86b3bedb938d98f388caf2567b1295a9a191a5b685aff7123f",
+          "size": 373
+        },
+        "README.md": {
+          "sha256": "38edf6cf1ff4a1d6fbccaf61084540a5e7ea897c22775633bff539d581c446b0",
+          "size": 590
+        },
+        "LICENSE": {
+          "sha256": "987e63b32f6c89ff5160e429458a872ff048e6860b590a3912e938f9da8f14db",
+          "size": 1064
+        }
+      }
+    },
+    {
+      "repo_id": "yanggangu/CLIP-ViT-base-patch32-FT-DTD",
+      "revision": "31c3a95d2bee92e7860748826146400b655d00c2",
+      "case": "b32_adam_ft_s42",
+      "task": "DTD",
+      "files": {
+        "encoder.pt": {
+          "sha256": "8abb7a0a64663bf30cdb712f0f3f4979a2065dc2c338cc686259fc604005d480",
+          "size": 349896625
+        },
+        "metadata.json": {
+          "sha256": "1c9e312ead5cdb421ce4cf930e2caa556090d3ab2959c43992a12d8f1c9649db",
+          "size": 372
+        },
+        "README.md": {
+          "sha256": "b0ce3c342865e158b4e69b416904c91b2972f0bfae0ce107385e0e8b0ce6c8e6",
+          "size": 589
+        },
+        "LICENSE": {
+          "sha256": "987e63b32f6c89ff5160e429458a872ff048e6860b590a3912e938f9da8f14db",
+          "size": 1064
+        }
+      }
+    },
+    {
+      "repo_id": "yanggangu/CLIP-ViT-base-patch32-FT-EuroSAT",
+      "revision": "1dbed457c4eb37fb1245693b46146e0cf7fcd258",
+      "case": "b32_adam_ft_s42",
+      "task": "EuroSAT",
+      "files": {
+        "encoder.pt": {
+          "sha256": "f6512de554cc90f1c8369ee7050f6dd9381486f3ab915d8e4b448da77f6bd244",
+          "size": 349896625
+        },
+        "metadata.json": {
+          "sha256": "a15ebeea8879ef6fb17b89c9bc03963338a756cc00090b795f1ce0644fb7eb2b",
+          "size": 376
+        },
+        "README.md": {
+          "sha256": "9d36b411811371bae0a3181b1701b0858df410beafe34ab49d4c57d4b0da7bdb",
+          "size": 593
+        },
+        "LICENSE": {
+          "sha256": "987e63b32f6c89ff5160e429458a872ff048e6860b590a3912e938f9da8f14db",
+          "size": 1064
+        }
+      }
+    },
+    {
+      "repo_id": "yanggangu/CLIP-ViT-base-patch32-FT-GTSRB",
+      "revision": "7e22232033235651856df2b88542900cfc8feff8",
+      "case": "b32_adam_ft_s42",
+      "task": "GTSRB",
+      "files": {
+        "encoder.pt": {
+          "sha256": "029c4005a1a98b6f2452c44a09b6c1e919f56274c0d25592ebe172b73207d649",
+          "size": 349896625
+        },
+        "metadata.json": {
+          "sha256": "14b1acdd1df1427363226782d24b571143097432beb0a38003a6db6e24bc3059",
+          "size": 374
+        },
+        "README.md": {
+          "sha256": "713a125e986d089a618e26889babcffe0bb92e0a39f291e92d6c641b1e2a1efd",
+          "size": 591
+        },
+        "LICENSE": {
+          "sha256": "987e63b32f6c89ff5160e429458a872ff048e6860b590a3912e938f9da8f14db",
+          "size": 1064
+        }
+      }
+    },
+    {
+      "repo_id": "yanggangu/CLIP-ViT-base-patch32-FT-MNIST",
+      "revision": "f96496557bb2420a66606c06ef7911cc1d15ca0e",
+      "case": "b32_adam_ft_s42",
+      "task": "MNIST",
+      "files": {
+        "encoder.pt": {
+          "sha256": "190f8cfb9689008ecd79037048564d6ffd171c3a20b5a9d98c088f8468b8c9d1",
+          "size": 349896625
+        },
+        "metadata.json": {
+          "sha256": "d6f7b9acf8b4b97aae77d6e5db410c5f0672fc7447d79b1d6eeb90d0230bd2ca",
+          "size": 374
+        },
+        "README.md": {
+          "sha256": "ddaf102ec13271cf24e58c4d9dad764672a6bf55be41900a881c5f4861f453c1",
+          "size": 591
+        },
+        "LICENSE": {
+          "sha256": "987e63b32f6c89ff5160e429458a872ff048e6860b590a3912e938f9da8f14db",
+          "size": 1064
+        }
+      }
+    },
+    {
+      "repo_id": "yanggangu/CLIP-ViT-base-patch32-FT-RESISC45",
+      "revision": "0eafc6efe17b829a5a6ce6a66e7bf951e685994c",
+      "case": "b32_adam_ft_s42",
+      "task": "RESISC45",
+      "files": {
+        "encoder.pt": {
+          "sha256": "02156e859e72286f2f3a1beecc17bb252b04b65f7aa0af315e1755bd96088f16",
+          "size": 349896625
+        },
+        "metadata.json": {
+          "sha256": "ad31585e7d7bc7b0aa60d35bcf709b75977676a27f2e2151ba888259b8950b30",
+          "size": 377
+        },
+        "README.md": {
+          "sha256": "d2eb6b9dd5d9505386f36ef7a3e49092915136357f701d23da401013e5e84b13",
+          "size": 594
+        },
+        "LICENSE": {
+          "sha256": "987e63b32f6c89ff5160e429458a872ff048e6860b590a3912e938f9da8f14db",
+          "size": 1064
+        }
+      }
+    },
+    {
+      "repo_id": "yanggangu/CLIP-ViT-base-patch32-FT-SUN397",
+      "revision": "3808b262281fbb3648cf7b7a98cc9336a315451f",
+      "case": "b32_adam_ft_s42",
+      "task": "SUN397",
+      "files": {
+        "encoder.pt": {
+          "sha256": "260b42d4fd9cb9ebc17956e97c5efe724c756e59ad631215911269de6cb96b26",
+          "size": 349896625
+        },
+        "metadata.json": {
+          "sha256": "3377e1b48a14bf56a7ebdb9b316a48d2acbf1b02c57087529b29abf725715660",
+          "size": 375
+        },
+        "README.md": {
+          "sha256": "e050c1a2a54ffcb5dd716d2c70ffb2930ca6be92c91ff3bcc607adb342763964",
+          "size": 592
+        },
+        "LICENSE": {
+          "sha256": "987e63b32f6c89ff5160e429458a872ff048e6860b590a3912e938f9da8f14db",
+          "size": 1064
+        }
+      }
+    },
+    {
+      "repo_id": "yanggangu/CLIP-ViT-base-patch32-FT-SVHN",
+      "revision": "8dc82b4dd1a5fb20f3f46cdaf0f1eca151bb4e6a",
+      "case": "b32_adam_ft_s42",
+      "task": "SVHN",
+      "files": {
+        "encoder.pt": {
+          "sha256": "4b25cd2da9b179fb9cccc877d7e171c6d2390505173100e32e946cd595b0f577",
+          "size": 349896625
+        },
+        "metadata.json": {
+          "sha256": "6a83ac523dad89697318548f4a43f204529011d10306aa3aa565e242d4a384af",
+          "size": 373
+        },
+        "README.md": {
+          "sha256": "85db3080ba7692bb439b6dc923316a16461756f9f2aa756b771f5b08e33124df",
+          "size": 590
+        },
+        "LICENSE": {
+          "sha256": "987e63b32f6c89ff5160e429458a872ff048e6860b590a3912e938f9da8f14db",
+          "size": 1064
+        }
+      }
+    },
+    {
+      "repo_id": "yanggangu/CLIP-ViT-base-patch32-SMAT-Cars",
+      "revision": "b2ed5680942c20f437953a029d60207323b5d761",
+      "case": "b32_adam_smat_shared_scale01_s42",
+      "task": "Cars",
+      "files": {
+        "encoder.pt": {
+          "sha256": "99b4ce04d6e78cf53bc84b3f56aa9324f706bc883d830709d8f0dec9973a5668",
+          "size": 349896625
+        },
+        "metadata.json": {
+          "sha256": "5a5287421b30eedc00c1d82cff616ce306c7960bde4d9c80d3c4229417699360",
+          "size": 754
+        },
+        "README.md": {
+          "sha256": "0399acdad81ff76197ffc3d0a10d83a139a79948a49bf7f1c68ab4213be74f4a",
+          "size": 594
+        },
+        "LICENSE": {
+          "sha256": "987e63b32f6c89ff5160e429458a872ff048e6860b590a3912e938f9da8f14db",
+          "size": 1064
+        }
+      }
+    },
+    {
+      "repo_id": "yanggangu/CLIP-ViT-base-patch32-SMAT-DTD",
+      "revision": "0da4c2229b5ede7f78333458625982d5dd2626f4",
+      "case": "b32_adam_smat_shared_scale01_s42",
+      "task": "DTD",
+      "files": {
+        "encoder.pt": {
+          "sha256": "144dfca93eb0dfb08b5ea437e5f6d18cf6b768a5b63029ac74ede37fc6a9d95d",
+          "size": 349896625
+        },
+        "metadata.json": {
+          "sha256": "8c8020069c8fc6fdf6375282752374d148ed8ced63cd42f36ab6bb286bfb9ef5",
+          "size": 753
+        },
+        "README.md": {
+          "sha256": "021c1ca0103638ebda5073d64a4adcb5a81f3c5a6c68fd40dc43acb514667419",
+          "size": 593
+        },
+        "LICENSE": {
+          "sha256": "987e63b32f6c89ff5160e429458a872ff048e6860b590a3912e938f9da8f14db",
+          "size": 1064
+        }
+      }
+    },
+    {
+      "repo_id": "yanggangu/CLIP-ViT-base-patch32-SMAT-EuroSAT",
+      "revision": "8d7bea29fe1b318f0b32d98d778ad2e40aa47ab3",
+      "case": "b32_adam_smat_shared_scale01_s42",
+      "task": "EuroSAT",
+      "files": {
+        "encoder.pt": {
+          "sha256": "c5db53d67967f173fa52ff16a0370926b9b4245787e701e46532d937ada85912",
+          "size": 349896625
+        },
+        "metadata.json": {
+          "sha256": "f2cc0035efc522b165cff7f4df0c9838aca7d698d5b468e4cb78c04ff942cc16",
+          "size": 757
+        },
+        "README.md": {
+          "sha256": "fe3c7b524b1f55ae3eb13cb01fab386c6066501961b30aaa10114385f3196cb5",
+          "size": 597
+        },
+        "LICENSE": {
+          "sha256": "987e63b32f6c89ff5160e429458a872ff048e6860b590a3912e938f9da8f14db",
+          "size": 1064
+        }
+      }
+    },
+    {
+      "repo_id": "yanggangu/CLIP-ViT-base-patch32-SMAT-GTSRB",
+      "revision": "815e056a576d6554bdbf9fc61c8eeb61b246900e",
+      "case": "b32_adam_smat_shared_scale01_s42",
+      "task": "GTSRB",
+      "files": {
+        "encoder.pt": {
+          "sha256": "b0d61ea9a647f3f93e827a1259ed649b0847bde36f30579d6c78e9e3219651eb",
+          "size": 349896625
+        },
+        "metadata.json": {
+          "sha256": "e8f02bd9bc123365f918a0d51068bc96f8f6ad30428e2eae984e98a312f3b11b",
+          "size": 755
+        },
+        "README.md": {
+          "sha256": "8a7dfc0558d27d302b95266e6a8ba9e51e4c0e90c6f8d2877eb75290b72c83e1",
+          "size": 595
+        },
+        "LICENSE": {
+          "sha256": "987e63b32f6c89ff5160e429458a872ff048e6860b590a3912e938f9da8f14db",
+          "size": 1064
+        }
+      }
+    },
+    {
+      "repo_id": "yanggangu/CLIP-ViT-base-patch32-SMAT-MNIST",
+      "revision": "9c370ccb8afd7fe368e6b6753d50d34fe36354fb",
+      "case": "b32_adam_smat_shared_scale01_s42",
+      "task": "MNIST",
+      "files": {
+        "encoder.pt": {
+          "sha256": "04e25d205819dd56757d4e97d95c5c989e0a96aaa8441f35a6e4c1389b1c605b",
+          "size": 349896625
+        },
+        "metadata.json": {
+          "sha256": "86645bea4ea97acf6b635cc8cce048dfe28a2e596c21df00d95bb0a41551ee75",
+          "size": 755
+        },
+        "README.md": {
+          "sha256": "21db3a353c6897cddb7578b78c71e19c43ac104ab0234f10455f5078f25077f8",
+          "size": 595
+        },
+        "LICENSE": {
+          "sha256": "987e63b32f6c89ff5160e429458a872ff048e6860b590a3912e938f9da8f14db",
+          "size": 1064
+        }
+      }
+    },
+    {
+      "repo_id": "yanggangu/CLIP-ViT-base-patch32-SMAT-RESISC45",
+      "revision": "59e3b86d8ec71800d7c63885f6eb8b364f9c6037",
+      "case": "b32_adam_smat_shared_scale01_s42",
+      "task": "RESISC45",
+      "files": {
+        "encoder.pt": {
+          "sha256": "16eafc408fe92ac71d763f836c08d3167469b9e5e8abec8f7aa0c4d140cf1cce",
+          "size": 349896625
+        },
+        "metadata.json": {
+          "sha256": "86ff8bc640cd7156afc5f2188cf72389d65def1c9101c4dd8c6c2c66a34fd4db",
+          "size": 758
+        },
+        "README.md": {
+          "sha256": "3926e70bf22bc4741d7c3215db7f93851cf8a02d58f24c99fbc2922134e236a2",
+          "size": 598
+        },
+        "LICENSE": {
+          "sha256": "987e63b32f6c89ff5160e429458a872ff048e6860b590a3912e938f9da8f14db",
+          "size": 1064
+        }
+      }
+    },
+    {
+      "repo_id": "yanggangu/CLIP-ViT-base-patch32-SMAT-SUN397",
+      "revision": "0b7a782504b7260687b5e991da2dae7704c33b35",
+      "case": "b32_adam_smat_shared_scale01_s42",
+      "task": "SUN397",
+      "files": {
+        "encoder.pt": {
+          "sha256": "ca5429dfbce23aac0e9c7d77a1d2b775cb9a8a855c3b82e9665d632f97c93f01",
+          "size": 349896625
+        },
+        "metadata.json": {
+          "sha256": "8f5551c004c20d08a964bea3d07f99803e571a7db081590d54c7711b4b951d9f",
+          "size": 756
+        },
+        "README.md": {
+          "sha256": "266495c4d7b14f76b6456fd4398b5393cc16af142403e712d5f8431bd09e8e97",
+          "size": 596
+        },
+        "LICENSE": {
+          "sha256": "987e63b32f6c89ff5160e429458a872ff048e6860b590a3912e938f9da8f14db",
+          "size": 1064
+        }
+      }
+    },
+    {
+      "repo_id": "yanggangu/CLIP-ViT-base-patch32-SMAT-SVHN",
+      "revision": "4a1ea61f2ac80c4ddb209d8b07143a600c82785d",
+      "case": "b32_adam_smat_shared_scale01_s42",
+      "task": "SVHN",
+      "files": {
+        "encoder.pt": {
+          "sha256": "17f44fe2ed397947510e0596cb57d22b0571b44abc31ff7ff8560d24c1992768",
+          "size": 349896625
+        },
+        "metadata.json": {
+          "sha256": "9412bab04b835dd44cde92366a2681790bd1e4f4aa7a9e7edc4f0a7ea213cc9c",
+          "size": 754
+        },
+        "README.md": {
+          "sha256": "8b18e511aaf0b0d36991f88db175e6ca64673fe0589f6b3163927bfb95666a75",
+          "size": 594
+        },
+        "LICENSE": {
+          "sha256": "987e63b32f6c89ff5160e429458a872ff048e6860b590a3912e938f9da8f14db",
+          "size": 1064
+        }
+      }
+    },
+    {
+      "repo_id": "yanggangu/CLIP-ViT-large-patch14-FT-Cars",
+      "revision": "68d5ec5134ce22f17e2a6310387da9ff828b054b",
+      "case": "l14_adam_ft_s42",
+      "task": "Cars",
+      "files": {
+        "encoder.pt": {
+          "sha256": "4b14317457af419c44298703c83aa3bef2f38832d31dfe7a5b260cd8abb9a463",
+          "size": 1212862257
+        },
+        "metadata.json": {
+          "sha256": "973fed9fd322a5584fbeb72976cba696134433104a169c7d8a7a415895f69d92",
+          "size": 410
+        },
+        "README.md": {
+          "sha256": "b4015d069be96d5d8a032cae4b5b7aeef18f50c005189e354057045b19a68655",
+          "size": 592
+        },
+        "LICENSE": {
+          "sha256": "987e63b32f6c89ff5160e429458a872ff048e6860b590a3912e938f9da8f14db",
+          "size": 1064
+        }
+      }
+    },
+    {
+      "repo_id": "yanggangu/CLIP-ViT-large-patch14-FT-DTD",
+      "revision": "d7b94eb622ad357d81233c784d34564372e55eff",
+      "case": "l14_adam_ft_s42",
+      "task": "DTD",
+      "files": {
+        "encoder.pt": {
+          "sha256": "0816060d01b9420aef700f08eb6ae665d305cb3fd1fc301f8dab945037f98adc",
+          "size": 1212862257
+        },
+        "metadata.json": {
+          "sha256": "b025f0b93619327f7913f48c0329b3a4146b7dbd8e3124130601f1233b5b0d77",
+          "size": 409
+        },
+        "README.md": {
+          "sha256": "20c6cc69464163a57ad6282621098a6f50f07856ef794dcb9a49c1b1e43ff816",
+          "size": 591
+        },
+        "LICENSE": {
+          "sha256": "987e63b32f6c89ff5160e429458a872ff048e6860b590a3912e938f9da8f14db",
+          "size": 1064
+        }
+      }
+    },
+    {
+      "repo_id": "yanggangu/CLIP-ViT-large-patch14-FT-EuroSAT",
+      "revision": "85a996efea444ae0b041066f67ad9cfb396efeeb",
+      "case": "l14_adam_ft_s42",
+      "task": "EuroSAT",
+      "files": {
+        "encoder.pt": {
+          "sha256": "2db212e3897d7b5717f54cff77dc6b865d08e729e0722bbedd762d7a4965a619",
+          "size": 1212862257
+        },
+        "metadata.json": {
+          "sha256": "67bfc7707421ab25750cd4db64a84f96a6f9d1aa7fb008bccd8be4c217d5bbd3",
+          "size": 413
+        },
+        "README.md": {
+          "sha256": "27721838fd78d9a3a6004352e260bc881c0b1e23674069c1da5a3b8d9fe472f2",
+          "size": 595
+        },
+        "LICENSE": {
+          "sha256": "987e63b32f6c89ff5160e429458a872ff048e6860b590a3912e938f9da8f14db",
+          "size": 1064
+        }
+      }
+    },
+    {
+      "repo_id": "yanggangu/CLIP-ViT-large-patch14-FT-GTSRB",
+      "revision": "f98aa30ebda8ce21ff8f9f3adfe556760f16d5dc",
+      "case": "l14_adam_ft_s42",
+      "task": "GTSRB",
+      "files": {
+        "encoder.pt": {
+          "sha256": "91f9a50774846975e41834ed8b7d9286a73ef72631cd130e98d23528c746ee26",
+          "size": 1212862257
+        },
+        "metadata.json": {
+          "sha256": "0614d629ce23ff2dc362cbdc486009c9a0f4275bbb4cbd9bd7b6f91fc5de2b6a",
+          "size": 411
+        },
+        "README.md": {
+          "sha256": "371d56da08374bc56fbc4ec6471fcc022b4f8851561d1fa13e5f503aa8f7f9ba",
+          "size": 593
+        },
+        "LICENSE": {
+          "sha256": "987e63b32f6c89ff5160e429458a872ff048e6860b590a3912e938f9da8f14db",
+          "size": 1064
+        }
+      }
+    },
+    {
+      "repo_id": "yanggangu/CLIP-ViT-large-patch14-FT-MNIST",
+      "revision": "b375c71304b9e3d5f9e8a1fba6dc3896872a3c6f",
+      "case": "l14_adam_ft_s42",
+      "task": "MNIST",
+      "files": {
+        "encoder.pt": {
+          "sha256": "41c52d019d0963148e47619fa6d71216a9379c8c27ab4ebbb424705ce8e5fc55",
+          "size": 1212862257
+        },
+        "metadata.json": {
+          "sha256": "06a18cde5fbd1d157a69dc4d7c57fa24b8455bbba8bd977920fb96e69f3904b3",
+          "size": 411
+        },
+        "README.md": {
+          "sha256": "9040f6eb158ef87db495f6027e03bf3e426c00919e59911d52fa6f65a61a1114",
+          "size": 593
+        },
+        "LICENSE": {
+          "sha256": "987e63b32f6c89ff5160e429458a872ff048e6860b590a3912e938f9da8f14db",
+          "size": 1064
+        }
+      }
+    },
+    {
+      "repo_id": "yanggangu/CLIP-ViT-large-patch14-FT-RESISC45",
+      "revision": "551fc29f44bc260dd1cf27d2428401563b4b3b16",
+      "case": "l14_adam_ft_s42",
+      "task": "RESISC45",
+      "files": {
+        "encoder.pt": {
+          "sha256": "6530a6c45b60e8d596f8bc33edeea0942738805d94e286503094014917ce0f61",
+          "size": 1212862257
+        },
+        "metadata.json": {
+          "sha256": "da743d03e38792464c810b3a5f61073a77b67b40f681fdc4d5bc1cdfd404520e",
+          "size": 414
+        },
+        "README.md": {
+          "sha256": "216b6b9691ddf54bf1c9e639a92680b3f2ec9482be851756bd511873bd1fc943",
+          "size": 596
+        },
+        "LICENSE": {
+          "sha256": "987e63b32f6c89ff5160e429458a872ff048e6860b590a3912e938f9da8f14db",
+          "size": 1064
+        }
+      }
+    },
+    {
+      "repo_id": "yanggangu/CLIP-ViT-large-patch14-FT-SUN397",
+      "revision": "567900a9e01311eff38f1f3e0251f53ed8e04753",
+      "case": "l14_adam_ft_s42",
+      "task": "SUN397",
+      "files": {
+        "encoder.pt": {
+          "sha256": "71469c0a9b545c4723e04f11ca3a393a127ddb04df25ca098406e9a1b36c5b53",
+          "size": 1212862257
+        },
+        "metadata.json": {
+          "sha256": "eb506fb8fc7594670e325a7b09115f38ad9415a059777ff3fdfec0ed85a54f44",
+          "size": 412
+        },
+        "README.md": {
+          "sha256": "188259d50b5b06358c0439b9d1e035a4a3133cedc1ffa3415cee4ce1d8855de4",
+          "size": 594
+        },
+        "LICENSE": {
+          "sha256": "987e63b32f6c89ff5160e429458a872ff048e6860b590a3912e938f9da8f14db",
+          "size": 1064
+        }
+      }
+    },
+    {
+      "repo_id": "yanggangu/CLIP-ViT-large-patch14-FT-SVHN",
+      "revision": "451ddb4e500cacf7456204c08e1fc70969a6efd4",
+      "case": "l14_adam_ft_s42",
+      "task": "SVHN",
+      "files": {
+        "encoder.pt": {
+          "sha256": "18d10a216030eb5e751a4181175bebc4e867472d41be7435c785125fa6adaebf",
+          "size": 1212862257
+        },
+        "metadata.json": {
+          "sha256": "100fdbb9875cef37d03ea27caa4e5376e92ae45bfb8123b99a9be1b4e1eed45b",
+          "size": 410
+        },
+        "README.md": {
+          "sha256": "7bbefcb0969210d9ef6008cab4fdf17bd89281716b22c6b5f70ad33160cbf69c",
+          "size": 592
+        },
+        "LICENSE": {
+          "sha256": "987e63b32f6c89ff5160e429458a872ff048e6860b590a3912e938f9da8f14db",
+          "size": 1064
+        }
+      }
+    },
+    {
+      "repo_id": "yanggangu/CLIP-ViT-large-patch14-SMAT-Cars",
+      "revision": "8d0af30029a11c9b8cc20d8bb0b1f9a7f74cdfbe",
+      "case": "l14_adam_smat_shared_scale01_s42",
+      "task": "Cars",
+      "files": {
+        "encoder.pt": {
+          "sha256": "7a954e2e09ca13ad7357a486b10ebc11eccc1a945daf420013e9e187adeb57ec",
+          "size": 1212862257
+        },
+        "metadata.json": {
+          "sha256": "c533988f6c0881bcd76012c3dd472075f9e59ce5f4eea0130c3676d9bcff59fe",
+          "size": 791
+        },
+        "README.md": {
+          "sha256": "73baf49dd155c2b0fa80658824b0f8058647dc947ba7ede0831b5955ad29b5ae",
+          "size": 596
+        },
+        "LICENSE": {
+          "sha256": "987e63b32f6c89ff5160e429458a872ff048e6860b590a3912e938f9da8f14db",
+          "size": 1064
+        }
+      }
+    },
+    {
+      "repo_id": "yanggangu/CLIP-ViT-large-patch14-SMAT-DTD",
+      "revision": "62ea1bc9225a2fe7344e9f1a00f30bb291bf33e4",
+      "case": "l14_adam_smat_shared_scale01_s42",
+      "task": "DTD",
+      "files": {
+        "encoder.pt": {
+          "sha256": "9ba714b79e948d62c3ef7637cd58553a426b104dfa67bbfd3a188cdb44ee7617",
+          "size": 1212862257
+        },
+        "metadata.json": {
+          "sha256": "e5d4b7fa1bfad7b25850ce4adf5bce01b907a7f4f70c818e633a0f35f0dc9358",
+          "size": 790
+        },
+        "README.md": {
+          "sha256": "14b770680f0b559a30772e8313b563cf42b5b6a01c85b589c2ae0a82f34c6e4b",
+          "size": 595
+        },
+        "LICENSE": {
+          "sha256": "987e63b32f6c89ff5160e429458a872ff048e6860b590a3912e938f9da8f14db",
+          "size": 1064
+        }
+      }
+    },
+    {
+      "repo_id": "yanggangu/CLIP-ViT-large-patch14-SMAT-EuroSAT",
+      "revision": "1b53e0f9afc884a7cbf51ad4b9e5ee4212f39c31",
+      "case": "l14_adam_smat_shared_scale01_s42",
+      "task": "EuroSAT",
+      "files": {
+        "encoder.pt": {
+          "sha256": "d55cfb4d9b180bcf1fc244f2197bc2be7f3b9e8ca9236d62f275eb7c056186a7",
+          "size": 1212862257
+        },
+        "metadata.json": {
+          "sha256": "3495aa30790f812d883902e706026dfb89b6c8b8404c2d49024a2fee0c978237",
+          "size": 794
+        },
+        "README.md": {
+          "sha256": "b0d33cde333149768b0e8ae0b595d1713a50f696c63a8518bdb316cabab4cec5",
+          "size": 599
+        },
+        "LICENSE": {
+          "sha256": "987e63b32f6c89ff5160e429458a872ff048e6860b590a3912e938f9da8f14db",
+          "size": 1064
+        }
+      }
+    },
+    {
+      "repo_id": "yanggangu/CLIP-ViT-large-patch14-SMAT-GTSRB",
+      "revision": "db3927647b652df36fcbddc8420c87f247ae1e89",
+      "case": "l14_adam_smat_shared_scale01_s42",
+      "task": "GTSRB",
+      "files": {
+        "encoder.pt": {
+          "sha256": "2eff66e371a1fbb89b5973dd7692578a9311c5159d166cc0e9ca3e9bfea0d141",
+          "size": 1212862257
+        },
+        "metadata.json": {
+          "sha256": "98bdffe14cbe1c4b2393adbf69509e3d2cf07ed82a5ccc0613af785b041279c9",
+          "size": 792
+        },
+        "README.md": {
+          "sha256": "6502a5e55d346d4316bc6ede10764206c38849fbb67ba6f56351fd8a11743b36",
+          "size": 597
+        },
+        "LICENSE": {
+          "sha256": "987e63b32f6c89ff5160e429458a872ff048e6860b590a3912e938f9da8f14db",
+          "size": 1064
+        }
+      }
+    },
+    {
+      "repo_id": "yanggangu/CLIP-ViT-large-patch14-SMAT-MNIST",
+      "revision": "5c87f8a47fe64bddab6ce2cc8932fef514ba6df2",
+      "case": "l14_adam_smat_shared_scale01_s42",
+      "task": "MNIST",
+      "files": {
+        "encoder.pt": {
+          "sha256": "4cacbce8673725fe52e28946fb92b37590a3f04ad4e61439309d99b4e3411a6a",
+          "size": 1212862257
+        },
+        "metadata.json": {
+          "sha256": "4c36cd054035c63a3d5f0443ec3705948f4f665f3c4d719fdfa1798bb467ce07",
+          "size": 792
+        },
+        "README.md": {
+          "sha256": "95d166f297f5a82e77a2e2c9ce29399fb6eae527742eb2215b47efe42d4bb1f7",
+          "size": 597
+        },
+        "LICENSE": {
+          "sha256": "987e63b32f6c89ff5160e429458a872ff048e6860b590a3912e938f9da8f14db",
+          "size": 1064
+        }
+      }
+    },
+    {
+      "repo_id": "yanggangu/CLIP-ViT-large-patch14-SMAT-RESISC45",
+      "revision": "b6bc5a57292422567a93ca30215852446c53f6cc",
+      "case": "l14_adam_smat_shared_scale01_s42",
+      "task": "RESISC45",
+      "files": {
+        "encoder.pt": {
+          "sha256": "1dc12554dc8726cc27f47b1779bffb3dac06d5d6f1c69b9ba2ea62eca555bf2a",
+          "size": 1212862257
+        },
+        "metadata.json": {
+          "sha256": "9d5d631652bd3ee70c06a510d75258fb7f43c394509c02ab622a90b25201b739",
+          "size": 795
+        },
+        "README.md": {
+          "sha256": "e58e51400b0cf667e61da0d43f97c950b6d21e184f92afaaae23b5c19134c77e",
+          "size": 600
+        },
+        "LICENSE": {
+          "sha256": "987e63b32f6c89ff5160e429458a872ff048e6860b590a3912e938f9da8f14db",
+          "size": 1064
+        }
+      }
+    },
+    {
+      "repo_id": "yanggangu/CLIP-ViT-large-patch14-SMAT-SUN397",
+      "revision": "c4fc953157e86be2adb11414ccc389524506c566",
+      "case": "l14_adam_smat_shared_scale01_s42",
+      "task": "SUN397",
+      "files": {
+        "encoder.pt": {
+          "sha256": "bb21351569e4b011ac0b7a576b4975c18824b3c09992832150ec29f0eb4517f0",
+          "size": 1212862257
+        },
+        "metadata.json": {
+          "sha256": "f3eea4d86f70c2768cf61e8669a80262d75e21f8622d4492a01d76c87f3d95ef",
+          "size": 793
+        },
+        "README.md": {
+          "sha256": "23235c3c7a4d7edd5c12071c3410bc97a01000cf415726974f2dd4a06f756e72",
+          "size": 598
+        },
+        "LICENSE": {
+          "sha256": "987e63b32f6c89ff5160e429458a872ff048e6860b590a3912e938f9da8f14db",
+          "size": 1064
+        }
+      }
+    },
+    {
+      "repo_id": "yanggangu/CLIP-ViT-large-patch14-SMAT-SVHN",
+      "revision": "0ef4e24cc3608f4752c044505c3016c347d343f8",
+      "case": "l14_adam_smat_shared_scale01_s42",
+      "task": "SVHN",
+      "files": {
+        "encoder.pt": {
+          "sha256": "e1be5cfbc80ff186538c1b772576d5e0ba8d40ba1290d65e2262e5e269e00299",
+          "size": 1212862257
+        },
+        "metadata.json": {
+          "sha256": "c4957b0104ef5fa93935f8c4d0575006e32e7d2d32f908e841b6424f7b1017b4",
+          "size": 791
+        },
+        "README.md": {
+          "sha256": "94abbe38a443deca956f59aea0112f15ef8274b62a544b51c5e2ae9c8d98e96c",
+          "size": 596
+        },
+        "LICENSE": {
+          "sha256": "987e63b32f6c89ff5160e429458a872ff048e6860b590a3912e938f9da8f14db",
+          "size": 1064
+        }
+      }
     }
-  ]
+  ],
+  "vision_dataset": {
+    "repo_id": "yanggangu/SMAT-CLIP8",
+    "revision": "82c2f8b94f2ec308bf30e57a12141913e63a1fb2",
+    "files": {
+      "clip8/Cars/train/00000.parquet": {
+        "size": 487116046,
+        "sha256": "4b406bf73a71569b893831aa6295c9d3cd13c20564a6eac6683babbaf1ba244a"
+      },
+      "clip8/Cars/train/00001.parquet": {
+        "size": 470338721,
+        "sha256": "8b1c74460e431f77613a30fdd6d4ac3d340768d2b49225313b002e56327c5bcf"
+      },
+      "clip8/Cars/dev/00000.parquet": {
+        "size": 12637201,
+        "sha256": "0b467405c801be66954b445fb5dadba14255729e96c8a07154762274c07ded41"
+      },
+      "clip8/Cars/dev/00001.parquet": {
+        "size": 10228494,
+        "sha256": "811c278a9cce328c7937f80086f31fe14dbf83d4208790f7c3ef37d919740819"
+      },
+      "clip8/Cars/test/00000.parquet": {
+        "size": 510024163,
+        "sha256": "1a58ce69e62e7eb5642454e385de328a796618c513a94a7b3ab3db0fd5b18dcb"
+      },
+      "clip8/Cars/test/00001.parquet": {
+        "size": 470386257,
+        "sha256": "a0ff897d2b2500855683db5260555b6ce4036913924f47316c4a808943c41d34"
+      },
+      "clip8/Cars/split_manifest.json": {
+        "size": 613135,
+        "sha256": "fcc30b800a3bbf9205ac231dfcdeae5e69aac4ec7ca0615aec8d465f7a266a6e"
+      },
+      "clip8/DTD/train/00000.parquet": {
+        "size": 423996627,
+        "sha256": "03220e7e721a272b973beb94a520dc3becdc3602b6d355572c648365d2e43683"
+      },
+      "clip8/DTD/dev/00000.parquet": {
+        "size": 23665753,
+        "sha256": "d44f4efeeb4aa5a83a6abcee610979e871496dec767d51f1609f98511d81d040"
+      },
+      "clip8/DTD/test/00000.parquet": {
+        "size": 177936793,
+        "sha256": "b7a615b636bda57abe8d772f9555f8bb7c54302390bccb326f550177a22e8fc1"
+      },
+      "clip8/DTD/split_manifest.json": {
+        "size": 281066,
+        "sha256": "a8b0c7c86480496995e1acaee6a46caa07eb3106c96b38a6670a7d455225c90f"
+      },
+      "clip8/EuroSAT/train/00000.parquet": {
+        "size": 69867057,
+        "sha256": "5b6f1c07d2099ca983a218ee9a5b7aa2cc265e0c1dc90b70447a80cabce9312b"
+      },
+      "clip8/EuroSAT/dev/00000.parquet": {
+        "size": 659038,
+        "sha256": "4639d657fc6d81e12c5ee7d8607d0a4c5bdf679d145522c171abc9d1b65418be"
+      },
+      "clip8/EuroSAT/test/00000.parquet": {
+        "size": 8753275,
+        "sha256": "9ad2d82640822748916b960b6676059793924ebac432e3a2377051dd02ded9d3"
+      },
+      "clip8/EuroSAT/split_manifest.json": {
+        "size": 1599931,
+        "sha256": "8ea41a0a83b2ad31004728a79e82c7f6151524f6513293f914a65bc5266eff57"
+      },
+      "clip8/GTSRB/train/00000.parquet": {
+        "size": 193284012,
+        "sha256": "f7473ad7a0379a723012e83a406792d359f06acfad86cd3c1a3c582e2d2e8a5a"
+      },
+      "clip8/GTSRB/dev/00000.parquet": {
+        "size": 1637389,
+        "sha256": "f80ee5228dc9457fc77ce009ac0c9001eb42ab49efa5f6b0868d019c2abb7e2c"
+      },
+      "clip8/GTSRB/test/00000.parquet": {
+        "size": 98237641,
+        "sha256": "a62c46b4cc6d6cc5333a4d59aefdd7c0eaca259080467715deba2a3c690aeaa1"
+      },
+      "clip8/GTSRB/split_manifest.json": {
+        "size": 1973946,
+        "sha256": "9d1e71ff0747af5bd35bb67524e0b0765fc5611099e94a09b1ce19c84e027449"
+      },
+      "clip8/MNIST/train/00000.parquet": {
+        "size": 14606657,
+        "sha256": "95ec7bf1ff1104ae5c4df7b2a5f919ad612b416e6c189266ece73ff58d8629d4"
+      },
+      "clip8/MNIST/dev/00000.parquet": {
+        "size": 49004,
+        "sha256": "0af3b711d8a4bf06a029126aa68ad8f9aaa73636cfb18fb6e2540964e4f2cbb6"
+      },
+      "clip8/MNIST/test/00000.parquet": {
+        "size": 2446643,
+        "sha256": "277158c7e5abb10218a26c9114c1c5ff5e009060608f04cec3585790f65e4f3f"
+      },
+      "clip8/MNIST/split_manifest.json": {
+        "size": 4441529,
+        "sha256": "c0765bfa867ae3aba10231c62dae103bfbc4728a0d6d4fc4456cd0f15aaf624c"
+      },
+      "clip8/RESISC45/train/00000.parquet": {
+        "size": 243058728,
+        "sha256": "1c3974b53b081c2461d090b6cae00c73a49b438a78ecc25cc000079cbeb6436b"
+      },
+      "clip8/RESISC45/dev/00000.parquet": {
+        "size": 2619455,
+        "sha256": "bfb57e8e3aa44c244279ed0f223432c2c47a223f23ca54667a894def8a1096ce"
+      },
+      "clip8/RESISC45/test/00000.parquet": {
+        "size": 82078881,
+        "sha256": "58b54fbfb24e0999a2ed22359253056ca8009a6cf8a3ab883603c6cfa1e8e0f2"
+      },
+      "clip8/RESISC45/split_manifest.json": {
+        "size": 1401041,
+        "sha256": "fd8b4edc2da473ee174ad67f613176ec4758efdd4b3ad42e9f4fcf798661df63"
+      },
+      "clip8/SUN397/train/00000.parquet": {
+        "size": 446339770,
+        "sha256": "1985e978c19c37e20ad618fbb5bfdaaccfa402d4572310a2ece6451ee3f88d0d"
+      },
+      "clip8/SUN397/train/00001.parquet": {
+        "size": 358001071,
+        "sha256": "631db92f06c38cc4767c4a05ba4a19ba5f91eacd2a61cb138411ff12e91eec5d"
+      },
+      "clip8/SUN397/train/00002.parquet": {
+        "size": 360741040,
+        "sha256": "848c2618a46254185af98bab5ebd0e1eddbf95197d7bafa0b6fcd42a9e1c3c05"
+      },
+      "clip8/SUN397/train/00003.parquet": {
+        "size": 428275259,
+        "sha256": "3b7086195e0c053cdc41b1b86f2eff79fcc32e3b3d26c4dbece96607a18c833a"
+      },
+      "clip8/SUN397/train/00004.parquet": {
+        "size": 428406251,
+        "sha256": "885276fc3566264379b4b1943e75917f36613df652836fd3baa755c8ed952946"
+      },
+      "clip8/SUN397/train/00005.parquet": {
+        "size": 468387493,
+        "sha256": "333db687392049de732d74123c3c015c8296f0285cbed93dbd4f9f3ac6ec853e"
+      },
+      "clip8/SUN397/train/00006.parquet": {
+        "size": 431540562,
+        "sha256": "b50b216a1d00829c00e059f63e07ea86520650f046045d3cd346ab7d5d24b6ea"
+      },
+      "clip8/SUN397/train/00007.parquet": {
+        "size": 352116378,
+        "sha256": "dd63748bd8f7d4c42b65b76cce00b575a6c11aa35a1362fe1b684c46a8b07c8b"
+      },
+      "clip8/SUN397/train/00008.parquet": {
+        "size": 381611046,
+        "sha256": "d092453952bfbca652d12964f4fac00efad49ac08f6890fb921440b3e90752ee"
+      },
+      "clip8/SUN397/train/00009.parquet": {
+        "size": 370243834,
+        "sha256": "d9605eecc45f04df49d8a8f138367e35c1496144d913e0749a1d4959f757f697"
+      },
+      "clip8/SUN397/train/00010.parquet": {
+        "size": 338512928,
+        "sha256": "dca81f475afce2d40b9226d8450cfe19d969fa2325bc6402d71dcf9fe711b9bf"
+      },
+      "clip8/SUN397/train/00011.parquet": {
+        "size": 368350029,
+        "sha256": "372346561eb60a20947d6b839c7cbc0d34cd27218c93e918931be3ce7ef2fd16"
+      },
+      "clip8/SUN397/train/00012.parquet": {
+        "size": 382875564,
+        "sha256": "e80de5f6cde20585d78f1fb2f7f6af10e6e9cff32404b534489e597ac9af6799"
+      },
+      "clip8/SUN397/train/00013.parquet": {
+        "size": 404447635,
+        "sha256": "fc31b91107a941d9abccf8286dcbd143406e05321e1f9f183bfb4b1ce15af952"
+      },
+      "clip8/SUN397/train/00014.parquet": {
+        "size": 383714079,
+        "sha256": "e0120d047429956e14e8dc66b52c88eb11eee6314b300908be4efac6eaecd60b"
+      },
+      "clip8/SUN397/train/00015.parquet": {
+        "size": 407699480,
+        "sha256": "133a75600fcd62f084146c43e886abf93d231628c8227d7f6e561d228523e2d3"
+      },
+      "clip8/SUN397/train/00016.parquet": {
+        "size": 376390054,
+        "sha256": "75b954d2f6b2c7cd117d83a14ab25df43a9c71527493dde544d117684eeca0ef"
+      },
+      "clip8/SUN397/train/00017.parquet": {
+        "size": 449615036,
+        "sha256": "89623e294ba0730ea26b68c16a5b4c4cfffc69ddfc30d038336c28b30e83881d"
+      },
+      "clip8/SUN397/dev/00000.parquet": {
+        "size": 8475481,
+        "sha256": "52a38230d5337181294c2e77ea28b1a0314a55b71de64c74b5340103b6e7f9dc"
+      },
+      "clip8/SUN397/dev/00001.parquet": {
+        "size": 3812009,
+        "sha256": "e8236a4618bafc5e361eea680d4a06bac6b42e40bcc11d76d3c0f48cd8f28536"
+      },
+      "clip8/SUN397/dev/00002.parquet": {
+        "size": 4341762,
+        "sha256": "73452934ae4b270eed0c98582d1f47e06ecaa933c0c991d66a25a484b5434f15"
+      },
+      "clip8/SUN397/dev/00003.parquet": {
+        "size": 1609024,
+        "sha256": "45b5dd974a8495747c855277869ca3bac8501f34284f205addd5c3d7a72a464c"
+      },
+      "clip8/SUN397/dev/00004.parquet": {
+        "size": 8851808,
+        "sha256": "1ac652768914a8edb0664d0021468ea66fd29658ab4b548ae62ca14a9de27261"
+      },
+      "clip8/SUN397/dev/00005.parquet": {
+        "size": 4699771,
+        "sha256": "d458a79ebb8af5daf180e5446b3b2ab1d5cb46b0d51fe524e236081b4f2f6eb0"
+      },
+      "clip8/SUN397/dev/00006.parquet": {
+        "size": 5438377,
+        "sha256": "8cac79099d64cf4b9b57cb0a6e9864922b3212da9c63a480270bfad1af11ef3a"
+      },
+      "clip8/SUN397/dev/00007.parquet": {
+        "size": 1419860,
+        "sha256": "2ffbab788cb36c53ad8bca1cd4e9e3bb361b90a25545906674f08be28b3e1fdb"
+      },
+      "clip8/SUN397/dev/00008.parquet": {
+        "size": 10300961,
+        "sha256": "a71e9f28dc086b345960df0c87fe2e97074e73701094cfdd91c5f53b15e9c103"
+      },
+      "clip8/SUN397/dev/00009.parquet": {
+        "size": 6388848,
+        "sha256": "cf5427477247d0f6589c221406b1f39c524813bdc36fe9b1323e8e6af47c05c5"
+      },
+      "clip8/SUN397/dev/00010.parquet": {
+        "size": 5328892,
+        "sha256": "2fd12d40f0925b4879b768baeb939535d3af11105a15e35af122f70a96663e2a"
+      },
+      "clip8/SUN397/dev/00011.parquet": {
+        "size": 6402297,
+        "sha256": "5ee83fcb16c3478b511e3173fda266c46adffe1a6690b0a64b4981a549b9ee4e"
+      },
+      "clip8/SUN397/dev/00012.parquet": {
+        "size": 890987,
+        "sha256": "980d62ef219299ab303d6ff713cc14f02cbad571d2aff4f57ac86f51adc311d6"
+      },
+      "clip8/SUN397/dev/00013.parquet": {
+        "size": 9001540,
+        "sha256": "ecdd1ea2bcd47e38ef7d9184ff2886320431b69a0541ba4d2a3401b903f87b3b"
+      },
+      "clip8/SUN397/dev/00014.parquet": {
+        "size": 6904019,
+        "sha256": "221b178c696d27499ff17a20154a8ad070a6d586b75dab280ea1a667ced65a9b"
+      },
+      "clip8/SUN397/dev/00015.parquet": {
+        "size": 2349376,
+        "sha256": "dcf7a134288101ad0a19d5de056518a48421b529f9338c2aa3a6d25531b34901"
+      },
+      "clip8/SUN397/dev/00016.parquet": {
+        "size": 1514155,
+        "sha256": "aa258139d2b690dc35efad448b9abcedc55ee1c9d8dc273a8cf72a44720fbb5f"
+      },
+      "clip8/SUN397/dev/00017.parquet": {
+        "size": 4608291,
+        "sha256": "1ce23d72bdf944c54846d85ea04fd0dd927ada784abb7bf36ba9bf1b3728d2d6"
+      },
+      "clip8/SUN397/test/00000.parquet": {
+        "size": 446330501,
+        "sha256": "d0ec8a3c333a1896b5b82baf82b86a71e0fd75e97dc7fae5cd7313e907067f09"
+      },
+      "clip8/SUN397/test/00001.parquet": {
+        "size": 362415520,
+        "sha256": "7c83b2c4049474d2a37884ddfb160cc29cffefb5d434697333d71d7479d2c861"
+      },
+      "clip8/SUN397/test/00002.parquet": {
+        "size": 350704231,
+        "sha256": "c566a922281f7fcb9b8fa4919cf02b247910e974c7d615f4188b916238c7d8b2"
+      },
+      "clip8/SUN397/test/00003.parquet": {
+        "size": 447810000,
+        "sha256": "bf547a714a4ea0a0a2080bc714e2b7586b01ee525bff17630a158fa187a0157c"
+      },
+      "clip8/SUN397/test/00004.parquet": {
+        "size": 464905103,
+        "sha256": "300b0dbadc18759de5d5fccb8c0125b7967580f006492e5c383d87bc89cd905c"
+      },
+      "clip8/SUN397/test/00005.parquet": {
+        "size": 406302686,
+        "sha256": "bcd8593cc6c5ab82db6e9df204e0b7bb5be57cf8312908fa686831be98dc049d"
+      },
+      "clip8/SUN397/test/00006.parquet": {
+        "size": 460074346,
+        "sha256": "3a1e002b08c0ca1aff68121898cc3361ed3d04040433fb7074ea3b96690d00d5"
+      },
+      "clip8/SUN397/test/00007.parquet": {
+        "size": 405231398,
+        "sha256": "9e65d019499cd74165869f752b746c234522fb7c1978a818fac48d23c9f91992"
+      },
+      "clip8/SUN397/test/00008.parquet": {
+        "size": 362590908,
+        "sha256": "13c7842507c3cbfce66b2d716f3c6c127d0e221201c006d437fc25c7c53df665"
+      },
+      "clip8/SUN397/test/00009.parquet": {
+        "size": 394257411,
+        "sha256": "728ace1d77b5bdea02e062bdb408bdc4bed4aec1b9f968b9ca9596731db34007"
+      },
+      "clip8/SUN397/test/00010.parquet": {
+        "size": 378073402,
+        "sha256": "ba9b0d8c151ebfe7d31d91828e584e963aac3c5ee6ad80c190b6fba99e3b1e9f"
+      },
+      "clip8/SUN397/test/00011.parquet": {
+        "size": 358323479,
+        "sha256": "0f3bbea301793a767be8b1378f105396b4da4f1860d20442e4256132c410e76f"
+      },
+      "clip8/SUN397/test/00012.parquet": {
+        "size": 344907454,
+        "sha256": "23dcf0b3691eb61a14b99b1c143fe59f91adf4b08ae02fa8defe89fed5a77776"
+      },
+      "clip8/SUN397/test/00013.parquet": {
+        "size": 385589028,
+        "sha256": "04a79433068a3137846a47370600e3aa9d7bb8c9fe5bed48d06d24d2169d696a"
+      },
+      "clip8/SUN397/test/00014.parquet": {
+        "size": 398082433,
+        "sha256": "615d8002ca77b647d104920b3bc4fcdd890946b261e3594a438433be0eb4ba25"
+      },
+      "clip8/SUN397/test/00015.parquet": {
+        "size": 422258360,
+        "sha256": "16fe208e82ac14b3c7c5c9901348819914c2f24c537474d973ee3859c413f68b"
+      },
+      "clip8/SUN397/test/00016.parquet": {
+        "size": 421173732,
+        "sha256": "02b0dd21b4478adf86ceed3f68e39a9df2aed792aa5d929cdd2ca7a1617647d4"
+      },
+      "clip8/SUN397/test/00017.parquet": {
+        "size": 364134800,
+        "sha256": "090b345edb6a9080a7555f7c76e4930a808b3feeb10765a3fb1fc0ad02b05284"
+      },
+      "clip8/SUN397/split_manifest.json": {
+        "size": 1489966,
+        "sha256": "fd6ea463c17a009fc26709e4d8b5566bc17b26f90026e74fd842f586462cf531"
+      },
+      "clip8/SVHN/train/00000.parquet": {
+        "size": 129579719,
+        "sha256": "e26a8277dbd0b2f10f9d58e9dd6f77c6b51d2c990cc4d6b8b99c7612ff42f57f"
+      },
+      "clip8/SVHN/dev/00000.parquet": {
+        "size": 356883,
+        "sha256": "27adf4075f9bb6663be6d8b1e2943880ff71976d08fd4de7ca984aec151f4f6b"
+      },
+      "clip8/SVHN/test/00000.parquet": {
+        "size": 45000665,
+        "sha256": "e840b3f3b5335d97d11f088c414ea313595a999978562dfa2aef695bb571e97b"
+      },
+      "clip8/SVHN/split_manifest.json": {
+        "size": 5422599,
+        "sha256": "d698d4163cf2a0ba661903d0c3cd47cbc0201ec314b1afe38770fc6e14e6ade1"
+      }
+    },
+    "counts": {
+      "Cars": {
+        "train": 7901,
+        "dev": 200,
+        "test": 8041
+      },
+      "DTD": {
+        "train": 3552,
+        "dev": 200,
+        "test": 1880
+      },
+      "EuroSAT": {
+        "train": 21400,
+        "dev": 200,
+        "test": 2700
+      },
+      "GTSRB": {
+        "train": 26440,
+        "dev": 200,
+        "test": 12630
+      },
+      "MNIST": {
+        "train": 59800,
+        "dev": 200,
+        "test": 10000
+      },
+      "RESISC45": {
+        "train": 18699,
+        "dev": 200,
+        "test": 6300
+      },
+      "SUN397": {
+        "train": 19650,
+        "dev": 200,
+        "test": 19850
+      },
+      "SVHN": {
+        "train": 73055,
+        "dev": 200,
+        "test": 26032
+      }
+    }
+  }
 }

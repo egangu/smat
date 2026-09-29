@@ -141,6 +141,8 @@ def _load_local_splits(directory: Path):
             files[split] = []
             for entry in entries:
                 path = Path(os.path.expandvars(entry["path"]))
+                if not path.is_absolute():
+                    path = directory / path
                 if path.stat().st_size != entry["size_bytes"]:
                     raise ValueError(f"source size changed since splitting: {path}")
                 files[split].append(str(path))

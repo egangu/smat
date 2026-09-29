@@ -58,6 +58,21 @@ class DownloadTests(TestCase):
             with self.assertRaises(ValueError):
                 download.download_expert(record, root)
 
+    def test_vision_checkpoint_path_and_task_validation(self):
+        record = {"case": "b32_adam_smat_shared_scale01_s42", "task": "MNIST"}
+        with TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            (root / "manifests").mkdir()
+            (root / "manifests/hf_release.json").write_text(json.dumps({"models": [record]}))
+            argv = ["download_hf.py", "experts", "--model", "vitb32", "--method", "smat", "--tasks", "MNIST", "--output-root", str(root)]
+            with patch.object(download, "ROOT", root), patch.object(download, "download_expert") as fetch, patch("sys.argv", argv):
+                download.main()
+            fetch.assert_called_once_with(record, root / "training/experts/vitb32_adam_smat/MNIST")
+            argv[7] = "FOMC"
+            with patch.object(download, "ROOT", root), patch.object(download, "download_expert") as fetch, patch("sys.argv", argv), self.assertRaises(SystemExit):
+                download.main()
+            fetch.assert_not_called()
+
     def test_summary_without_private_timing_metadata(self):
         spec = importlib.util.spec_from_file_location("summarize", download.ROOT / "scripts/summarize.py")
         summary = importlib.util.module_from_spec(spec)
