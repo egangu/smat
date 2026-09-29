@@ -11,3 +11,5 @@ models/
 outputs/
 .env
 .DS_Store
+examples/.cache/
+examples/.ipynb_checkpoints/

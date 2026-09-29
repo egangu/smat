@@ -1,0 +1,8 @@
+# Install the SMAT source separately with --no-deps (see examples/README.md).
+torch>=2.9
+numpy>=1.24
+matplotlib>=3.7
+pandas>=2.0
+jupyterlab>=4
+nbclient>=0.10
+ipykernel>=6
