@@ -34,38 +34,38 @@
       "split": "test",
       "rows": {
         "Shared base": {
-          "Left": 55.3,
-          "Right": 54.05,
+          "Right": 55.3,
+          "Left": 54.05,
           "Mean": 54.675
         },
         "FT separate experts": {
-          "Left": 92.6,
-          "Right": 92.75,
+          "Right": 92.6,
+          "Left": 92.75,
           "Mean": 92.675
         },
         "FT AVG": {
-          "Left": 71.05,
-          "Right": 67.45,
+          "Right": 71.05,
+          "Left": 67.45,
           "Mean": 69.25
         },
         "FT TA": {
-          "Left": 64.7,
-          "Right": 59.2,
+          "Right": 64.7,
+          "Left": 59.2,
           "Mean": 61.95
         },
         "SMAT separate experts": {
-          "Left": 91.6,
-          "Right": 91.95,
+          "Right": 91.6,
+          "Left": 91.95,
           "Mean": 91.775
         },
         "SMAT AVG": {
-          "Left": 75.5,
-          "Right": 70.95,
+          "Right": 75.5,
+          "Left": 70.95,
           "Mean": 73.225
         },
         "SMAT TA": {
-          "Left": 69.45,
-          "Right": 68.25,
+          "Right": 69.45,
+          "Left": 68.25,
           "Mean": 68.85
         }
       },
@@ -79,38 +79,38 @@
       "split": "test",
       "rows": {
         "Shared base": {
-          "Left": 55.3,
-          "Right": 54.05,
+          "Right": 55.3,
+          "Left": 54.05,
           "Mean": 54.675
         },
         "FT separate experts": {
-          "Left": 92.3,
-          "Right": 92.8,
+          "Right": 92.3,
+          "Left": 92.8,
           "Mean": 92.55
         },
         "FT AVG": {
-          "Left": 70.95,
-          "Right": 67.65,
+          "Right": 70.95,
+          "Left": 67.65,
           "Mean": 69.30000000000001
         },
         "FT TA": {
-          "Left": 62.6,
-          "Right": 59.05,
+          "Right": 62.6,
+          "Left": 59.05,
           "Mean": 60.825
         },
         "SMAT separate experts": {
-          "Left": 91.65,
           "Right": 91.65,
+          "Left": 91.65,
           "Mean": 91.65
         },
         "SMAT AVG": {
-          "Left": 75.85,
-          "Right": 71.05,
+          "Right": 75.85,
+          "Left": 71.05,
           "Mean": 73.44999999999999
         },
         "SMAT TA": {
-          "Left": 69.2,
-          "Right": 68.05,
+          "Right": 69.2,
+          "Left": 68.05,
           "Mean": 68.625
         }
       },
@@ -124,38 +124,38 @@
       "split": "test",
       "rows": {
         "Shared base": {
-          "Left": 55.3,
-          "Right": 54.05,
+          "Right": 55.3,
+          "Left": 54.05,
           "Mean": 54.675
         },
         "FT separate experts": {
-          "Left": 92.25,
-          "Right": 92.9,
+          "Right": 92.25,
+          "Left": 92.9,
           "Mean": 92.575
         },
         "FT AVG": {
-          "Left": 70.7,
-          "Right": 68.45,
+          "Right": 70.7,
+          "Left": 68.45,
           "Mean": 69.575
         },
         "FT TA": {
-          "Left": 59.75,
-          "Right": 62.75,
+          "Right": 59.75,
+          "Left": 62.75,
           "Mean": 61.25
         },
         "SMAT separate experts": {
-          "Left": 91.55,
-          "Right": 91.9,
+          "Right": 91.55,
+          "Left": 91.9,
           "Mean": 91.725
         },
         "SMAT AVG": {
-          "Left": 74.55,
-          "Right": 71.05,
+          "Right": 74.55,
+          "Left": 71.05,
           "Mean": 72.8
         },
         "SMAT TA": {
-          "Left": 66.45,
-          "Right": 66.65,
+          "Right": 66.45,
+          "Left": 66.65,
           "Mean": 66.55000000000001
         }
       },
@@ -169,38 +169,38 @@
       "split": "test",
       "rows": {
         "Shared base": {
-          "Left": 55.3,
-          "Right": 54.05,
+          "Right": 55.3,
+          "Left": 54.05,
           "Mean": 54.675
         },
         "FT separate experts": {
-          "Left": 92.35,
-          "Right": 92.7,
+          "Right": 92.35,
+          "Left": 92.7,
           "Mean": 92.525
         },
         "FT AVG": {
-          "Left": 70.6,
-          "Right": 68.8,
+          "Right": 70.6,
+          "Left": 68.8,
           "Mean": 69.69999999999999
         },
         "FT TA": {
-          "Left": 61.35,
-          "Right": 61.65,
+          "Right": 61.35,
+          "Left": 61.65,
           "Mean": 61.5
         },
         "SMAT separate experts": {
-          "Left": 91.85,
-          "Right": 91.65,
+          "Right": 91.85,
+          "Left": 91.65,
           "Mean": 91.75
         },
         "SMAT AVG": {
-          "Left": 75.85,
-          "Right": 71.75,
+          "Right": 75.85,
+          "Left": 71.75,
           "Mean": 73.8
         },
         "SMAT TA": {
-          "Left": 69.4,
-          "Right": 68.15,
+          "Right": 69.4,
+          "Left": 68.15,
           "Mean": 68.775
         }
       },
@@ -214,38 +214,38 @@
       "split": "test",
       "rows": {
         "Shared base": {
-          "Left": 55.3,
-          "Right": 54.05,
+          "Right": 55.3,
+          "Left": 54.05,
           "Mean": 54.675
         },
         "FT separate experts": {
-          "Left": 92.75,
-          "Right": 92.65,
+          "Right": 92.75,
+          "Left": 92.65,
           "Mean": 92.7
         },
         "FT AVG": {
-          "Left": 72.05,
-          "Right": 67.5,
+          "Right": 72.05,
+          "Left": 67.5,
           "Mean": 69.775
         },
         "FT TA": {
-          "Left": 60.45,
-          "Right": 59.15,
+          "Right": 60.45,
+          "Left": 59.15,
           "Mean": 59.8
         },
         "SMAT separate experts": {
-          "Left": 91.7,
-          "Right": 91.85,
+          "Right": 91.7,
+          "Left": 91.85,
           "Mean": 91.775
         },
         "SMAT AVG": {
-          "Left": 74.95,
-          "Right": 70.55,
+          "Right": 74.95,
+          "Left": 70.55,
           "Mean": 72.75
         },
         "SMAT TA": {
-          "Left": 66.15,
-          "Right": 66.0,
+          "Right": 66.15,
+          "Left": 66.0,
           "Mean": 66.075
         }
       },

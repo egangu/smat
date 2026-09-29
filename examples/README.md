@@ -41,7 +41,7 @@ Later runs reuse the cache. The pretrained base is approximately **105 KB**.
   not need an oracle to choose between different label spaces.
 - Base: **2,000 upright MNIST images only**, 400 Adam updates, LR 0.001,
   batch 128, seed 1729. The base never trains on the tilted domains. Its
-  upright accuracy on the selected left-domain test identities is **88.90%**;
+  upright accuracy on the selected right-domain test identities is **88.90%**;
   the domain shift reduces its mean tilted accuracy to **54.675%**.
 - Domains: fixed −30° and +30° image rotations, bilinear sampling, zero padding,
   `align_corners=False`. This is the task definition, not random augmentation.

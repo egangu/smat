@@ -9,8 +9,8 @@ import torch
 from torch import nn
 from torch.nn import functional as F
 
-TASKS = ('Left', 'Right')
-ANGLES = {'Left': -30, 'Right': 30}
+TASKS = ('Right', 'Left')
+ANGLES = {'Right': -30, 'Left': 30}
 SPLIT_SEED = 20260929
 BASE_SEED = 1729
 SEEDS = (0, 1, 2, 3, 4)  # Declared before development experiments.
