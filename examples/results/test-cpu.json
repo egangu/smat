@@ -2,13 +2,13 @@
   "settings": {
     "backend": "eager",
     "scale": {
-      "alpha_min": 0.5
+      "alpha_min": 0.1
     },
     "mask": {
-      "probability": 0.1
+      "probability": 0.8
     },
     "perturb": {
-      "rms": 0.005
+      "rms": 0.01
     },
     "smat": {
       "interval": 4
@@ -20,9 +20,10 @@
     "device": "cpu",
     "device_name": "x86_64",
     "threads": 2,
-    "steps": 300,
+    "steps": 1200,
     "lr": 0.001,
-    "batch_size": 128
+    "batch_size": 128,
+    "parameters": 25988
   },
   "results": [
     {
@@ -30,34 +31,44 @@
       "split": "test",
       "rows": {
         "Shared base": {
-          "MNIST": 90.0,
-          "FashionMNIST": 79.8,
-          "Mean": 84.9
+          "MNIST": 86.0,
+          "FashionMNIST": 76.8,
+          "Mean": 81.4
         },
         "FT separate experts": {
-          "MNIST": 91.55,
-          "FashionMNIST": 82.3,
-          "Mean": 86.925
+          "MNIST": 91.65,
+          "FashionMNIST": 82.45,
+          "Mean": 87.05000000000001
         },
-        "FT merged": {
-          "MNIST": 90.5,
-          "FashionMNIST": 79.8,
-          "Mean": 85.15
+        "FT AVG": {
+          "MNIST": 83.0,
+          "FashionMNIST": 67.45,
+          "Mean": 75.225
+        },
+        "FT TA": {
+          "MNIST": 69.25,
+          "FashionMNIST": 48.0,
+          "Mean": 58.625
         },
         "SMAT separate experts": {
           "MNIST": 91.75,
-          "FashionMNIST": 81.65,
-          "Mean": 86.7
+          "FashionMNIST": 82.05,
+          "Mean": 86.9
         },
-        "SMAT merged": {
-          "MNIST": 90.6,
-          "FashionMNIST": 80.1,
-          "Mean": 85.35
+        "SMAT AVG": {
+          "MNIST": 86.85,
+          "FashionMNIST": 73.5,
+          "Mean": 80.175
+        },
+        "SMAT TA": {
+          "MNIST": 80.8,
+          "FashionMNIST": 52.45,
+          "Mean": 66.625
         }
       },
       "train_seconds": {
-        "ft": 0.9756584204733372,
-        "smat": 0.7648317255079746
+        "ft": 1.7532871272414923,
+        "smat": 1.8137002494186163
       }
     },
     {
@@ -65,34 +76,44 @@
       "split": "test",
       "rows": {
         "Shared base": {
-          "MNIST": 90.0,
-          "FashionMNIST": 79.8,
-          "Mean": 84.9
+          "MNIST": 86.0,
+          "FashionMNIST": 76.8,
+          "Mean": 81.4
         },
         "FT separate experts": {
-          "MNIST": 92.0,
-          "FashionMNIST": 82.35,
-          "Mean": 87.175
+          "MNIST": 91.95,
+          "FashionMNIST": 83.25,
+          "Mean": 87.6
         },
-        "FT merged": {
-          "MNIST": 91.75,
-          "FashionMNIST": 79.8,
-          "Mean": 85.775
+        "FT AVG": {
+          "MNIST": 83.95,
+          "FashionMNIST": 69.1,
+          "Mean": 76.525
+        },
+        "FT TA": {
+          "MNIST": 69.85,
+          "FashionMNIST": 47.9,
+          "Mean": 58.875
         },
         "SMAT separate experts": {
-          "MNIST": 92.05,
-          "FashionMNIST": 82.2,
-          "Mean": 87.125
+          "MNIST": 91.75,
+          "FashionMNIST": 83.0,
+          "Mean": 87.375
         },
-        "SMAT merged": {
-          "MNIST": 91.85,
-          "FashionMNIST": 80.75,
-          "Mean": 86.3
+        "SMAT AVG": {
+          "MNIST": 85.25,
+          "FashionMNIST": 73.05,
+          "Mean": 79.15
+        },
+        "SMAT TA": {
+          "MNIST": 73.65,
+          "FashionMNIST": 51.45,
+          "Mean": 62.550000000000004
         }
       },
       "train_seconds": {
-        "ft": 0.545726764947176,
-        "smat": 0.7479768209159374
+        "ft": 1.3621238358318806,
+        "smat": 1.7948924470692873
       }
     },
     {
@@ -100,34 +121,44 @@
       "split": "test",
       "rows": {
         "Shared base": {
-          "MNIST": 90.0,
-          "FashionMNIST": 79.8,
-          "Mean": 84.9
+          "MNIST": 86.0,
+          "FashionMNIST": 76.8,
+          "Mean": 81.4
         },
         "FT separate experts": {
-          "MNIST": 92.15,
-          "FashionMNIST": 82.25,
-          "Mean": 87.2
+          "MNIST": 91.55,
+          "FashionMNIST": 82.75,
+          "Mean": 87.15
         },
-        "FT merged": {
-          "MNIST": 91.45,
-          "FashionMNIST": 80.35,
-          "Mean": 85.9
+        "FT AVG": {
+          "MNIST": 83.15,
+          "FashionMNIST": 68.55,
+          "Mean": 75.85
+        },
+        "FT TA": {
+          "MNIST": 69.15,
+          "FashionMNIST": 46.55,
+          "Mean": 57.85
         },
         "SMAT separate experts": {
-          "MNIST": 92.25,
-          "FashionMNIST": 82.3,
-          "Mean": 87.275
+          "MNIST": 91.65,
+          "FashionMNIST": 81.55,
+          "Mean": 86.6
         },
-        "SMAT merged": {
-          "MNIST": 91.9,
-          "FashionMNIST": 80.05,
-          "Mean": 85.975
+        "SMAT AVG": {
+          "MNIST": 86.3,
+          "FashionMNIST": 72.5,
+          "Mean": 79.4
+        },
+        "SMAT TA": {
+          "MNIST": 78.5,
+          "FashionMNIST": 52.2,
+          "Mean": 65.35
         }
       },
       "train_seconds": {
-        "ft": 0.5431182235479355,
-        "smat": 0.751330129802227
+        "ft": 1.3660803604871035,
+        "smat": 1.797989210113883
       }
     },
     {
@@ -135,34 +166,44 @@
       "split": "test",
       "rows": {
         "Shared base": {
-          "MNIST": 90.0,
-          "FashionMNIST": 79.8,
-          "Mean": 84.9
+          "MNIST": 86.0,
+          "FashionMNIST": 76.8,
+          "Mean": 81.4
         },
         "FT separate experts": {
-          "MNIST": 91.7,
-          "FashionMNIST": 83.45,
-          "Mean": 87.575
+          "MNIST": 92.0,
+          "FashionMNIST": 82.3,
+          "Mean": 87.15
         },
-        "FT merged": {
-          "MNIST": 90.95,
-          "FashionMNIST": 80.4,
-          "Mean": 85.67500000000001
+        "FT AVG": {
+          "MNIST": 82.8,
+          "FashionMNIST": 68.2,
+          "Mean": 75.5
+        },
+        "FT TA": {
+          "MNIST": 67.55,
+          "FashionMNIST": 46.45,
+          "Mean": 57.0
         },
         "SMAT separate experts": {
-          "MNIST": 91.7,
-          "FashionMNIST": 83.35,
-          "Mean": 87.525
+          "MNIST": 91.65,
+          "FashionMNIST": 81.5,
+          "Mean": 86.575
         },
-        "SMAT merged": {
-          "MNIST": 91.35,
-          "FashionMNIST": 80.7,
-          "Mean": 86.025
+        "SMAT AVG": {
+          "MNIST": 85.6,
+          "FashionMNIST": 71.45,
+          "Mean": 78.525
+        },
+        "SMAT TA": {
+          "MNIST": 75.9,
+          "FashionMNIST": 48.1,
+          "Mean": 62.0
         }
       },
       "train_seconds": {
-        "ft": 0.5452646743506193,
-        "smat": 0.7487354781478643
+        "ft": 1.3672884944826365,
+        "smat": 1.7945649065077305
       }
     },
     {
@@ -170,35 +211,85 @@
       "split": "test",
       "rows": {
         "Shared base": {
-          "MNIST": 90.0,
-          "FashionMNIST": 79.8,
-          "Mean": 84.9
+          "MNIST": 86.0,
+          "FashionMNIST": 76.8,
+          "Mean": 81.4
         },
         "FT separate experts": {
-          "MNIST": 92.2,
-          "FashionMNIST": 83.2,
-          "Mean": 87.7
+          "MNIST": 91.75,
+          "FashionMNIST": 82.0,
+          "Mean": 86.875
         },
-        "FT merged": {
-          "MNIST": 91.3,
-          "FashionMNIST": 80.2,
-          "Mean": 85.75
+        "FT AVG": {
+          "MNIST": 81.85,
+          "FashionMNIST": 68.5,
+          "Mean": 75.175
+        },
+        "FT TA": {
+          "MNIST": 66.6,
+          "FashionMNIST": 47.05,
+          "Mean": 56.824999999999996
         },
         "SMAT separate experts": {
-          "MNIST": 92.2,
-          "FashionMNIST": 83.05,
-          "Mean": 87.625
+          "MNIST": 92.1,
+          "FashionMNIST": 82.1,
+          "Mean": 87.1
         },
-        "SMAT merged": {
-          "MNIST": 91.65,
-          "FashionMNIST": 79.85,
-          "Mean": 85.75
+        "SMAT AVG": {
+          "MNIST": 85.8,
+          "FashionMNIST": 73.9,
+          "Mean": 79.85
+        },
+        "SMAT TA": {
+          "MNIST": 76.55,
+          "FashionMNIST": 53.5,
+          "Mean": 65.025
         }
       },
       "train_seconds": {
-        "ft": 0.5508843585848808,
-        "smat": 0.7507806923240423
+        "ft": 1.361243363469839,
+        "smat": 1.7926918677985668
       }
     }
-  ]
+  ],
+  "summary": {
+    "Shared base": {
+      "mean": 81.4,
+      "sample_std": 0.0
+    },
+    "FT separate experts": {
+      "mean": 87.165,
+      "sample_std": 0.2678619047195738
+    },
+    "FT AVG": {
+      "mean": 75.655,
+      "sample_std": 0.5554840231725876
+    },
+    "FT TA": {
+      "mean": 57.835,
+      "sample_std": 0.9251013457994763
+    },
+    "SMAT separate experts": {
+      "mean": 86.91,
+      "sample_std": 0.3393928402309039
+    },
+    "SMAT AVG": {
+      "mean": 79.42,
+      "sample_std": 0.638210388508362
+    },
+    "SMAT TA": {
+      "mean": 64.31,
+      "sample_std": 1.9612336678733606
+    }
+  },
+  "paired_gain_pp": {
+    "AVG": {
+      "mean": 3.7650000000000032,
+      "sample_std": 1.0155971150018088
+    },
+    "TA": {
+      "mean": 6.475000000000001,
+      "sample_std": 2.0228383524147446
+    }
+  }
 }

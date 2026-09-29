@@ -15,8 +15,8 @@ SEEDS = (0, 1, 2, 3, 4)  # Declared before development experiments.
 class TinyMLP(nn.Module):
     def __init__(self):
         super().__init__()
-        self.backbone = nn.Sequential(nn.Flatten(), nn.Linear(784, 128), nn.ReLU(), nn.Linear(128, 64), nn.ReLU())
-        self.heads = nn.ModuleDict({task: nn.Linear(64, 10) for task in TASKS})
+        self.backbone = nn.Sequential(nn.Flatten(), nn.Linear(784, 32), nn.ReLU(), nn.Linear(32, 16), nn.ReLU())
+        self.heads = nn.ModuleDict({task: nn.Linear(16, 10) for task in TASKS})
 
     def forward(self, images, task):
         return self.heads[task](self.backbone(images))

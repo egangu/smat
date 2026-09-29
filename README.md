@@ -65,6 +65,17 @@ Across Llama-1B, Llama-8B, CLIP ViT-B/32, and CLIP ViT-L/14, the paper reports:
 See the [paper](https://arxiv.org/abs/2609.33437) for per-backbone results,
 ablations, and measurement details.
 
+## Try it on a CPU
+
+[Open the demo notebook](examples/smat_image_demo.ipynb) ·
+[Run in Colab](https://colab.research.google.com/github/egangu/smat/blob/main/examples/smat_image_demo.ipynb)
+
+Train four small MNIST/Fashion-MNIST experts and compare **AVG** and **Task
+Arithmetic**. The notebook shows SMAT in a short, differentiable PyTorch
+implementation, checked against the released eager stepper. Its 26K-parameter
+MLP illustrates merge interference; it is separate from the paper benchmark
+and overhead claims. [Recipe, limitations and five-seed results](examples/README.md).
+
 ## Released models and data
 
 All [**28 Table 1 experts**](https://huggingface.co/collections/yanggangu/smat-simple-and-efficient-merge-aware-training-6abb7826f636ba703e4f532e) (FT/SMAT × Llama-1B/8B × seven tasks) and the frozen

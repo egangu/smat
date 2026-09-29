@@ -6,7 +6,7 @@ from pathlib import Path
 import torch
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'examples'))
 from demo_utils import TASKS, TinyMLP, split_indices
-from demo_experiment import SETTINGS, merge, train_expert
+from demo_experiment import SETTINGS, merge, train_expert, task_arithmetic, smat_logits
 
 class DemoTest(unittest.TestCase):
     def setUp(self):
@@ -52,6 +52,44 @@ class DemoTest(unittest.TestCase):
             result = merge(self.base, experts, weight)
             for name, value in result.backbone.state_dict().items():
                 torch.testing.assert_close(value, experts[task].backbone.state_dict()[name])
+
+    def test_task_arithmetic_half_equals_average_and_zero_equals_base(self):
+        experts = {task: copy.deepcopy(self.base) for task in TASKS}
+        with torch.no_grad():
+            for model in experts.values():
+                for parameter in model.backbone.parameters():
+                    parameter.add_(torch.randn_like(parameter) * 0.01)
+        for coefficient, expected in ((0.5, merge(self.base, experts)), (0.0, self.base)):
+            result = task_arithmetic(self.base, experts, coefficient)
+            for name, value in result.state_dict().items():
+                torch.testing.assert_close(value, expected.state_dict()[name])
+
+    def test_inline_smat_matches_released_eager_stepper(self):
+        from smat.train.updates import SMATStepper
+        from torch.nn import functional as F
+        reference = copy.deepcopy(self.base)
+        reference.heads.requires_grad_(False)
+        model = copy.deepcopy(reference)
+        anchor = {n: p.detach().clone() for n, p in model.named_parameters() if p.requires_grad}
+        generators = (torch.Generator().manual_seed(1), torch.Generator().manual_seed(3), torch.Generator().manual_seed(0))
+        optimizer = torch.optim.Adam(model.backbone.parameters(), lr=0.001)
+        ref_optimizer = torch.optim.Adam(reference.backbone.parameters(), lr=0.001)
+        stepper = SMATStepper(list(reference.named_parameters()), ref_optimizer, SETTINGS, 0,
+                              {'backbone.1.weight', 'backbone.3.weight'})
+        images, labels = self.data['MNIST']['train']
+        for step in range(12):
+            ref_loss = stepper.step(lambda: F.cross_entropy(reference(images, 'MNIST'), labels))
+            before = {n: p.detach().clone() for n, p in model.named_parameters()}
+            optimizer.zero_grad(set_to_none=True)
+            logits = smat_logits(model, anchor, images, 'MNIST', generators, SETTINGS) if (step+1)%4 == 0 else model(images, 'MNIST')
+            loss = F.cross_entropy(logits, labels)
+            loss.backward()
+            for name, parameter in model.named_parameters():
+                torch.testing.assert_close(parameter, before[name], rtol=0, atol=0)
+            optimizer.step()
+            torch.testing.assert_close(loss.detach(), ref_loss, atol=2e-6, rtol=1e-5)
+            for parameter, expected in zip(model.parameters(), reference.parameters()):
+                torch.testing.assert_close(parameter, expected, atol=2e-6, rtol=1e-4)
 
 if __name__ == '__main__':
     unittest.main()

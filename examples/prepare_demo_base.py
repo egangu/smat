@@ -25,7 +25,7 @@ def prepare(root, output):
     path = output / 'shared_base.pt'
     torch.save(model.state_dict(), path)
     metadata = {'base_seed': BASE_SEED, 'split_seed': SPLIT_SEED, 'steps': 400, 'batch_size': 128,
-                'lr': 0.001, 'optimizer': 'Adam', 'torch': torch.__version__, 'sha256': hashlib.sha256(path.read_bytes()).hexdigest(), 'splits': splits}
+                'backbone_widths': [32, 16], 'parameters': sum(p.numel() for p in model.parameters()), 'lr': 0.001, 'optimizer': 'Adam', 'torch': torch.__version__, 'sha256': hashlib.sha256(path.read_bytes()).hexdigest(), 'splits': splits}
     (output / 'shared_base.json').write_text(json.dumps(metadata))
     print(json.dumps({k:v for k,v in metadata.items() if k != 'splits'}), flush=True)
 
