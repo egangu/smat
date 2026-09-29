@@ -87,3 +87,11 @@ The notebook's visible core functions are checked against the executable
 source. Tests also check frozen heads/common initialization, disabled-SMAT
 parity with FT, and merge arithmetic. Execution reports are in
 [CPU Run All](results/notebook-cpu.json) and [CUDA Run All](results/notebook-cuda.json).
+
+Actual Restart Kernel and Run All on dgx44, with cached downloads/installations:
+**CPU 177.6 seconds**, four threads, peak RSS **1,205 MiB**; **CUDA 71.3 seconds**,
+peak allocated GPU memory **433 MiB**. First-run downloads/installations and
+laptop speed vary. Both executions completed the same **9 code cells** with
+no errors and matched the corresponding seed-0 reference results exactly.
+All five contract/code-consistency tests passed. `recipe.json` is the immutable
+pre-test snapshot; completed test outcomes are recorded under `results/`.

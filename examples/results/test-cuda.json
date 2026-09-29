@@ -1,298 +1,199 @@
 {
-  "settings": {
-    "backend": "eager",
-    "scale": {
-      "alpha_min": 0.1
-    },
-    "mask": {
-      "probability": 0.8
-    },
-    "perturb": {
-      "rms": 0.01
-    },
-    "smat": {
-      "interval": 4
-    }
+  "device": "cuda",
+  "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "threads": 4,
+  "model": "timm/vit_tiny_patch16_224.augreg_in21k_ft_in1k",
+  "model_revision": "7d3afdd0cf93ad84d986eb2d6bcc5812ebd0b106",
+  "dataset": "yanggangu/SMAT-Tiny-Demo",
+  "dataset_revision": "4bce144c014354a937e84177fdb13810f298c56e",
+  "recipe_sha256": "810fb2b42c31aa7ea0df2c66454603366f048a268864194070d376e67cc436b0",
+  "versions": {
+    "torch": "2.11.0",
+    "timm": "1.0.30",
+    "numpy": "2.2.6"
   },
-  "all_merged_above_base_each_task": true,
-  "upright_base_test_accuracy": 88.9,
-  "metadata": {
-    "torch": "2.11.0+cu130",
-    "python": "3.10.12",
-    "device": "cuda",
-    "device_name": "NVIDIA H800",
-    "threads": 2,
-    "steps": 1200,
-    "lr": 0.001,
-    "batch_size": 128,
-    "ta_coefficient": 0.75,
-    "parameters": 25988
-  },
-  "results": [
+  "seconds": 265.7642762772739,
+  "peak_rss_MiB": 1342.80859375,
+  "records": [
     {
       "seed": 0,
-      "split": "test",
       "rows": {
-        "Shared base": {
-          "Right": 55.3,
-          "Left": 54.05,
-          "Mean": 54.675
-        },
-        "FT separate experts": {
-          "Right": 92.6,
-          "Left": 92.75,
-          "Mean": 92.675
+        "Base": {
+          "cifar10": 44.6,
+          "svhn": 21.2,
+          "Mean": 32.9
         },
         "FT AVG": {
-          "Right": 71.05,
-          "Left": 67.45,
-          "Mean": 69.25
+          "cifar10": 61.85,
+          "svhn": 58.1,
+          "Mean": 59.975
         },
         "FT TA": {
-          "Right": 64.7,
-          "Left": 59.2,
-          "Mean": 61.95
-        },
-        "SMAT separate experts": {
-          "Right": 91.6,
-          "Left": 91.95,
-          "Mean": 91.775
+          "cifar10": 63.15,
+          "svhn": 66.05,
+          "Mean": 64.6
         },
         "SMAT AVG": {
-          "Right": 75.5,
-          "Left": 70.95,
-          "Mean": 73.225
+          "cifar10": 63.75,
+          "svhn": 66.1,
+          "Mean": 64.925
         },
         "SMAT TA": {
-          "Right": 69.45,
-          "Left": 68.25,
-          "Mean": 68.85
+          "cifar10": 63.55,
+          "svhn": 73.65,
+          "Mean": 68.6
         }
       },
-      "train_seconds": {
-        "ft": 2.396699398756027,
-        "smat": 2.004145110026002
+      "gains_pp": {
+        "AVG": 4.949999999999996,
+        "TA": 4.0
       }
     },
     {
       "seed": 1,
-      "split": "test",
       "rows": {
-        "Shared base": {
-          "Right": 55.3,
-          "Left": 54.05,
-          "Mean": 54.675
-        },
-        "FT separate experts": {
-          "Right": 92.3,
-          "Left": 92.8,
-          "Mean": 92.55
+        "Base": {
+          "cifar10": 44.6,
+          "svhn": 21.2,
+          "Mean": 32.9
         },
         "FT AVG": {
-          "Right": 70.95,
-          "Left": 67.65,
-          "Mean": 69.30000000000001
+          "cifar10": 62.15,
+          "svhn": 58.2,
+          "Mean": 60.175
         },
         "FT TA": {
-          "Right": 62.6,
-          "Left": 59.05,
-          "Mean": 60.825
-        },
-        "SMAT separate experts": {
-          "Right": 91.65,
-          "Left": 91.65,
-          "Mean": 91.65
+          "cifar10": 63.25,
+          "svhn": 65.65,
+          "Mean": 64.45
         },
         "SMAT AVG": {
-          "Right": 75.85,
-          "Left": 71.05,
-          "Mean": 73.44999999999999
+          "cifar10": 64.1,
+          "svhn": 65.55,
+          "Mean": 64.82499999999999
         },
         "SMAT TA": {
-          "Right": 69.2,
-          "Left": 68.05,
-          "Mean": 68.625
+          "cifar10": 65.25,
+          "svhn": 71.65,
+          "Mean": 68.45
         }
       },
-      "train_seconds": {
-        "ft": 1.6116264928132296,
-        "smat": 1.9066133573651314
+      "gains_pp": {
+        "AVG": 4.6499999999999915,
+        "TA": 4.0
       }
     },
     {
       "seed": 2,
-      "split": "test",
       "rows": {
-        "Shared base": {
-          "Right": 55.3,
-          "Left": 54.05,
-          "Mean": 54.675
-        },
-        "FT separate experts": {
-          "Right": 92.25,
-          "Left": 92.9,
-          "Mean": 92.575
+        "Base": {
+          "cifar10": 44.6,
+          "svhn": 21.2,
+          "Mean": 32.9
         },
         "FT AVG": {
-          "Right": 70.7,
-          "Left": 68.45,
-          "Mean": 69.575
+          "cifar10": 62.35,
+          "svhn": 54.5,
+          "Mean": 58.425
         },
         "FT TA": {
-          "Right": 59.75,
-          "Left": 62.75,
-          "Mean": 61.25
-        },
-        "SMAT separate experts": {
-          "Right": 91.55,
-          "Left": 91.9,
-          "Mean": 91.725
+          "cifar10": 63.1,
+          "svhn": 64.85,
+          "Mean": 63.974999999999994
         },
         "SMAT AVG": {
-          "Right": 74.55,
-          "Left": 71.05,
-          "Mean": 72.8
+          "cifar10": 64.1,
+          "svhn": 62.45,
+          "Mean": 63.275
         },
         "SMAT TA": {
-          "Right": 66.45,
-          "Left": 66.65,
-          "Mean": 66.55000000000001
+          "cifar10": 64.0,
+          "svhn": 70.3,
+          "Mean": 67.15
         }
       },
-      "train_seconds": {
-        "ft": 1.4402033612132072,
-        "smat": 1.852027790620923
+      "gains_pp": {
+        "AVG": 4.850000000000001,
+        "TA": 3.1750000000000114
       }
     },
     {
       "seed": 3,
-      "split": "test",
       "rows": {
-        "Shared base": {
-          "Right": 55.3,
-          "Left": 54.05,
-          "Mean": 54.675
-        },
-        "FT separate experts": {
-          "Right": 92.35,
-          "Left": 92.7,
-          "Mean": 92.525
+        "Base": {
+          "cifar10": 44.6,
+          "svhn": 21.2,
+          "Mean": 32.9
         },
         "FT AVG": {
-          "Right": 70.6,
-          "Left": 68.8,
-          "Mean": 69.69999999999999
+          "cifar10": 60.4,
+          "svhn": 57.4,
+          "Mean": 58.9
         },
         "FT TA": {
-          "Right": 61.35,
-          "Left": 61.65,
-          "Mean": 61.5
-        },
-        "SMAT separate experts": {
-          "Right": 91.85,
-          "Left": 91.65,
-          "Mean": 91.75
+          "cifar10": 60.1,
+          "svhn": 63.85,
+          "Mean": 61.975
         },
         "SMAT AVG": {
-          "Right": 75.85,
-          "Left": 71.75,
-          "Mean": 73.8
+          "cifar10": 63.4,
+          "svhn": 64.65,
+          "Mean": 64.025
         },
         "SMAT TA": {
-          "Right": 69.4,
-          "Left": 68.15,
-          "Mean": 68.775
+          "cifar10": 64.45,
+          "svhn": 72.5,
+          "Mean": 68.475
         }
       },
-      "train_seconds": {
-        "ft": 1.4259174931794405,
-        "smat": 1.7590627614408731
+      "gains_pp": {
+        "AVG": 5.125000000000007,
+        "TA": 6.499999999999993
       }
     },
     {
       "seed": 4,
-      "split": "test",
       "rows": {
-        "Shared base": {
-          "Right": 55.3,
-          "Left": 54.05,
-          "Mean": 54.675
-        },
-        "FT separate experts": {
-          "Right": 92.75,
-          "Left": 92.65,
-          "Mean": 92.7
+        "Base": {
+          "cifar10": 44.6,
+          "svhn": 21.2,
+          "Mean": 32.9
         },
         "FT AVG": {
-          "Right": 72.05,
-          "Left": 67.5,
-          "Mean": 69.775
+          "cifar10": 61.35,
+          "svhn": 57.1,
+          "Mean": 59.225
         },
         "FT TA": {
-          "Right": 60.45,
-          "Left": 59.15,
-          "Mean": 59.8
-        },
-        "SMAT separate experts": {
-          "Right": 91.7,
-          "Left": 91.85,
-          "Mean": 91.775
+          "cifar10": 63.1,
+          "svhn": 69.1,
+          "Mean": 66.1
         },
         "SMAT AVG": {
-          "Right": 74.95,
-          "Left": 70.55,
-          "Mean": 72.75
+          "cifar10": 63.1,
+          "svhn": 66.9,
+          "Mean": 65.0
         },
         "SMAT TA": {
-          "Right": 66.15,
-          "Left": 66.0,
-          "Mean": 66.075
+          "cifar10": 63.75,
+          "svhn": 73.75,
+          "Mean": 68.75
         }
       },
-      "train_seconds": {
-        "ft": 1.5313676111400127,
-        "smat": 1.7141418810933828
+      "gains_pp": {
+        "AVG": 5.774999999999999,
+        "TA": 2.6500000000000057
       }
     }
   ],
-  "summary": {
-    "Shared base": {
-      "mean": 54.675,
-      "sample_std": 0.0
-    },
-    "FT separate experts": {
-      "mean": 92.605,
-      "sample_std": 0.07786205751198619
-    },
-    "FT AVG": {
-      "mean": 69.52,
-      "sample_std": 0.23545169355941895
-    },
-    "FT TA": {
-      "mean": 61.065,
-      "sample_std": 0.816164811787425
-    },
-    "SMAT separate experts": {
-      "mean": 91.735,
-      "sample_std": 0.05184110338331944
-    },
-    "SMAT AVG": {
-      "mean": 73.205,
-      "sample_std": 0.44314218937040767
-    },
-    "SMAT TA": {
-      "mean": 67.775,
-      "sample_std": 1.3480309714542875
-    }
-  },
-  "paired_gain_pp": {
-    "AVG": {
-      "mean": 3.684999999999994,
-      "sample_std": 0.5450344025839093
-    },
-    "TA": {
-      "mean": 6.710000000000003,
-      "sample_std": 0.9644622854212548
-    }
+  "mean_gains_pp": {
+    "AVG": 5.0699999999999985,
+    "TA": 4.065000000000002
   }
 }
