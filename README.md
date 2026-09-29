@@ -2,6 +2,11 @@
 
 Official implementation of **SMAT: Simple and Efficient Merge-Aware Training**.
 
+[![arXiv](https://img.shields.io/badge/arXiv-2609.33437-b31b1b.svg)](https://arxiv.org/abs/2609.33437)
+[Paper PDF](https://arxiv.org/pdf/2609.33437) · [Setup & data](docs/DATA.md) · [Running experiments](docs/RUNNING.md) · [Citation](#citation)
+
+**Train experts that merge better, with less than 2% training-time overhead.**
+
 **Yanggan Gu¹\*, Yuanyi Wang¹\*, Zhen Li¹, Shuo Cai¹, Yuhang Liu¹,
 Junzhuo Li², Zihao Wang³, Hongxia Yang<sup>1,4,5,†</sup>**
 
@@ -15,6 +20,50 @@ Junzhuo Li², Zihao Wang³, Hongxia Yang<sup>1,4,5,†</sup>**
 
 Training, merging and evaluation code for FT and SMAT with Llama-1B/8B and
 CLIP ViT-B/32/L/14. Supported mergers: WA, TA, TIES, DARE and DELLA.
+
+## Overview
+
+Fine-tuning an expert on its own task does not ensure that it will work well after
+merging. **SMAT prepares each expert for merging during training**, by simulating
+how a merger may transform its parameter update. Experts still train independently;
+other experts' checkpoints are not needed.
+
+[![Figure 1: SMAT simulates merged weights with Scale, Mask, and Perturb during expert training; the results compare merged performance and training speed.](docs/assets/smat-overview.png)](https://arxiv.org/pdf/2609.33437)
+
+*Figure 1 from the paper. Left: simulated merged states during expert training.
+Right: merged performance and training speed compared with the baselines.*
+
+### How it works
+
+Starting from pretrained weights, SMAT applies three operations to simulate a
+merged model:
+
+| Operation | What it simulates | During training |
+| --- | --- | --- |
+| **Scale** | A merger changes an expert's contribution. | Randomly scale the expert's parameter update. |
+| **Mask** | A merger removes selected update coordinates. | Randomly drop coordinates and rescale those retained. |
+| **Perturb** | Other experts contribute additive updates. | Add sampled parameter noise. |
+
+SMAT optimizes both the ordinary expert loss and the expected loss at these
+simulated weights. In the default four-step cycle, **three steps use the expert
+weights and one uses simulated merged weights**. Each step needs only one forward
+and one backward pass. Fused Triton kernels and reusable parameter buffers keep
+the extra work small.
+
+After training, merge the experts with **WA, TA, TIES, DARE, or DELLA** using the
+commands below. SMAT changes expert training; the chosen merger combines the
+resulting checkpoints as usual.
+
+### Results at a glance
+
+Across Llama-1B, Llama-8B, CLIP ViT-B/32, and CLIP ViT-L/14, the paper reports:
+
+- **+1.07–2.16 points** in the mean score across five merging methods, compared
+  with the strongest baseline for each backbone.
+- **Less than 2% training-time overhead** relative to standard fine-tuning.
+
+See the [paper](https://arxiv.org/abs/2609.33437) for per-backbone results,
+ablations, and measurement details.
 
 ## Install
 
@@ -89,10 +138,12 @@ See [NOTICE](NOTICE) for third-party attribution. Models and datasets are obtain
   title={SMAT: Simple and Efficient Merge-Aware Training},
   author={Gu, Yanggan and Wang, Yuanyi and Li, Zhen and Cai, Shuo and Liu, Yuhang and Li, Junzhuo and Wang, Zihao and Yang, Hongxia},
   year={2026},
-  url={https://github.com/egangu/smat}
+  eprint={2609.33437},
+  archivePrefix={arXiv},
+  primaryClass={cs.LG},
+  url={https://arxiv.org/abs/2609.33437}
 }
 ```
 
-An arXiv identifier will be added when the preprint is announced. The code is
-available under the [MIT license](LICENSE); model, dataset and third-party
+The code is available under the [MIT license](LICENSE); model, dataset and third-party
 licenses are described in `NOTICE`.
