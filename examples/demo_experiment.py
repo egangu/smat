@@ -1,103 +1,94 @@
-"""Executable experiment, also used to construct the visible notebook cells."""
-import copy
-import time
+"""The small training/merging functions shown in the notebook."""
+from copy import deepcopy
+
 import torch
+from torch import nn
 from torch.nn import functional as F
-from torch.func import functional_call
-from demo_utils import TinyMLP, TASKS, score
+from smat.train.updates import FTStepper, SMATStepper
 
-SETTINGS = {'backend': 'eager', 'scale': {'alpha_min': 0.1}, 'mask': {'probability': 0.8}, 'perturb': {'rms': 0.01}, 'smat': {'interval': 4}}
-STEPS = 1200
-LR = 1e-3
-BATCH_SIZE = 128
-TA_COEFFICIENT = 0.75
-
-def smat_logits(model, anchor, images, task, generators, settings):
-    """Differentiable simulated weights; original Parameters are never overwritten."""
-    scale_rng, mask_rng, noise_rng = generators
-    components = settings.get('smat', {}).get('components', ('scale', 'mask', 'perturb'))
-    alpha_min = settings['scale']['alpha_min']
-    alpha = alpha_min + (1-alpha_min) * torch.rand((), generator=scale_rng).item() if 'scale' in components else 1.0
-    probability = settings['mask']['probability'] if 'mask' in components else 0.0
-    rms = settings['perturb']['rms'] if 'perturb' in components else 0.0
-    simulated = {}
-    for name, parameter in model.named_parameters():
-        if not parameter.requires_grad:
-            continue  # Frozen task heads are not transformed.
-        if probability and name in {'backbone.1.weight', 'backbone.3.weight'}:
-            mask = torch.empty_like(parameter, dtype=torch.bool).bernoulli_(1-probability, generator=mask_rng)
-            value = anchor[name] + (parameter-anchor[name]) * mask * (alpha/(1-probability))
-        else:
-            value = torch.lerp(anchor[name], parameter, alpha)
-        if rms:
-            bound = (3.0 ** 0.5) * rms
-            value = value + torch.empty_like(parameter).uniform_(-bound, bound, generator=noise_rng)
-        simulated[name] = value
-    # Autograd differentiates through Scale and Mask to the expert Parameters.
-    return functional_call(model, simulated, (images, task))
+TASKS = ("cifar10", "svhn")
+SMAT_SETTINGS = {
+    "backend": "eager",
+    "scale": {"alpha_min": 0.1},
+    "mask": {"probability": 0.8},
+    "perturb": {"rms": 0.01},
+    "smat": {"interval": 4},
+}
 
 
-def train_expert(base, task, method, data, device, seed=0, steps=STEPS, lr=LR, settings=None):
-    model = copy.deepcopy(base).to(device)
-    model.heads.requires_grad_(False)
-    model.train()
-    optimizer = torch.optim.Adam(model.backbone.parameters(), lr=lr)
-    settings = settings or SETTINGS
-    anchor = {name: p.detach().clone() for name, p in model.named_parameters() if p.requires_grad}
-    generators = (torch.Generator().manual_seed(seed+1),
-                  torch.Generator(device=device).manual_seed(seed+3),
-                  torch.Generator(device=device).manual_seed(seed))
-    data_rng = torch.Generator().manual_seed(seed+100)
-    images, labels = (x.to(device) for x in data[task]['train'])
-    if device.type == 'cuda': torch.cuda.synchronize()
-    start = time.perf_counter()
-    for step in range(steps):
-        indices = torch.randint(len(labels), (BATCH_SIZE,), generator=data_rng).to(device)
+class TwoTaskViT(nn.Module):
+    def __init__(self, backbone):
+        super().__init__()
+        self.backbone = nn.Sequential(deepcopy(backbone.blocks), deepcopy(backbone.norm))
+        self.heads = nn.ModuleDict({task: nn.Linear(192, 10) for task in TASKS})
+
+    def features(self, tokens):
+        return self.backbone(tokens)[:, 0]
+
+    def forward(self, tokens, task):
+        return self.heads[task](self.features(tokens))
+
+
+def fit_heads(base, data):
+    """Fit task heads on training data; leave the HF encoder unchanged."""
+    base.requires_grad_(False)
+    base.heads.requires_grad_(True)
+    with torch.no_grad():
+        features = {
+            task: torch.cat([base.features(x) for x in data[task]["train"][0].split(128)])
+            for task in TASKS
+        }
+    optimizer = torch.optim.Adam(base.heads.parameters(), lr=0.01)
+    rng = torch.Generator().manual_seed(1729)
+    for step in range(800):
+        task = TASKS[step % 2]
+        x, y = features[task], data[task]["train"][1]
+        ids = torch.randint(len(y), (128,), generator=rng).to(y.device)
         optimizer.zero_grad(set_to_none=True)
-        active = method == 'smat' and (step+1) % settings['smat']['interval'] == 0
-        if active and settings['smat'].get('components', ('scale', 'mask', 'perturb')):
-            logits = smat_logits(model, anchor, images[indices], task, generators, settings)
-        else:
-            logits = model(images[indices], task)
-        F.cross_entropy(logits, labels[indices]).backward()
+        F.cross_entropy(base.heads[task](x[ids]), y[ids]).backward()
         optimizer.step()
-    if device.type == 'cuda': torch.cuda.synchronize()
-    elapsed = time.perf_counter() - start
-    for name, value in base.heads.state_dict().items():
-        assert torch.equal(value.cpu(), model.heads.state_dict()[name].cpu())
-    return model, elapsed
+    base.requires_grad_(False)
+    base.backbone.requires_grad_(True)
 
-def merge(base, experts, weight=0.5):
-    """Fixed task heads; interpolate ONLY the two compatible backbones."""
-    model = copy.deepcopy(base)
-    left = experts[TASKS[0]].backbone.state_dict()
-    right = experts[TASKS[1]].backbone.state_dict()
-    model.backbone.load_state_dict({name: weight * left[name] + (1-weight) * right[name] for name in left})
-    return model
 
-def task_arithmetic(base, experts, coefficient=TA_COEFFICIENT):
-    """Add the sum of task vectors to the shared base; heads remain fixed."""
-    model = copy.deepcopy(base)
-    origin = base.backbone.state_dict()
-    states = [experts[task].backbone.state_dict() for task in TASKS]
-    model.backbone.load_state_dict({
-        name: origin[name] + coefficient * sum(state[name]-origin[name] for state in states)
-        for name in origin
+def train_expert(base, data, task, method, seed=0):
+    """Same initialization, Adam, batches and 600 updates for FT and SMAT."""
+    if method not in {"FT", "SMAT"}:
+        raise ValueError("method must be FT or SMAT")
+    expert = deepcopy(base)
+    parameters = list(expert.named_parameters())
+    optimizer = torch.optim.Adam([p for _, p in parameters if p.requires_grad], lr=1e-4)
+    linear_weights = {n for n, p in parameters if p.requires_grad and p.ndim == 2}
+    stepper = (
+        FTStepper(parameters, optimizer) if method == "FT" else
+        SMATStepper(parameters, optimizer, SMAT_SETTINGS, seed, linear_weights)
+    )
+    x, y = data[task]["train"]
+    rng = torch.Generator().manual_seed(seed + 100)
+    for _ in range(600):
+        ids = torch.randint(len(y), (32,), generator=rng).to(y.device)
+        stepper.step(lambda: F.cross_entropy(expert(x[ids], task), y[ids]))
+    return expert.eval()
+
+
+def merge_experts(base, experts, coefficient):
+    """AVG: 0.5. TA: 0.75. Keep both task-specific heads unchanged."""
+    merged = deepcopy(base)
+    anchor = base.backbone.state_dict()
+    states = [expert.backbone.state_dict() for expert in experts]
+    merged.backbone.load_state_dict({
+        name: value + coefficient * sum(state[name] - value for state in states)
+        for name, value in anchor.items()
     })
-    return model
+    return merged.eval()
 
-def run(base, data, device, seed=0, split='dev', steps=STEPS, lr=LR, settings=None):
-    rows = {'Shared base': score(dict.fromkeys(TASKS, base), data, split, device)}
-    times = {}
-    for method in ('ft', 'smat'):
-        experts = {}
-        times[method] = 0
-        for task in TASKS:
-            experts[task], elapsed = train_expert(base, task, method, data, device, seed, steps, lr, settings)
-            times[method] += elapsed
-        rows[f'{method.upper()} separate experts'] = score(experts, data, split, device)
-        merged = merge(base, experts)
-        rows[f'{method.upper()} AVG'] = score(dict.fromkeys(TASKS, merged), data, split, device)
-        arithmetic = task_arithmetic(base, experts)
-        rows[f'{method.upper()} TA'] = score(dict.fromkeys(TASKS, arithmetic), data, split, device)
-    return {'seed': seed, 'split': split, 'rows': rows, 'train_seconds': times}
+
+@torch.no_grad()
+def evaluate(model, data):
+    scores = {}
+    for task in TASKS:
+        x, y = data[task]["test"]
+        predictions = torch.cat([model(batch, task).argmax(1) for batch in x.split(128)])
+        scores[task] = 100 * (predictions == y).sum().item() / len(y)
+    scores["Mean"] = sum(scores.values()) / len(TASKS)
+    return scores

@@ -1,6 +1,7 @@
-# Install CPU PyTorch first if no GPU is needed (see examples/README.md).
-# The notebook does not require the full SMAT research package.
+# Install CPU PyTorch first if needed (see examples/README.md).
+# Install SMAT separately with --no-deps; do not install the research extras.
 torch>=2.9
+timm==1.0.30
 numpy>=1.24
 matplotlib>=3.7
 pandas>=2.0

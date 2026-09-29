@@ -70,12 +70,16 @@ ablations, and measurement details.
 [Open the demo notebook](examples/smat_image_demo.ipynb) ·
 [Run in Colab](https://colab.research.google.com/github/egangu/smat/blob/main/examples/smat_image_demo.ipynb)
 
-Start with a tiny model pretrained on upright MNIST, train experts for left-
-and right-tilted digits, then compare **AVG** and **Task Arithmetic**. The notebook shows SMAT in a short, differentiable PyTorch
-implementation, checked against the released eager stepper. Its 26K-parameter
-MLP runs on CPU. Across five seeds, all merged models beat the base on both
-domains; CPU SMAT gains average **+3.70 points (AVG)** and **+7.05 (TA)**. This
-is a controlled domain-shift demo, separate from the paper benchmark and overhead claims. [Recipe, limitations and five-seed results](examples/README.md).
+Start from an existing **HF ViT-Tiny** and train two genuinely different
+experts: **CIFAR-10 object recognition** and **SVHN digit recognition**.
+Merge them with **AVG** and **Task Arithmetic**, using the published SMAT
+stepper directly. On five fixed CUDA seeds, SMAT improves mean test accuracy
+by **+5.07 points (AVG)** and **+4.07 (TA)**; FT and SMAT both beat the base
+on each task. All four experts train during Run All, including on CPU.
+[Recipe and validation](examples/README.md) ·
+[Small data download](https://huggingface.co/datasets/yanggangu/SMAT-Tiny-Demo).
+This is an illustrative experiment, separate from the paper's benchmark and
+overhead measurements.
 
 ## Released models and data
 

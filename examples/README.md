@@ -1,127 +1,89 @@
-# A CPU-sized SMAT demo
+# A small Hugging Face ViT demo
 
-[Notebook](smat_image_demo.ipynb) · [Run in Colab](https://colab.research.google.com/github/egangu/smat/blob/main/examples/smat_image_demo.ipynb)
+[Notebook](smat_image_demo.ipynb) · [Colab](https://colab.research.google.com/github/egangu/smat/blob/main/examples/smat_image_demo.ipynb) · [Data](https://huggingface.co/datasets/yanggangu/SMAT-Tiny-Demo)
 
-Start with a **25,988-parameter MLP pretrained on upright MNIST**. Train one
-expert for left-tilted digits and one for right-tilted digits, then merge their
-backbones with AVG or Task Arithmetic (TA). Compare ordinary Adam fine-tuning
-with Adam + SMAT. Both methods learn useful changes: every merged model in the
-five-seed CPU/CUDA checks beats the starting point **on each domain**.
-
-This is a controlled domain-shift demonstration, not a reproduction of the
-paper's CLIP/LLM experiments. All four experts actually train during Run All.
+Start with the existing [HF ViT-Tiny](https://huggingface.co/timm/vit_tiny_patch16_224.augreg_in21k_ft_in1k),
+then train two experts: **CIFAR-10 object recognition** and **SVHN digit recognition**.
+Compare Adam FT against Adam + the published `SMATStepper`, using AVG and Task
+Arithmetic. All four experts train during Run All; no trained expert is downloaded.
 
 ## Run
 
-Python 3.10+. For a CPU-only environment:
+Open Colab, or use Python 3.10+ locally:
 
 ```bash
+# A CPU wheel avoids downloading CUDA libraries on a CPU-only machine.
 python -m pip install 'torch>=2.9' --index-url https://download.pytorch.org/whl/cpu
 python -m pip install -r requirements/demo.txt
 jupyter lab examples/smat_image_demo.ipynb
 ```
 
-Choose **Restart Kernel and Run All**. Defaults: CPU, FP32, two threads, seed 0,
-1,200 steps per expert, batch 128. CUDA is optional: select `DEVICE="cuda"`.
-The notebook contains fixed settings and no dev-set parameter search.
+On macOS, install PyTorch from the default pip index instead. Choose **Restart
+Kernel and Run All**. The notebook defaults to CPU, four threads, FP32, seed 0;
+set `DEVICE="cuda"` to use a GPU. It installs the SMAT package from a pinned GitHub
+commit with `--no-deps`, so the full research dependencies are unnecessary.
+First-run downloads are approximately **23 MB of model weights + 22 MB of data**.
 
-SMAT is shown with `torch.func.functional_call`. Scale/Mask gradients reach
-the original expert parameters; temporary simulated weights do not overwrite
-optimizer parameters. The implementation is checked against the released eager
-stepper. The notebook needs no SMAT installation, Transformers, torchvision,
-datasets, or Triton. It does not load pretrained expert results.
+The visible notebook code covers the model, expert training, merging and
+evaluation. Helpers handle downloads, linear-head calibration and plots.
+There is no development-set search inside the notebook.
 
-The first run downloads complete compressed MNIST files (about **12 MB**).
-Later runs reuse the cache. The pretrained base is approximately **105 KB**.
+## Fixed experiment
 
-## Fixed recipe
+- Backbone: the original pretrained ViT-Tiny encoder, about 5.5M parameters.
+  Images resize from 32×32 to **64×64**. The patch embedding and positional
+  embeddings stay frozen and are cached; **all 12 Transformer blocks train**.
+- Each task: 2,000 balanced training images and 2,000 balanced official test
+  images. The dataset includes the unused 500-image development subsets for
+  provenance. Source revisions, hashes and exact indices are published with
+  the data. Selected splits have no identical decoded images across splits.
+- Fit two small task heads using the same training images, while the HF
+  encoder remains unchanged. Freeze these heads before expert training. This
+  calibrated encoder is the **Base** row. Inference knows the task identity;
+  this is one shared encoder with two heads, not a unified 20-class classifier.
+- Both methods use the same base, batches, Adam LR `1e-4`, batch 32 and **600
+  updates per expert**. Every fourth SMAT update applies Scale (minimum 0.1),
+  Mask (probability 0.8) and uniform Perturb (RMS 0.01). Only Transformer
+  Attention/MLP weight matrices are masked. The external eager stepper handles
+  simulated weights, gradients and restoring the expert.
+- AVG uses coefficient 0.5; TA uses 0.75 in
+  `base + coefficient * (delta_objects + delta_digits)`.
+  Both methods use the same coefficients. Heads are retained, not averaged.
 
-- Backbone: 784 → 32 → 16, ReLU; fixed 10-class digit classifier. No dropout or
-  BatchNorm. Both domains use identical classifier weights, so inference does
-  not need an oracle to choose between different label spaces.
-- Base: **2,000 upright MNIST images only**, 400 Adam updates, LR 0.001,
-  batch 128, seed 1729. The base never trains on the tilted domains. Its
-  upright accuracy on the selected right-domain test identities is **88.90%**;
-  the domain shift reduces its mean tilted accuracy to **54.675%**.
-- Domains: fixed −30° and +30° image rotations, bilinear sampling, zero padding,
-  `align_corners=False`. This is the task definition, not random augmentation.
-- Each expert: 5,000 training images and a separate 1,000-image dev subset.
-  Pretraining, both training subsets, and both dev subsets have **disjoint
-  original-image identities**, all from the official training split.
-- Test: balanced 2,000 images/domain from the official test split, with disjoint
-  identities between the two default subsets. `FULL_TEST=True` instead evaluates
-  both orientations of all 10,000 test images. Split seed: 20260929.
-- FT and SMAT share the exact base, minibatches, Adam LR 0.001, and 1,200 updates.
-  SMAT draws transformations from separate RNG streams. Every fourth update
-  uses Scale (minimum 0.1), Mask (probability 0.8), and uniform Perturb (RMS 0.01).
-  Only the two backbone weight matrices are masked; heads stay frozen.
-- AVG: equal average of the two backbones. TA:
-  `base + 0.75 * (delta_left + delta_right)`. The coefficient is fixed and
-  identical for FT/SMAT; 0.5 would be equivalent to AVG for two experts.
-
-The checkpoint hash, pretraining recipe, and exact split indices are in
-[`assets/shared_base.json`](assets/shared_base.json). Regenerate it from the
-repository root:
-
-```bash
-python examples/prepare_demo_base.py --device cpu
-# The distributed checkpoint was prepared on CUDA with PyTorch 2.11.0:
-python examples/prepare_demo_base.py --device cuda
-```
-
-The published recipe reproduced the frozen development checkpoint exactly on
-its original runtime. Floating-point results and serialization hashes can vary
-across platforms; notebook downloads verify the distributed artifact's hash.
+The [recipe](recipe.json) was frozen before held-out test evaluation. Seeds
+**0–4** were predeclared; the notebook uses **0**, not a seed chosen for its result.
+The shared learning rate and short training budget define this illustration;
+it is not a comparison against every separately tuned FT configuration.
 
 ## Held-out results
 
-Settings were frozen after development experiments, before evaluating this
-recipe on the official test subsets. Seeds **0–4** were declared in advance;
-the notebook uses **0**, not a seed selected for its test result. Variation
-below covers expert-training RNGs, not multiple base checkpoints or splits.
+Mean task accuracy ± sample standard deviation across five CUDA training seeds:
 
-Mean test accuracy ± sample standard deviation across five seeds:
+| Merger | FT | SMAT | Paired gain (points) |
+|---|---:|---:|---:|
+| AVG | 59.340 ± 0.732 | 64.410 ± 0.745 | **+5.070 ± 0.430** |
+| TA | 64.220 ± 1.486 | 68.285 ± 0.646 | **+4.065 ± 1.477** |
 
-| Device | Merger | FT | SMAT | Paired gain (points) |
-|---|---|---:|---:|---:|
-| CPU | AVG | 69.520 ± 0.235 | 73.215 ± 0.336 | +3.695 ± 0.472 |
-| CPU | TA | 61.065 ± 0.816 | 68.110 ± 0.660 | +7.045 ± 0.570 |
-| CUDA | AVG | 69.520 ± 0.235 | 73.205 ± 0.443 | +3.685 ± 0.545 |
-| CUDA | TA | 61.065 ± 0.816 | 67.775 ± 1.348 | +6.710 ± 0.964 |
+Base: **32.90%**. Every FT/SMAT merged model beats Base **on each task** for
+all five CUDA seeds. All gains are positive; an individual gain can be below
+3 points (TA, seed 4: +2.65). Variation covers expert-training RNGs, not
+multiple bases or data splits.
 
-The shared base scores **54.675%**. All FT/SMAT × AVG/TA results exceed it on
-**both domains**, for every tested seed and device. Mean gains exceed 3 points;
-individual runs need not (CUDA AVG seed 4: +2.975). Full per-domain scores,
-paired gains and environment details are in [`results/test-cpu.json`](results/test-cpu.json)
-and [`results/test-cuda.json`](results/test-cuda.json).
+The CPU default seed gives AVG **59.750 → 66.150 (+6.400)** and TA
+**64.875 → 69.725 (+4.850)**. CPU/CUDA floating-point and random streams differ.
+Full records: [CUDA](results/test-cuda.json), [CPU default](results/test-cpu.json).
+This demo does not reproduce the paper's benchmark scores or measure its
+**<2% training-overhead** claim.
 
-Separate experts retain two backbones and are a reference, not a merged model.
-The experiment demonstrates a benefit under matched training budgets and fixed
-mergers; it does not establish superiority over every tuned FT learning rate,
-early-stopping rule, or merger. Longer training improves individual experts
-while making their updates harder to merge. Gains may differ on other tasks.
-Timings are measured directly and do not test the paper's **<2% overhead** claim.
+## Reproduce and inspect
 
 ```bash
-python examples/validate_demo.py --device cpu
-python examples/validate_demo.py --device cuda
-# Reference-parity checks additionally import the repo's SMAT source:
+python examples/validate_demo.py --device cuda            # five seeds
+python examples/validate_demo.py --device cpu --seeds 0    # notebook default
 python -m unittest discover -s tests -p 'test_demo.py'
-python -m unittest discover -s tests -p 'test_updates.py'
 ```
 
-## Notebook acceptance
-
-Actual **Restart Kernel and Run All** on dgx44, including kernel startup and
-using cached data: CPU **23.2 s**, peak RSS **844 MiB**, two CPU threads; CUDA
-**20.1 s**. Downloads and package installation are excluded. Laptop/Colab
-runtime depends on hardware and cache state.
-
-Both runs completed all **12 code cells** without errors. Notebook results
-exactly match seed 0 of the corresponding validation run. The executed code
-hash is identical on CPU/CUDA, and all four visible training/merging functions
-match the executable source. Neither run imported `smat`, `transformers`,
-`datasets`, `accelerate`, or `torchvision`. Twelve method/data tests and separate
-CPU/CUDA eager-stepper parity checks passed. Execution records are in
-[`results/notebook-cpu.json`](results/notebook-cpu.json) and
-[`results/notebook-cuda.json`](results/notebook-cuda.json).
+The notebook's visible core functions are checked against the executable
+source. Tests also check frozen heads/common initialization, disabled-SMAT
+parity with FT, and merge arithmetic. Execution reports are in
+[CPU Run All](results/notebook-cpu.json) and [CUDA Run All](results/notebook-cuda.json).
