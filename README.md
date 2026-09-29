@@ -3,7 +3,7 @@
 Official implementation of **SMAT: Simple and Efficient Merge-Aware Training**.
 
 [![arXiv](https://img.shields.io/badge/arXiv-2609.33437-b31b1b.svg)](https://arxiv.org/abs/2609.33437)
-[Paper PDF](https://arxiv.org/pdf/2609.33437) · [Setup & data](docs/DATA.md) · [Running experiments](docs/RUNNING.md) · [Citation](#citation)
+[Hugging Face models & data](docs/HUGGINGFACE.md) · [Paper PDF](https://arxiv.org/pdf/2609.33437) · [Setup & data](docs/DATA.md) · [Running experiments](docs/RUNNING.md) · [Citation](#citation)
 
 **Train experts that merge better, with less than 2% training-time overhead.**
 
@@ -64,6 +64,12 @@ Across Llama-1B, Llama-8B, CLIP ViT-B/32, and CLIP ViT-L/14, the paper reports:
 
 See the [paper](https://arxiv.org/abs/2609.33437) for per-backbone results,
 ablations, and measurement details.
+
+## Released models and data
+
+All [**28 Table 1 experts**](https://huggingface.co/collections/yanggangu/smat-table-1-experts-and-data-6abb7826f636ba703e4f532e) (FT/SMAT × Llama-1B/8B × seven tasks) and the frozen
+[TRACE train/dev/eval splits](https://huggingface.co/datasets/yanggangu/SMAT-TRACE)
+are available on Hugging Face. See the [download, training and evaluation examples](docs/HUGGINGFACE.md).
 
 ## Install
 

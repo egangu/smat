@@ -21,7 +21,11 @@ def summarize(path):
         else None
     )
     metadata = payload["training_metadata"].values()
-    seconds = sum(row["loop_elapsed_seconds"] for row in metadata)
+    seconds = (
+        sum(row["loop_elapsed_seconds"] for row in metadata)
+        if all("loop_elapsed_seconds" in row for row in metadata)
+        else None
+    )
     peaks = [
         value
         for row in metadata

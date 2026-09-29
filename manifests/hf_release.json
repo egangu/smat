@@ -1,0 +1,1012 @@
+{
+  "collection": "https://huggingface.co/collections/yanggangu/smat-table-1-experts-and-data-6abb7826f636ba703e4f532e",
+  "dataset": {
+    "repo_id": "yanggangu/SMAT-TRACE",
+    "revision": "efac812091ec6a4cd039329d85cca3598840c6f0",
+    "files": {
+      "trace/C-STANCE/train.json": {
+        "sha256": "f10a6300ea18f98de7d283a94c75df75f5aa3004a0a51e525b0308484bd66558",
+        "size": 2413285,
+        "rows": 4800
+      },
+      "trace/C-STANCE/dev.json": {
+        "sha256": "ceea96cdd05b0c2cfe824b872317780cc5d9ba03ee8e3ec772e581e4b6e3aec3",
+        "size": 96294,
+        "rows": 200
+      },
+      "trace/C-STANCE/eval.json": {
+        "sha256": "713a0ff3d81bcbbcdc22d4e7a01ff2f286093685e187ae13a3e34df52966c709",
+        "size": 1077269,
+        "rows": 2000
+      },
+      "trace/FOMC/train.json": {
+        "sha256": "01c68507ae6553e63a444d8a52dd759dfe37d288c0c72ed388ce744e89867316",
+        "size": 1662547,
+        "rows": 4404
+      },
+      "trace/FOMC/dev.json": {
+        "sha256": "fbb5104867067f7156c9388d6d0971366f69911bac63569c735fc3fc203707f0",
+        "size": 70887,
+        "rows": 190
+      },
+      "trace/FOMC/eval.json": {
+        "sha256": "6a75f0b0518a106b9a63ace12a3ed814e4d60c0be59cdeeadb1dc73875ed9d83",
+        "size": 183358,
+        "rows": 496
+      },
+      "trace/MeetingBank/train.json": {
+        "sha256": "75a56af7df76e385f0d555ab58d4142b8402b0945c1922fc2f09c5ee0fb8c458",
+        "size": 79814789,
+        "rows": 4799
+      },
+      "trace/MeetingBank/dev.json": {
+        "sha256": "fc7efa79faf33605e3281aa7c623cb65b472e05bf53eaf03f40fbe685bd65bf3",
+        "size": 2973974,
+        "rows": 200
+      },
+      "trace/MeetingBank/eval.json": {
+        "sha256": "ba63ed566702a3a070ab91ee9452e89674c2dfbc296755fcbd490beaae8c2c14",
+        "size": 11962884,
+        "rows": 687
+      },
+      "trace/ScienceQA/train.json": {
+        "sha256": "920769b7d6aae5fdd86593883697288eca9f614f22e86f5800eec8311b494adb",
+        "size": 6622394,
+        "rows": 4800
+      },
+      "trace/ScienceQA/dev.json": {
+        "sha256": "c79b10dfdbd3c63bfc6076ced3a3aefb0b7923607d80a75431c133a893b5fda1",
+        "size": 283840,
+        "rows": 200
+      },
+      "trace/ScienceQA/eval.json": {
+        "sha256": "39ff5218ecf1a1333cb7bc5edc55bed9f5f33842b3e781fab83c36a2e142bd2e",
+        "size": 2696358,
+        "rows": 2000
+      },
+      "trace/NumGLUE-cm/train.json": {
+        "sha256": "6c91a314dbd1e61784ce7556ac985eae5a2226867f4ae25ff47b71e23ee98612",
+        "size": 1059199,
+        "rows": 4121
+      },
+      "trace/NumGLUE-cm/dev.json": {
+        "sha256": "91a5e6f8756d1e7ca3f0c92b131ea7375f8e92bee7772c99ae47b63927969079",
+        "size": 12453,
+        "rows": 50
+      },
+      "trace/NumGLUE-cm/eval.json": {
+        "sha256": "a6141669d310a7782a6b694d7ed7f3d4369eff3049eced6ffbf2168ddd5f5de0",
+        "size": 9548,
+        "rows": 41
+      },
+      "trace/NumGLUE-ds/train.json": {
+        "sha256": "063c9bf21893a8bc30775ca9d298a01782bff211eee5dd2d7950da6ba98ef68f",
+        "size": 809677,
+        "rows": 4297
+      },
+      "trace/NumGLUE-ds/dev.json": {
+        "sha256": "1dc7e21dd9c19310c7dfa1b12a57b47990884e465d3a2d1cab16f3a49cd5e9ae",
+        "size": 19238,
+        "rows": 102
+      },
+      "trace/NumGLUE-ds/eval.json": {
+        "sha256": "410858278a08f64c87eed942dee936fb18f090465195589d3bf2382c48ffceeb",
+        "size": 26924,
+        "rows": 164
+      },
+      "trace/20Minuten/train.json": {
+        "sha256": "d91f56da9537b99b77a602efb6045112c0e5f34ce41dfd32032e8d516264aa13",
+        "size": 13402367,
+        "rows": 4800
+      },
+      "trace/20Minuten/dev.json": {
+        "sha256": "ae377a73c14916da9bb8c36451991de1aeee570ae4c2a121138e56f6fade1ea2",
+        "size": 536461,
+        "rows": 200
+      },
+      "trace/20Minuten/eval.json": {
+        "sha256": "1b22612cf2c4316d2ded9cb5d21f7bbe916eced53a18dae75f9eb98f83fa4abd",
+        "size": 584087,
+        "rows": 200
+      }
+    }
+  },
+  "models": [
+    {
+      "repo_id": "yanggangu/Llama-3.2-1B-Instruct-FT-C-STANCE",
+      "revision": "8a8f6d37d77992c6981af3cf93eb7ba1e5aacd55",
+      "case": "1b_adamw_ft_s42",
+      "task": "C-STANCE",
+      "files": {
+        "chat_template.jinja": {
+          "sha256": "5816fce10444e03c2e9ee1ef8a4a1ea61ae7e69e438613f3b17b69d0426223a4",
+          "size": 3827
+        },
+        "config.json": {
+          "sha256": "c604c4218d7d9400ec0373636e430460920282f85a96574cfaa0ad49521585d4",
+          "size": 894
+        },
+        "generation_config.json": {
+          "sha256": "5470a57291c07e23172614ca3fa91a015f8a3b536f6f35a269d208fdde021e24",
+          "size": 183
+        },
+        "model.safetensors": {
+          "sha256": "fbc535d70d5bec3802a283846e30a52b663933b8690c0854d493526e64f09001",
+          "size": 2471645608
+        },
+        "tokenizer.json": {
+          "sha256": "6b9e4e7fb171f92fd137b777cc2714bf87d11576700a1dcd7a399e7bbe39537b",
+          "size": 17209920
+        },
+        "tokenizer_config.json": {
+          "sha256": "b67f43d859deb5bda4f0d247a875476338aca0ef92cff4c3b1d2be3265cb59ac",
+          "size": 352
+        }
+      }
+    },
+    {
+      "repo_id": "yanggangu/Llama-3.2-1B-Instruct-FT-FOMC",
+      "revision": "2ad2f1a7ac39991388ab2a67ec1235740be5ee49",
+      "case": "1b_adamw_ft_s42",
+      "task": "FOMC",
+      "files": {
+        "chat_template.jinja": {
+          "sha256": "5816fce10444e03c2e9ee1ef8a4a1ea61ae7e69e438613f3b17b69d0426223a4",
+          "size": 3827
+        },
+        "config.json": {
+          "sha256": "c604c4218d7d9400ec0373636e430460920282f85a96574cfaa0ad49521585d4",
+          "size": 894
+        },
+        "generation_config.json": {
+          "sha256": "5470a57291c07e23172614ca3fa91a015f8a3b536f6f35a269d208fdde021e24",
+          "size": 183
+        },
+        "model.safetensors": {
+          "sha256": "55d7e121e1cb1a49a1286f395cb2065b168c6ea9fbb1f1011ee665d1e6cc2eb5",
+          "size": 2471645608
+        },
+        "tokenizer.json": {
+          "sha256": "6b9e4e7fb171f92fd137b777cc2714bf87d11576700a1dcd7a399e7bbe39537b",
+          "size": 17209920
+        },
+        "tokenizer_config.json": {
+          "sha256": "b67f43d859deb5bda4f0d247a875476338aca0ef92cff4c3b1d2be3265cb59ac",
+          "size": 352
+        }
+      }
+    },
+    {
+      "repo_id": "yanggangu/Llama-3.2-1B-Instruct-FT-MeetingBank",
+      "revision": "449ad8c99f2fc919515d2c15046cbd1bd47391b3",
+      "case": "1b_adamw_ft_s42",
+      "task": "MeetingBank",
+      "files": {
+        "chat_template.jinja": {
+          "sha256": "5816fce10444e03c2e9ee1ef8a4a1ea61ae7e69e438613f3b17b69d0426223a4",
+          "size": 3827
+        },
+        "config.json": {
+          "sha256": "c604c4218d7d9400ec0373636e430460920282f85a96574cfaa0ad49521585d4",
+          "size": 894
+        },
+        "generation_config.json": {
+          "sha256": "5470a57291c07e23172614ca3fa91a015f8a3b536f6f35a269d208fdde021e24",
+          "size": 183
+        },
+        "model.safetensors": {
+          "sha256": "1d331d7634ebfd00dcbf1a2f36561bce1e16810961c9d7618f145c513d7263ad",
+          "size": 2471645608
+        },
+        "tokenizer.json": {
+          "sha256": "6b9e4e7fb171f92fd137b777cc2714bf87d11576700a1dcd7a399e7bbe39537b",
+          "size": 17209920
+        },
+        "tokenizer_config.json": {
+          "sha256": "b67f43d859deb5bda4f0d247a875476338aca0ef92cff4c3b1d2be3265cb59ac",
+          "size": 352
+        }
+      }
+    },
+    {
+      "repo_id": "yanggangu/Llama-3.2-1B-Instruct-FT-ScienceQA",
+      "revision": "22f5c8f31a1ae6b0a6cea77c0c8049c122028f35",
+      "case": "1b_adamw_ft_s42",
+      "task": "ScienceQA",
+      "files": {
+        "chat_template.jinja": {
+          "sha256": "5816fce10444e03c2e9ee1ef8a4a1ea61ae7e69e438613f3b17b69d0426223a4",
+          "size": 3827
+        },
+        "config.json": {
+          "sha256": "c604c4218d7d9400ec0373636e430460920282f85a96574cfaa0ad49521585d4",
+          "size": 894
+        },
+        "generation_config.json": {
+          "sha256": "5470a57291c07e23172614ca3fa91a015f8a3b536f6f35a269d208fdde021e24",
+          "size": 183
+        },
+        "model.safetensors": {
+          "sha256": "4e19d61732c2c44fa598bc8a8e7bc57211d8470fe3a384c05bd5b45cceeaa266",
+          "size": 2471645608
+        },
+        "tokenizer.json": {
+          "sha256": "6b9e4e7fb171f92fd137b777cc2714bf87d11576700a1dcd7a399e7bbe39537b",
+          "size": 17209920
+        },
+        "tokenizer_config.json": {
+          "sha256": "b67f43d859deb5bda4f0d247a875476338aca0ef92cff4c3b1d2be3265cb59ac",
+          "size": 352
+        }
+      }
+    },
+    {
+      "repo_id": "yanggangu/Llama-3.2-1B-Instruct-FT-NumGLUE-cm",
+      "revision": "7b69375457ccb3ba0178b40045937661c6da79e6",
+      "case": "1b_adamw_ft_s42",
+      "task": "NumGLUE-cm",
+      "files": {
+        "chat_template.jinja": {
+          "sha256": "5816fce10444e03c2e9ee1ef8a4a1ea61ae7e69e438613f3b17b69d0426223a4",
+          "size": 3827
+        },
+        "config.json": {
+          "sha256": "c604c4218d7d9400ec0373636e430460920282f85a96574cfaa0ad49521585d4",
+          "size": 894
+        },
+        "generation_config.json": {
+          "sha256": "5470a57291c07e23172614ca3fa91a015f8a3b536f6f35a269d208fdde021e24",
+          "size": 183
+        },
+        "model.safetensors": {
+          "sha256": "ce37f2fa139963bd55327fad41accbb9bf9948506a310012aef8c73f746dae14",
+          "size": 2471645608
+        },
+        "tokenizer.json": {
+          "sha256": "6b9e4e7fb171f92fd137b777cc2714bf87d11576700a1dcd7a399e7bbe39537b",
+          "size": 17209920
+        },
+        "tokenizer_config.json": {
+          "sha256": "b67f43d859deb5bda4f0d247a875476338aca0ef92cff4c3b1d2be3265cb59ac",
+          "size": 352
+        }
+      }
+    },
+    {
+      "repo_id": "yanggangu/Llama-3.2-1B-Instruct-FT-NumGLUE-ds",
+      "revision": "c3076662d91a9ff313fea9d5fe3a05d5d90c384b",
+      "case": "1b_adamw_ft_s42",
+      "task": "NumGLUE-ds",
+      "files": {
+        "chat_template.jinja": {
+          "sha256": "5816fce10444e03c2e9ee1ef8a4a1ea61ae7e69e438613f3b17b69d0426223a4",
+          "size": 3827
+        },
+        "config.json": {
+          "sha256": "c604c4218d7d9400ec0373636e430460920282f85a96574cfaa0ad49521585d4",
+          "size": 894
+        },
+        "generation_config.json": {
+          "sha256": "5470a57291c07e23172614ca3fa91a015f8a3b536f6f35a269d208fdde021e24",
+          "size": 183
+        },
+        "model.safetensors": {
+          "sha256": "a52e593da3f15fb2b25c488ea3f68485c17da046cf0d365652cede3606b8414d",
+          "size": 2471645608
+        },
+        "tokenizer.json": {
+          "sha256": "6b9e4e7fb171f92fd137b777cc2714bf87d11576700a1dcd7a399e7bbe39537b",
+          "size": 17209920
+        },
+        "tokenizer_config.json": {
+          "sha256": "b67f43d859deb5bda4f0d247a875476338aca0ef92cff4c3b1d2be3265cb59ac",
+          "size": 352
+        }
+      }
+    },
+    {
+      "repo_id": "yanggangu/Llama-3.2-1B-Instruct-FT-20Minuten",
+      "revision": "385e126b5aaef3c0000d8eed723e93d72e2c32b3",
+      "case": "1b_adamw_ft_s42",
+      "task": "20Minuten",
+      "files": {
+        "chat_template.jinja": {
+          "sha256": "5816fce10444e03c2e9ee1ef8a4a1ea61ae7e69e438613f3b17b69d0426223a4",
+          "size": 3827
+        },
+        "config.json": {
+          "sha256": "c604c4218d7d9400ec0373636e430460920282f85a96574cfaa0ad49521585d4",
+          "size": 894
+        },
+        "generation_config.json": {
+          "sha256": "5470a57291c07e23172614ca3fa91a015f8a3b536f6f35a269d208fdde021e24",
+          "size": 183
+        },
+        "model.safetensors": {
+          "sha256": "a3d832cd79cf63aabfe4d66232ddadf08ad45af777be648cc79758435e802b0f",
+          "size": 2471645608
+        },
+        "tokenizer.json": {
+          "sha256": "6b9e4e7fb171f92fd137b777cc2714bf87d11576700a1dcd7a399e7bbe39537b",
+          "size": 17209920
+        },
+        "tokenizer_config.json": {
+          "sha256": "b67f43d859deb5bda4f0d247a875476338aca0ef92cff4c3b1d2be3265cb59ac",
+          "size": 352
+        }
+      }
+    },
+    {
+      "repo_id": "yanggangu/Llama-3.2-1B-Instruct-SMAT-C-STANCE",
+      "revision": "90ef3365558e72005726135313cc5bf1c4941b7a",
+      "case": "1b_adamw_smat_shared_rms2e3_s42",
+      "task": "C-STANCE",
+      "files": {
+        "chat_template.jinja": {
+          "sha256": "5816fce10444e03c2e9ee1ef8a4a1ea61ae7e69e438613f3b17b69d0426223a4",
+          "size": 3827
+        },
+        "config.json": {
+          "sha256": "c604c4218d7d9400ec0373636e430460920282f85a96574cfaa0ad49521585d4",
+          "size": 894
+        },
+        "generation_config.json": {
+          "sha256": "5470a57291c07e23172614ca3fa91a015f8a3b536f6f35a269d208fdde021e24",
+          "size": 183
+        },
+        "model.safetensors": {
+          "sha256": "9c724a93d457eb60229abb205981b6e9d694524c59fbb4be7b5993457bdef971",
+          "size": 2471645608
+        },
+        "tokenizer.json": {
+          "sha256": "6b9e4e7fb171f92fd137b777cc2714bf87d11576700a1dcd7a399e7bbe39537b",
+          "size": 17209920
+        },
+        "tokenizer_config.json": {
+          "sha256": "b67f43d859deb5bda4f0d247a875476338aca0ef92cff4c3b1d2be3265cb59ac",
+          "size": 352
+        }
+      }
+    },
+    {
+      "repo_id": "yanggangu/Llama-3.2-1B-Instruct-SMAT-FOMC",
+      "revision": "4bcc787360a91e4027e052877beac13899660fa1",
+      "case": "1b_adamw_smat_shared_rms2e3_s42",
+      "task": "FOMC",
+      "files": {
+        "chat_template.jinja": {
+          "sha256": "5816fce10444e03c2e9ee1ef8a4a1ea61ae7e69e438613f3b17b69d0426223a4",
+          "size": 3827
+        },
+        "config.json": {
+          "sha256": "c604c4218d7d9400ec0373636e430460920282f85a96574cfaa0ad49521585d4",
+          "size": 894
+        },
+        "generation_config.json": {
+          "sha256": "5470a57291c07e23172614ca3fa91a015f8a3b536f6f35a269d208fdde021e24",
+          "size": 183
+        },
+        "model.safetensors": {
+          "sha256": "f1f44f0e5f08186326d70c7d9dc1173afda46b81c008173bd8ccd4a09884e7ed",
+          "size": 2471645608
+        },
+        "tokenizer.json": {
+          "sha256": "6b9e4e7fb171f92fd137b777cc2714bf87d11576700a1dcd7a399e7bbe39537b",
+          "size": 17209920
+        },
+        "tokenizer_config.json": {
+          "sha256": "b67f43d859deb5bda4f0d247a875476338aca0ef92cff4c3b1d2be3265cb59ac",
+          "size": 352
+        }
+      }
+    },
+    {
+      "repo_id": "yanggangu/Llama-3.2-1B-Instruct-SMAT-MeetingBank",
+      "revision": "57858d78a7e5fae84b81d163a15abc34af758665",
+      "case": "1b_adamw_smat_shared_rms2e3_s42",
+      "task": "MeetingBank",
+      "files": {
+        "chat_template.jinja": {
+          "sha256": "5816fce10444e03c2e9ee1ef8a4a1ea61ae7e69e438613f3b17b69d0426223a4",
+          "size": 3827
+        },
+        "config.json": {
+          "sha256": "c604c4218d7d9400ec0373636e430460920282f85a96574cfaa0ad49521585d4",
+          "size": 894
+        },
+        "generation_config.json": {
+          "sha256": "5470a57291c07e23172614ca3fa91a015f8a3b536f6f35a269d208fdde021e24",
+          "size": 183
+        },
+        "model.safetensors": {
+          "sha256": "fbaec45805e4601c7654dc8dcae28f1a17cf54721055b304761b99ff53ff4563",
+          "size": 2471645608
+        },
+        "tokenizer.json": {
+          "sha256": "6b9e4e7fb171f92fd137b777cc2714bf87d11576700a1dcd7a399e7bbe39537b",
+          "size": 17209920
+        },
+        "tokenizer_config.json": {
+          "sha256": "b67f43d859deb5bda4f0d247a875476338aca0ef92cff4c3b1d2be3265cb59ac",
+          "size": 352
+        }
+      }
+    },
+    {
+      "repo_id": "yanggangu/Llama-3.2-1B-Instruct-SMAT-ScienceQA",
+      "revision": "deb7ca4ca80a3444e4feb00bcdfaddb2a9afc289",
+      "case": "1b_adamw_smat_shared_rms2e3_s42",
+      "task": "ScienceQA",
+      "files": {
+        "chat_template.jinja": {
+          "sha256": "5816fce10444e03c2e9ee1ef8a4a1ea61ae7e69e438613f3b17b69d0426223a4",
+          "size": 3827
+        },
+        "config.json": {
+          "sha256": "c604c4218d7d9400ec0373636e430460920282f85a96574cfaa0ad49521585d4",
+          "size": 894
+        },
+        "generation_config.json": {
+          "sha256": "5470a57291c07e23172614ca3fa91a015f8a3b536f6f35a269d208fdde021e24",
+          "size": 183
+        },
+        "model.safetensors": {
+          "sha256": "fb75e55aed3c2a4979bb0f844c1e6ab6f5d4604a91911332edf26007af50d69d",
+          "size": 2471645608
+        },
+        "tokenizer.json": {
+          "sha256": "6b9e4e7fb171f92fd137b777cc2714bf87d11576700a1dcd7a399e7bbe39537b",
+          "size": 17209920
+        },
+        "tokenizer_config.json": {
+          "sha256": "b67f43d859deb5bda4f0d247a875476338aca0ef92cff4c3b1d2be3265cb59ac",
+          "size": 352
+        }
+      }
+    },
+    {
+      "repo_id": "yanggangu/Llama-3.2-1B-Instruct-SMAT-NumGLUE-cm",
+      "revision": "bdea1d7c39e54673e4509dce58632f3d3dd99eac",
+      "case": "1b_adamw_smat_shared_rms2e3_s42",
+      "task": "NumGLUE-cm",
+      "files": {
+        "chat_template.jinja": {
+          "sha256": "5816fce10444e03c2e9ee1ef8a4a1ea61ae7e69e438613f3b17b69d0426223a4",
+          "size": 3827
+        },
+        "config.json": {
+          "sha256": "c604c4218d7d9400ec0373636e430460920282f85a96574cfaa0ad49521585d4",
+          "size": 894
+        },
+        "generation_config.json": {
+          "sha256": "5470a57291c07e23172614ca3fa91a015f8a3b536f6f35a269d208fdde021e24",
+          "size": 183
+        },
+        "model.safetensors": {
+          "sha256": "6fcec32799b3a3327dae0d5820426c12c08d8239be174b648a2051a3e71d5eec",
+          "size": 2471645608
+        },
+        "tokenizer.json": {
+          "sha256": "6b9e4e7fb171f92fd137b777cc2714bf87d11576700a1dcd7a399e7bbe39537b",
+          "size": 17209920
+        },
+        "tokenizer_config.json": {
+          "sha256": "b67f43d859deb5bda4f0d247a875476338aca0ef92cff4c3b1d2be3265cb59ac",
+          "size": 352
+        }
+      }
+    },
+    {
+      "repo_id": "yanggangu/Llama-3.2-1B-Instruct-SMAT-NumGLUE-ds",
+      "revision": "cc5bddf50214595b95ffba7caf8b98747a10cf7f",
+      "case": "1b_adamw_smat_shared_rms2e3_s42",
+      "task": "NumGLUE-ds",
+      "files": {
+        "chat_template.jinja": {
+          "sha256": "5816fce10444e03c2e9ee1ef8a4a1ea61ae7e69e438613f3b17b69d0426223a4",
+          "size": 3827
+        },
+        "config.json": {
+          "sha256": "c604c4218d7d9400ec0373636e430460920282f85a96574cfaa0ad49521585d4",
+          "size": 894
+        },
+        "generation_config.json": {
+          "sha256": "5470a57291c07e23172614ca3fa91a015f8a3b536f6f35a269d208fdde021e24",
+          "size": 183
+        },
+        "model.safetensors": {
+          "sha256": "4454e74e44c2037166756a99769bf52db8c9172bd921c7d1a51386c77279fe35",
+          "size": 2471645608
+        },
+        "tokenizer.json": {
+          "sha256": "6b9e4e7fb171f92fd137b777cc2714bf87d11576700a1dcd7a399e7bbe39537b",
+          "size": 17209920
+        },
+        "tokenizer_config.json": {
+          "sha256": "b67f43d859deb5bda4f0d247a875476338aca0ef92cff4c3b1d2be3265cb59ac",
+          "size": 352
+        }
+      }
+    },
+    {
+      "repo_id": "yanggangu/Llama-3.2-1B-Instruct-SMAT-20Minuten",
+      "revision": "1560cdd066fc6e47c068619dd48ffdfdba331701",
+      "case": "1b_adamw_smat_shared_rms2e3_s42",
+      "task": "20Minuten",
+      "files": {
+        "chat_template.jinja": {
+          "sha256": "5816fce10444e03c2e9ee1ef8a4a1ea61ae7e69e438613f3b17b69d0426223a4",
+          "size": 3827
+        },
+        "config.json": {
+          "sha256": "c604c4218d7d9400ec0373636e430460920282f85a96574cfaa0ad49521585d4",
+          "size": 894
+        },
+        "generation_config.json": {
+          "sha256": "5470a57291c07e23172614ca3fa91a015f8a3b536f6f35a269d208fdde021e24",
+          "size": 183
+        },
+        "model.safetensors": {
+          "sha256": "549465d755caa2a13e6de668423df3aeb0ed64a6dcb9f6a706b1fea03a2f4a59",
+          "size": 2471645608
+        },
+        "tokenizer.json": {
+          "sha256": "6b9e4e7fb171f92fd137b777cc2714bf87d11576700a1dcd7a399e7bbe39537b",
+          "size": 17209920
+        },
+        "tokenizer_config.json": {
+          "sha256": "b67f43d859deb5bda4f0d247a875476338aca0ef92cff4c3b1d2be3265cb59ac",
+          "size": 352
+        }
+      }
+    },
+    {
+      "repo_id": "yanggangu/Llama-3.1-8B-Instruct-FT-C-STANCE",
+      "revision": "e00b14eff4e268dee125e3c3f17a90980a990f3e",
+      "case": "8b_adamw_ft_s42",
+      "task": "C-STANCE",
+      "files": {
+        "chat_template.jinja": {
+          "sha256": "e10ca381b1ccc5cf9db52e371f3b6651576caee0a630b452e2816b2d404d4b65",
+          "size": 4614
+        },
+        "config.json": {
+          "sha256": "c78b924b3d9ce756013c98fa7afed0e2495794d5f2ec84a43942a26ef917f389",
+          "size": 896
+        },
+        "generation_config.json": {
+          "sha256": "d8b82c5f0e0a515c0141d491e4ca876dfb24547db08bc2b2d03745f9636c5d52",
+          "size": 183
+        },
+        "model.safetensors": {
+          "sha256": "ed5ec0b767554ad1bd0c5a364fa570863739c2274ef6e98665bff47f27359107",
+          "size": 16060556616
+        },
+        "tokenizer.json": {
+          "sha256": "6b9e4e7fb171f92fd137b777cc2714bf87d11576700a1dcd7a399e7bbe39537b",
+          "size": 17209920
+        },
+        "tokenizer_config.json": {
+          "sha256": "b67f43d859deb5bda4f0d247a875476338aca0ef92cff4c3b1d2be3265cb59ac",
+          "size": 352
+        }
+      }
+    },
+    {
+      "repo_id": "yanggangu/Llama-3.1-8B-Instruct-FT-FOMC",
+      "revision": "1c8c09bdc65c4cfd71da44df97dfb5460343f462",
+      "case": "8b_adamw_ft_s42",
+      "task": "FOMC",
+      "files": {
+        "chat_template.jinja": {
+          "sha256": "e10ca381b1ccc5cf9db52e371f3b6651576caee0a630b452e2816b2d404d4b65",
+          "size": 4614
+        },
+        "config.json": {
+          "sha256": "c78b924b3d9ce756013c98fa7afed0e2495794d5f2ec84a43942a26ef917f389",
+          "size": 896
+        },
+        "generation_config.json": {
+          "sha256": "d8b82c5f0e0a515c0141d491e4ca876dfb24547db08bc2b2d03745f9636c5d52",
+          "size": 183
+        },
+        "model.safetensors": {
+          "sha256": "0a4899a5dec81c4cb59ab9fa8dbc71294de4054cb55b6ed2d9cf1c06dceebed9",
+          "size": 16060556616
+        },
+        "tokenizer.json": {
+          "sha256": "6b9e4e7fb171f92fd137b777cc2714bf87d11576700a1dcd7a399e7bbe39537b",
+          "size": 17209920
+        },
+        "tokenizer_config.json": {
+          "sha256": "b67f43d859deb5bda4f0d247a875476338aca0ef92cff4c3b1d2be3265cb59ac",
+          "size": 352
+        }
+      }
+    },
+    {
+      "repo_id": "yanggangu/Llama-3.1-8B-Instruct-FT-MeetingBank",
+      "revision": "7a06f9ca2fda8aade08d4670b7e3f0280e1e849c",
+      "case": "8b_adamw_ft_s42",
+      "task": "MeetingBank",
+      "files": {
+        "chat_template.jinja": {
+          "sha256": "e10ca381b1ccc5cf9db52e371f3b6651576caee0a630b452e2816b2d404d4b65",
+          "size": 4614
+        },
+        "config.json": {
+          "sha256": "c78b924b3d9ce756013c98fa7afed0e2495794d5f2ec84a43942a26ef917f389",
+          "size": 896
+        },
+        "generation_config.json": {
+          "sha256": "d8b82c5f0e0a515c0141d491e4ca876dfb24547db08bc2b2d03745f9636c5d52",
+          "size": 183
+        },
+        "model.safetensors": {
+          "sha256": "79499bd04894922637797f1b23cf69bd936e9206718cc050d107c2b1c5393401",
+          "size": 16060556616
+        },
+        "tokenizer.json": {
+          "sha256": "6b9e4e7fb171f92fd137b777cc2714bf87d11576700a1dcd7a399e7bbe39537b",
+          "size": 17209920
+        },
+        "tokenizer_config.json": {
+          "sha256": "b67f43d859deb5bda4f0d247a875476338aca0ef92cff4c3b1d2be3265cb59ac",
+          "size": 352
+        }
+      }
+    },
+    {
+      "repo_id": "yanggangu/Llama-3.1-8B-Instruct-FT-ScienceQA",
+      "revision": "02bc47beacf14097f066a1e8a86ad89df61014a1",
+      "case": "8b_adamw_ft_s42",
+      "task": "ScienceQA",
+      "files": {
+        "chat_template.jinja": {
+          "sha256": "e10ca381b1ccc5cf9db52e371f3b6651576caee0a630b452e2816b2d404d4b65",
+          "size": 4614
+        },
+        "config.json": {
+          "sha256": "c78b924b3d9ce756013c98fa7afed0e2495794d5f2ec84a43942a26ef917f389",
+          "size": 896
+        },
+        "generation_config.json": {
+          "sha256": "d8b82c5f0e0a515c0141d491e4ca876dfb24547db08bc2b2d03745f9636c5d52",
+          "size": 183
+        },
+        "model.safetensors": {
+          "sha256": "3f072d2e28d99e1a56542f28aa066a226f120a6b2c3f6efe67182ac4e27888c6",
+          "size": 16060556616
+        },
+        "tokenizer.json": {
+          "sha256": "6b9e4e7fb171f92fd137b777cc2714bf87d11576700a1dcd7a399e7bbe39537b",
+          "size": 17209920
+        },
+        "tokenizer_config.json": {
+          "sha256": "b67f43d859deb5bda4f0d247a875476338aca0ef92cff4c3b1d2be3265cb59ac",
+          "size": 352
+        }
+      }
+    },
+    {
+      "repo_id": "yanggangu/Llama-3.1-8B-Instruct-FT-NumGLUE-cm",
+      "revision": "e9afe35b3a407a2bd42ba048d656711521c19e32",
+      "case": "8b_adamw_ft_s42",
+      "task": "NumGLUE-cm",
+      "files": {
+        "chat_template.jinja": {
+          "sha256": "e10ca381b1ccc5cf9db52e371f3b6651576caee0a630b452e2816b2d404d4b65",
+          "size": 4614
+        },
+        "config.json": {
+          "sha256": "c78b924b3d9ce756013c98fa7afed0e2495794d5f2ec84a43942a26ef917f389",
+          "size": 896
+        },
+        "generation_config.json": {
+          "sha256": "d8b82c5f0e0a515c0141d491e4ca876dfb24547db08bc2b2d03745f9636c5d52",
+          "size": 183
+        },
+        "model.safetensors": {
+          "sha256": "cfdc55a297716566ef83fc0f3477847e99280034b55ea60efc0f866375118232",
+          "size": 16060556616
+        },
+        "tokenizer.json": {
+          "sha256": "6b9e4e7fb171f92fd137b777cc2714bf87d11576700a1dcd7a399e7bbe39537b",
+          "size": 17209920
+        },
+        "tokenizer_config.json": {
+          "sha256": "b67f43d859deb5bda4f0d247a875476338aca0ef92cff4c3b1d2be3265cb59ac",
+          "size": 352
+        }
+      }
+    },
+    {
+      "repo_id": "yanggangu/Llama-3.1-8B-Instruct-FT-NumGLUE-ds",
+      "revision": "b79bed03f40a9789cba3f85894b395c36179e4f4",
+      "case": "8b_adamw_ft_s42",
+      "task": "NumGLUE-ds",
+      "files": {
+        "chat_template.jinja": {
+          "sha256": "e10ca381b1ccc5cf9db52e371f3b6651576caee0a630b452e2816b2d404d4b65",
+          "size": 4614
+        },
+        "config.json": {
+          "sha256": "c78b924b3d9ce756013c98fa7afed0e2495794d5f2ec84a43942a26ef917f389",
+          "size": 896
+        },
+        "generation_config.json": {
+          "sha256": "d8b82c5f0e0a515c0141d491e4ca876dfb24547db08bc2b2d03745f9636c5d52",
+          "size": 183
+        },
+        "model.safetensors": {
+          "sha256": "7813c66928f16689e1522c5972514fdabd92453d15cbc764fec9de0dffc418cd",
+          "size": 16060556616
+        },
+        "tokenizer.json": {
+          "sha256": "6b9e4e7fb171f92fd137b777cc2714bf87d11576700a1dcd7a399e7bbe39537b",
+          "size": 17209920
+        },
+        "tokenizer_config.json": {
+          "sha256": "b67f43d859deb5bda4f0d247a875476338aca0ef92cff4c3b1d2be3265cb59ac",
+          "size": 352
+        }
+      }
+    },
+    {
+      "repo_id": "yanggangu/Llama-3.1-8B-Instruct-FT-20Minuten",
+      "revision": "252de51343c1a09f2bc54c4a52e61c7384a52407",
+      "case": "8b_adamw_ft_s42",
+      "task": "20Minuten",
+      "files": {
+        "chat_template.jinja": {
+          "sha256": "e10ca381b1ccc5cf9db52e371f3b6651576caee0a630b452e2816b2d404d4b65",
+          "size": 4614
+        },
+        "config.json": {
+          "sha256": "c78b924b3d9ce756013c98fa7afed0e2495794d5f2ec84a43942a26ef917f389",
+          "size": 896
+        },
+        "generation_config.json": {
+          "sha256": "d8b82c5f0e0a515c0141d491e4ca876dfb24547db08bc2b2d03745f9636c5d52",
+          "size": 183
+        },
+        "model.safetensors": {
+          "sha256": "694cefb693532f8d1c4671466035ed87254b6187328c58b82beb672857cf8dc4",
+          "size": 16060556616
+        },
+        "tokenizer.json": {
+          "sha256": "6b9e4e7fb171f92fd137b777cc2714bf87d11576700a1dcd7a399e7bbe39537b",
+          "size": 17209920
+        },
+        "tokenizer_config.json": {
+          "sha256": "b67f43d859deb5bda4f0d247a875476338aca0ef92cff4c3b1d2be3265cb59ac",
+          "size": 352
+        }
+      }
+    },
+    {
+      "repo_id": "yanggangu/Llama-3.1-8B-Instruct-SMAT-C-STANCE",
+      "revision": "a5d14ef666689b03919d099cfb4b9defcfcb77eb",
+      "case": "8b_adamw_smat_shared_rms2e3_s42",
+      "task": "C-STANCE",
+      "files": {
+        "chat_template.jinja": {
+          "sha256": "e10ca381b1ccc5cf9db52e371f3b6651576caee0a630b452e2816b2d404d4b65",
+          "size": 4614
+        },
+        "config.json": {
+          "sha256": "c78b924b3d9ce756013c98fa7afed0e2495794d5f2ec84a43942a26ef917f389",
+          "size": 896
+        },
+        "generation_config.json": {
+          "sha256": "d8b82c5f0e0a515c0141d491e4ca876dfb24547db08bc2b2d03745f9636c5d52",
+          "size": 183
+        },
+        "model.safetensors": {
+          "sha256": "0280c7cd3715b2728ab3a51bddc35287e6caf4f558c78393a3e585f067efe74c",
+          "size": 16060556616
+        },
+        "tokenizer.json": {
+          "sha256": "6b9e4e7fb171f92fd137b777cc2714bf87d11576700a1dcd7a399e7bbe39537b",
+          "size": 17209920
+        },
+        "tokenizer_config.json": {
+          "sha256": "b67f43d859deb5bda4f0d247a875476338aca0ef92cff4c3b1d2be3265cb59ac",
+          "size": 352
+        }
+      }
+    },
+    {
+      "repo_id": "yanggangu/Llama-3.1-8B-Instruct-SMAT-FOMC",
+      "revision": "4017db1f58f2f384a6676561785fcc2e98824fcb",
+      "case": "8b_adamw_smat_shared_rms2e3_s42",
+      "task": "FOMC",
+      "files": {
+        "chat_template.jinja": {
+          "sha256": "e10ca381b1ccc5cf9db52e371f3b6651576caee0a630b452e2816b2d404d4b65",
+          "size": 4614
+        },
+        "config.json": {
+          "sha256": "c78b924b3d9ce756013c98fa7afed0e2495794d5f2ec84a43942a26ef917f389",
+          "size": 896
+        },
+        "generation_config.json": {
+          "sha256": "d8b82c5f0e0a515c0141d491e4ca876dfb24547db08bc2b2d03745f9636c5d52",
+          "size": 183
+        },
+        "model.safetensors": {
+          "sha256": "8cbb8168d2507014cb854f163fa2d42e6c9ddd9066f86f5d91ef2f5367ed8628",
+          "size": 16060556616
+        },
+        "tokenizer.json": {
+          "sha256": "6b9e4e7fb171f92fd137b777cc2714bf87d11576700a1dcd7a399e7bbe39537b",
+          "size": 17209920
+        },
+        "tokenizer_config.json": {
+          "sha256": "b67f43d859deb5bda4f0d247a875476338aca0ef92cff4c3b1d2be3265cb59ac",
+          "size": 352
+        }
+      }
+    },
+    {
+      "repo_id": "yanggangu/Llama-3.1-8B-Instruct-SMAT-MeetingBank",
+      "revision": "5edfc89707076cf9560a4da19d961594a32c1d73",
+      "case": "8b_adamw_smat_shared_rms2e3_s42",
+      "task": "MeetingBank",
+      "files": {
+        "chat_template.jinja": {
+          "sha256": "e10ca381b1ccc5cf9db52e371f3b6651576caee0a630b452e2816b2d404d4b65",
+          "size": 4614
+        },
+        "config.json": {
+          "sha256": "c78b924b3d9ce756013c98fa7afed0e2495794d5f2ec84a43942a26ef917f389",
+          "size": 896
+        },
+        "generation_config.json": {
+          "sha256": "d8b82c5f0e0a515c0141d491e4ca876dfb24547db08bc2b2d03745f9636c5d52",
+          "size": 183
+        },
+        "model.safetensors": {
+          "sha256": "2bda66a62e732fffcd93aaa5d0be83618e2637d7846815ba6a3b962c00ed0d74",
+          "size": 16060556616
+        },
+        "tokenizer.json": {
+          "sha256": "6b9e4e7fb171f92fd137b777cc2714bf87d11576700a1dcd7a399e7bbe39537b",
+          "size": 17209920
+        },
+        "tokenizer_config.json": {
+          "sha256": "b67f43d859deb5bda4f0d247a875476338aca0ef92cff4c3b1d2be3265cb59ac",
+          "size": 352
+        }
+      }
+    },
+    {
+      "repo_id": "yanggangu/Llama-3.1-8B-Instruct-SMAT-ScienceQA",
+      "revision": "d991ae43d51d64ea134372ad8873547892ed5073",
+      "case": "8b_adamw_smat_shared_rms2e3_s42",
+      "task": "ScienceQA",
+      "files": {
+        "chat_template.jinja": {
+          "sha256": "e10ca381b1ccc5cf9db52e371f3b6651576caee0a630b452e2816b2d404d4b65",
+          "size": 4614
+        },
+        "config.json": {
+          "sha256": "c78b924b3d9ce756013c98fa7afed0e2495794d5f2ec84a43942a26ef917f389",
+          "size": 896
+        },
+        "generation_config.json": {
+          "sha256": "d8b82c5f0e0a515c0141d491e4ca876dfb24547db08bc2b2d03745f9636c5d52",
+          "size": 183
+        },
+        "model.safetensors": {
+          "sha256": "09dd8095577a7db3e5316eef2944b59704073e17aebb2251be13451f3f14ff95",
+          "size": 16060556616
+        },
+        "tokenizer.json": {
+          "sha256": "6b9e4e7fb171f92fd137b777cc2714bf87d11576700a1dcd7a399e7bbe39537b",
+          "size": 17209920
+        },
+        "tokenizer_config.json": {
+          "sha256": "b67f43d859deb5bda4f0d247a875476338aca0ef92cff4c3b1d2be3265cb59ac",
+          "size": 352
+        }
+      }
+    },
+    {
+      "repo_id": "yanggangu/Llama-3.1-8B-Instruct-SMAT-NumGLUE-cm",
+      "revision": "ff56670910d02511556343ac080f62f6bf5fa840",
+      "case": "8b_adamw_smat_shared_rms2e3_s42",
+      "task": "NumGLUE-cm",
+      "files": {
+        "chat_template.jinja": {
+          "sha256": "e10ca381b1ccc5cf9db52e371f3b6651576caee0a630b452e2816b2d404d4b65",
+          "size": 4614
+        },
+        "config.json": {
+          "sha256": "c78b924b3d9ce756013c98fa7afed0e2495794d5f2ec84a43942a26ef917f389",
+          "size": 896
+        },
+        "generation_config.json": {
+          "sha256": "d8b82c5f0e0a515c0141d491e4ca876dfb24547db08bc2b2d03745f9636c5d52",
+          "size": 183
+        },
+        "model.safetensors": {
+          "sha256": "8a65613f06629155e91c7e95095c44006cdfbdc1c3004af387ad8545078dd03d",
+          "size": 16060556616
+        },
+        "tokenizer.json": {
+          "sha256": "6b9e4e7fb171f92fd137b777cc2714bf87d11576700a1dcd7a399e7bbe39537b",
+          "size": 17209920
+        },
+        "tokenizer_config.json": {
+          "sha256": "b67f43d859deb5bda4f0d247a875476338aca0ef92cff4c3b1d2be3265cb59ac",
+          "size": 352
+        }
+      }
+    },
+    {
+      "repo_id": "yanggangu/Llama-3.1-8B-Instruct-SMAT-NumGLUE-ds",
+      "revision": "9d3b9b64dd613fc2b3f2ed7e8fa772141f49e0d8",
+      "case": "8b_adamw_smat_shared_rms2e3_s42",
+      "task": "NumGLUE-ds",
+      "files": {
+        "chat_template.jinja": {
+          "sha256": "e10ca381b1ccc5cf9db52e371f3b6651576caee0a630b452e2816b2d404d4b65",
+          "size": 4614
+        },
+        "config.json": {
+          "sha256": "c78b924b3d9ce756013c98fa7afed0e2495794d5f2ec84a43942a26ef917f389",
+          "size": 896
+        },
+        "generation_config.json": {
+          "sha256": "d8b82c5f0e0a515c0141d491e4ca876dfb24547db08bc2b2d03745f9636c5d52",
+          "size": 183
+        },
+        "model.safetensors": {
+          "sha256": "253557c5b5065ce715d7f0a378eaff4a43cd974b915c02bda227a1927a602772",
+          "size": 16060556616
+        },
+        "tokenizer.json": {
+          "sha256": "6b9e4e7fb171f92fd137b777cc2714bf87d11576700a1dcd7a399e7bbe39537b",
+          "size": 17209920
+        },
+        "tokenizer_config.json": {
+          "sha256": "b67f43d859deb5bda4f0d247a875476338aca0ef92cff4c3b1d2be3265cb59ac",
+          "size": 352
+        }
+      }
+    },
+    {
+      "repo_id": "yanggangu/Llama-3.1-8B-Instruct-SMAT-20Minuten",
+      "revision": "145e458e2ab52be9ac3f1809aec366fb09f47579",
+      "case": "8b_adamw_smat_shared_rms2e3_s42",
+      "task": "20Minuten",
+      "files": {
+        "chat_template.jinja": {
+          "sha256": "e10ca381b1ccc5cf9db52e371f3b6651576caee0a630b452e2816b2d404d4b65",
+          "size": 4614
+        },
+        "config.json": {
+          "sha256": "c78b924b3d9ce756013c98fa7afed0e2495794d5f2ec84a43942a26ef917f389",
+          "size": 896
+        },
+        "generation_config.json": {
+          "sha256": "d8b82c5f0e0a515c0141d491e4ca876dfb24547db08bc2b2d03745f9636c5d52",
+          "size": 183
+        },
+        "model.safetensors": {
+          "sha256": "45c1b4b8d53bacbc7eedfd073603eccff166bd1a1c04d0e40fd275fe8ec065c4",
+          "size": 16060556616
+        },
+        "tokenizer.json": {
+          "sha256": "6b9e4e7fb171f92fd137b777cc2714bf87d11576700a1dcd7a399e7bbe39537b",
+          "size": 17209920
+        },
+        "tokenizer_config.json": {
+          "sha256": "b67f43d859deb5bda4f0d247a875476338aca0ef92cff4c3b1d2be3265cb59ac",
+          "size": 352
+        }
+      }
+    }
+  ]
+}

@@ -36,6 +36,19 @@ Download model configuration, tokenizer/processor assets and weights; alternativ
 quantized weights do not reproduce full-parameter BF16 training. Training/evaluation
 load local assets only, with no automatic network fallback.
 
+## Prepared TRACE data on Hugging Face
+
+For Table 1, download the frozen train/dev/eval files directly:
+
+```bash
+python scripts/download_hf.py data --data-root "$DATA_ROOT"
+```
+
+This replaces raw TRACE downloading and split preparation. The helper verifies
+the exact frozen bytes. See [HF examples](HUGGINGFACE.md) for released experts and
+training/evaluation commands. The raw-data workflow below remains available for
+rebuilding the split and for vision experiments.
+
 ## Raw data layout
 
 Choose an absolute raw-data directory, separate from the prepared split directory:
