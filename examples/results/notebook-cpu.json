@@ -1,9 +1,0 @@
-{
-  "device": "cpu",
-  "wall_seconds": 25.05898263119161,
-  "code_cells": 12,
-  "errors": [],
-  "peak_rss_mib": 809.76953125,
-  "research_packages_loaded": [],
-  "code_sha256": "58037d5f6abbb699c6ac317a566b8cadc3fa562067ec6ac1b332e41c895352b9"
-}

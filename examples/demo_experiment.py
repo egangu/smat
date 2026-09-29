@@ -10,6 +10,7 @@ SETTINGS = {'backend': 'eager', 'scale': {'alpha_min': 0.1}, 'mask': {'probabili
 STEPS = 1200
 LR = 1e-3
 BATCH_SIZE = 128
+TA_COEFFICIENT = 0.75
 
 def smat_logits(model, anchor, images, task, generators, settings):
     """Differentiable simulated weights; original Parameters are never overwritten."""
@@ -74,7 +75,7 @@ def merge(base, experts, weight=0.5):
     model.backbone.load_state_dict({name: weight * left[name] + (1-weight) * right[name] for name in left})
     return model
 
-def task_arithmetic(base, experts, coefficient=1.0):
+def task_arithmetic(base, experts, coefficient=TA_COEFFICIENT):
     """Add the sum of task vectors to the shared base; heads remain fixed."""
     model = copy.deepcopy(base)
     origin = base.backbone.state_dict()

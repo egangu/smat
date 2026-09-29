@@ -1,15 +1,19 @@
-# SMAT on a small image model
+# A CPU-sized SMAT demo
 
 [Notebook](smat_image_demo.ipynb) · [Run in Colab](https://colab.research.google.com/github/egangu/smat/blob/main/examples/smat_image_demo.ipynb)
 
-Train MNIST and Fashion-MNIST experts from a shared **25,988-parameter MLP**,
-then compare AVG and Task Arithmetic (TA). This is a small **merge-interference
-stress test**, not a reproduction of the CLIP/LLM benchmark. A narrow backbone
-makes the difference between individual expertise and mergeability visible.
+Start with a **25,988-parameter MLP pretrained on upright MNIST**. Train one
+expert for left-tilted digits and one for right-tilted digits, then merge their
+backbones with AVG or Task Arithmetic (TA). Compare ordinary Adam fine-tuning
+with Adam + SMAT. Both methods learn useful changes: every merged model in the
+five-seed CPU/CUDA checks beats the starting point **on each domain**.
+
+This is a controlled domain-shift demonstration, not a reproduction of the
+paper's CLIP/LLM experiments. All four experts actually train during Run All.
 
 ## Run
 
-Use Python 3.10+. For a CPU-only environment, install CPU PyTorch first:
+Python 3.10+. For a CPU-only environment:
 
 ```bash
 python -m pip install 'torch>=2.9' --index-url https://download.pytorch.org/whl/cpu
@@ -18,87 +22,90 @@ jupyter lab examples/smat_image_demo.ipynb
 ```
 
 Choose **Restart Kernel and Run All**. Defaults: CPU, FP32, two threads, seed 0,
-1,200 steps per expert, batch 128. All four experts actually train. CUDA is
-optional; select `DEVICE="cuda"`. There is no parameter search in the notebook.
+1,200 steps per expert, batch 128. CUDA is optional: select `DEVICE="cuda"`.
+The notebook contains fixed settings and no dev-set parameter search.
 
-The SMAT formula is implemented visibly with `torch.func.functional_call`.
-Autograd propagates Scale/Mask to the original expert parameters. Temporary
-weights never overwrite the optimizer's parameters. CPU and CUDA checks compare
-this implementation against the released eager stepper. The notebook itself
-needs no SMAT installation, Transformers, torchvision, datasets, or Triton.
+SMAT is shown with `torch.func.functional_call`. Scale/Mask gradients reach
+the original expert parameters; temporary simulated weights do not overwrite
+optimizer parameters. The implementation is checked against the released eager
+stepper. The notebook needs no SMAT installation, Transformers, torchvision,
+datasets, or Triton. It does not load pretrained expert results.
 
-The first run downloads complete compressed MNIST and Fashion-MNIST files
-(about 41 MB), even though training uses subsets. Subsequent runs reuse the
-cache. The shared checkpoint is about 105 KB; no experts are downloaded.
+The first run downloads complete compressed MNIST files (about **12 MB**).
+Later runs reuse the cache. The pretrained base is approximately **105 KB**.
 
 ## Fixed recipe
 
-- MLP backbone: 784 → 32 → 16, ReLU; two 10-class heads. No dropout, BatchNorm
-  or augmentation. Inputs scaled to [0, 1]. Task identity is known at evaluation.
-- Joint base: 2,000 images/task, 400 alternating Adam steps, LR 0.001,
-  batch 128, seed 1729. Both heads train at this stage and then stay frozen.
-- Each expert: 5,000 train images/task. Separate dev set: 1,000/task.
-  These sets are disjoint subsets of the official training split.
-- Test: fixed balanced 2,000 images/task from official test. Set `FULL_TEST=True`
-  to use all 10,000/task. Split seed 20260929; exact indices and base SHA-256
-  are in `assets/shared_base.json`.
-- FT and SMAT share the exact base, batches, Adam LR 0.001, and 1,200 updates.
-  SMAT has separate random streams; every fourth update uses simulated weights.
-- SMAT: Scale minimum 0.1, Mask probability 0.8, uniform Perturb RMS 0.01.
-  Mask applies only to the two backbone weight matrices, not biases or heads.
-- AVG averages the two backbones. TA is `base + delta_1 + delta_2`, with fixed
-  coefficient **1.0** for both methods. For two experts, TA coefficient 0.5
-  equals AVG. Both mergers retain the original task heads.
+- Backbone: 784 → 32 → 16, ReLU; fixed 10-class digit classifier. No dropout or
+  BatchNorm. Both domains use identical classifier weights, so inference does
+  not need an oracle to choose between different label spaces.
+- Base: **2,000 upright MNIST images only**, 400 Adam updates, LR 0.001,
+  batch 128, seed 1729. The base never trains on the tilted domains. Its
+  upright accuracy on the selected left-domain test identities is **88.90%**;
+  the domain shift reduces its mean tilted accuracy to **54.675%**.
+- Domains: fixed −30° and +30° image rotations, bilinear sampling, zero padding,
+  `align_corners=False`. This is the task definition, not random augmentation.
+- Each expert: 5,000 training images and a separate 1,000-image dev subset.
+  Pretraining, both training subsets, and both dev subsets have **disjoint
+  original-image identities**, all from the official training split.
+- Test: balanced 2,000 images/domain from the official test split, with disjoint
+  identities between the two default subsets. `FULL_TEST=True` instead evaluates
+  both orientations of all 10,000 test images. Split seed: 20260929.
+- FT and SMAT share the exact base, minibatches, Adam LR 0.001, and 1,200 updates.
+  SMAT draws transformations from separate RNG streams. Every fourth update
+  uses Scale (minimum 0.1), Mask (probability 0.8), and uniform Perturb (RMS 0.01).
+  Only the two backbone weight matrices are masked; heads stay frozen.
+- AVG: equal average of the two backbones. TA:
+  `base + 0.75 * (delta_left + delta_right)`. The coefficient is fixed and
+  identical for FT/SMAT; 0.5 would be equivalent to AVG for two experts.
 
-Regenerate the base with `python examples/prepare_demo_base.py` from the repo
-root. Floating-point results and checkpoint file hashes can vary by platform;
-the distributed checkpoint has a fixed checked hash.
-
-## Interpretation and validation
-
-The initial wider MLP gave only about +0.2 points; its records are retained in
-`results/initial-wider-mlp/`. Design probes were evaluated on dev, outside the
-notebook. The final narrower model and settings were frozen before its test
-runs. Seeds **0–4** were declared before development; seed 0 was never selected
-for its test result. Five-seed variation covers expert-training randomness,
-not different dataset splits or pretrained bases.
-
-**The shared base remains stronger than the merged models in this stress test.**
-SMAT mitigates merge damage; it does not establish a better overall model than
-joint training. Separate-expert rows use two backbones. This controlled,
-matched-budget example does not establish superiority over every possible FT
-learning rate, early-stopping rule, or tuned merger. It also does not measure
-the paper's <2% overhead claim. Timings include first-call initialization but
-exclude downloads/evaluation.
-
-The JSON files `results/test-cpu.json` and `results/test-cuda.json` contain
-individual seeds, means, sample standard deviations, and paired gains.
+The checkpoint hash, pretraining recipe, and exact split indices are in
+[`assets/shared_base.json`](assets/shared_base.json). Regenerate it from the
+repository root:
 
 ```bash
-# The notebook and validation runner do not need the full SMAT package.
-python examples/validate_demo.py --device cpu
-python examples/validate_demo.py --device cuda  # optional
-# Reference-parity tests additionally import the repo's SMAT source:
-python -m unittest discover -s tests -p 'test_demo.py'
-python -m unittest discover -s tests -p 'test_updates.py'
+python examples/prepare_demo_base.py --device cpu
+# The distributed checkpoint was prepared on CUDA with PyTorch 2.11.0:
+python examples/prepare_demo_base.py --device cuda
 ```
 
-Five-seed held-out test accuracy (mean ± sample standard deviation):
+The published recipe reproduced the frozen development checkpoint exactly on
+its original runtime. Floating-point results and serialization hashes can vary
+across platforms; notebook downloads verify the distributed artifact's hash.
+
+## Held-out results
+
+Settings were frozen after development experiments, before evaluating this
+recipe on the official test subsets. Seeds **0–4** were declared in advance;
+the notebook uses **0**, not a seed selected for its test result. Variation
+below covers expert-training RNGs, not multiple base checkpoints or splits.
+
+Mean test accuracy ± sample standard deviation across five seeds:
 
 | Device | Merger | FT | SMAT | Paired gain (points) |
 |---|---|---:|---:|---:|
-| CPU | AVG | 75.655 ± 0.555 | 79.420 ± 0.638 | +3.765 ± 1.016 |
-| CPU | TA | 57.835 ± 0.925 | 64.310 ± 1.961 | +6.475 ± 2.023 |
-| CUDA | AVG | 75.640 ± 0.526 | 79.315 ± 0.195 | +3.675 ± 0.372 |
-| CUDA | TA | 57.835 ± 0.925 | 63.760 ± 1.217 | +5.925 ± 0.810 |
+| CPU | AVG | 69.520 ± 0.235 | 73.215 ± 0.336 | +3.695 ± 0.472 |
+| CPU | TA | 61.065 ± 0.816 | 68.110 ± 0.660 | +7.045 ± 0.570 |
+| CUDA | AVG | 69.520 ± 0.235 | 73.205 ± 0.443 | +3.685 ± 0.545 |
+| CUDA | TA | 61.065 ± 0.816 | 67.775 ± 1.348 | +6.710 ± 0.964 |
 
-The shared base scores **81.400%**. The mean gains exceed 3 points for both
-mergers and devices; individual runs are not guaranteed to do so (CPU AVG
-seed 1: +2.625 points). These results apply to this fixed stress-test recipe.
+The shared base scores **54.675%**. All FT/SMAT × AVG/TA results exceed it on
+**both domains**, for every tested seed and device. Mean gains exceed 3 points;
+individual runs need not (CUDA AVG seed 4: +2.975). Full per-domain scores,
+paired gains and environment details are in [`results/test-cpu.json`](results/test-cpu.json)
+and [`results/test-cuda.json`](results/test-cuda.json).
 
-Actual notebook acceptance on dgx44 (cached data, including kernel startup):
-CPU **25.1 s**, peak RSS **810 MiB**, two CPU threads; CUDA **21.4 s**.
-Both completed all 12 code cells without errors and loaded none of `smat`,
-`transformers`, `datasets`, `accelerate`, or `torchvision`. Hardware and cache
-state affect timing; these are not promises for a laptop or Colab runtime.
-Execution records and the executed-code hash are in `results/notebook-*.json`.
+Separate experts retain two backbones and are a reference, not a merged model.
+The experiment demonstrates a benefit under matched training budgets and fixed
+mergers; it does not establish superiority over every tuned FT learning rate,
+early-stopping rule, or merger. Longer training improves individual experts
+while making their updates harder to merge. Gains may differ on other tasks.
+Timings are measured directly and do not test the paper's **<2% overhead** claim.
+
+```bash
+python examples/validate_demo.py --device cpu
+python examples/validate_demo.py --device cuda
+# Reference-parity checks additionally import the repo's SMAT source:
+python -m unittest discover -s tests -p 'test_demo.py'
+python -m unittest discover -s tests -p 'test_updates.py'
+```

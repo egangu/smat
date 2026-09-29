@@ -1,5 +1,7 @@
 """Protect the demo's common-base, frozen-head and data-isolation contracts."""
 import copy
+import json
+import hashlib
 import sys
 import unittest
 from pathlib import Path
@@ -24,6 +26,23 @@ class DemoTest(unittest.TestCase):
         for a, b in zip(first, second):
             torch.testing.assert_close(a, b)
             self.assertEqual(torch.bincount(labels[a]).unique().numel(), 1)
+
+    def test_released_base_and_rotated_domains_do_not_leak_images(self):
+        assets = Path(__file__).resolve().parents[1] / 'examples' / 'assets'
+        metadata = json.loads((assets / 'shared_base.json').read_text())
+        checkpoint = assets / 'shared_base.pt'
+        self.assertEqual(hashlib.sha256(checkpoint.read_bytes()).hexdigest(), metadata['sha256'])
+        splits = metadata['splits']
+        self.assertEqual(splits[TASKS[0]]['base'], splits[TASKS[1]]['base'])
+        buckets = [splits[TASKS[0]]['base']]
+        buckets += [splits[task][split] for task in TASKS for split in ('train', 'dev')]
+        self.assertEqual(sum(map(len, buckets)), 14000)
+        self.assertEqual(len(set(index for bucket in buckets for index in bucket)), 14000)
+        self.assertTrue(set(splits[TASKS[0]]['test']).isdisjoint(splits[TASKS[1]]['test']))
+        state = torch.load(checkpoint, weights_only=True)
+        for name in ('weight', 'bias'):
+            torch.testing.assert_close(state[f'heads.{TASKS[0]}.{name}'],
+                                       state[f'heads.{TASKS[1]}.{name}'], rtol=0, atol=0)
 
     def test_disabled_smat_is_ft_and_heads_and_base_do_not_change(self):
         initial = copy.deepcopy(self.base.state_dict())
@@ -76,12 +95,12 @@ class DemoTest(unittest.TestCase):
         ref_optimizer = torch.optim.Adam(reference.backbone.parameters(), lr=0.001)
         stepper = SMATStepper(list(reference.named_parameters()), ref_optimizer, SETTINGS, 0,
                               {'backbone.1.weight', 'backbone.3.weight'})
-        images, labels = self.data['MNIST']['train']
+        images, labels = self.data[TASKS[0]]['train']
         for step in range(12):
-            ref_loss = stepper.step(lambda: F.cross_entropy(reference(images, 'MNIST'), labels))
+            ref_loss = stepper.step(lambda: F.cross_entropy(reference(images, TASKS[0]), labels))
             before = {n: p.detach().clone() for n, p in model.named_parameters()}
             optimizer.zero_grad(set_to_none=True)
-            logits = smat_logits(model, anchor, images, 'MNIST', generators, SETTINGS) if (step+1)%4 == 0 else model(images, 'MNIST')
+            logits = smat_logits(model, anchor, images, TASKS[0], generators, SETTINGS) if (step+1)%4 == 0 else model(images, TASKS[0])
             loss = F.cross_entropy(logits, labels)
             loss.backward()
             for name, parameter in model.named_parameters():

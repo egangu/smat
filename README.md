@@ -70,11 +70,12 @@ ablations, and measurement details.
 [Open the demo notebook](examples/smat_image_demo.ipynb) ·
 [Run in Colab](https://colab.research.google.com/github/egangu/smat/blob/main/examples/smat_image_demo.ipynb)
 
-Train four small MNIST/Fashion-MNIST experts and compare **AVG** and **Task
-Arithmetic**. The notebook shows SMAT in a short, differentiable PyTorch
+Start with a tiny model pretrained on upright MNIST, train experts for left-
+and right-tilted digits, then compare **AVG** and **Task Arithmetic**. The notebook shows SMAT in a short, differentiable PyTorch
 implementation, checked against the released eager stepper. Its 26K-parameter
-MLP illustrates merge interference; it is separate from the paper benchmark
-and overhead claims. [Recipe, limitations and five-seed results](examples/README.md).
+MLP runs on CPU. Across five seeds, all merged models beat the base on both
+domains; CPU SMAT gains average **+3.70 points (AVG)** and **+7.05 (TA)**. This
+is a controlled domain-shift demo, separate from the paper benchmark and overhead claims. [Recipe, limitations and five-seed results](examples/README.md).
 
 ## Released models and data
 

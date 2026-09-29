@@ -1,13 +1,16 @@
 """Data and presentation helpers; training/merging live in the notebook."""
 from pathlib import Path
 import gzip
+import math
 import hashlib
 import urllib.request
 import numpy as np
 import torch
 from torch import nn
+from torch.nn import functional as F
 
-TASKS = ('MNIST', 'FashionMNIST')
+TASKS = ('Left', 'Right')
+ANGLES = {'Left': -30, 'Right': 30}
 SPLIT_SEED = 20260929
 BASE_SEED = 1729
 SEEDS = (0, 1, 2, 3, 4)  # Declared before development experiments.
@@ -26,9 +29,7 @@ SOURCES = {
     'MNIST': ('https://ossci-datasets.s3.amazonaws.com/mnist/', (
         'f68b3c2dcbeaaa9fbdd348bbdeb94873', 'd53e105ee54ea40749a09fcbcd1e9432',
         '9fb629c4189551a2d022fa330f9573f3', 'ec29112dd5afa0611ce80d1b7f02629c')),
-    'FashionMNIST': ('https://raw.githubusercontent.com/zalandoresearch/fashion-mnist/master/data/fashion/', (
-        '8d4fb7e6c68d591d4c3dfef9ec88bf0d', '25c81989df183df01b3e8a0aad5dffbe',
-        'bef4ecab320f06d8554ea6380940ec79', 'bb300cfdad3c16e7a12a480ee83cd310')),
+
 }
 FILES = ('train-images-idx3-ubyte.gz', 'train-labels-idx1-ubyte.gz', 't10k-images-idx3-ubyte.gz', 't10k-labels-idx1-ubyte.gz')
 
@@ -64,17 +65,36 @@ def split_indices(labels, sizes, seed=SPLIT_SEED):
             start += count
     return [torch.cat(bucket) for bucket in buckets]
 
+def rotate_images(images, degrees):
+    """Fixed domain shift: bilinear rotation, zero padding, no random augmentation."""
+    angle = math.radians(degrees)
+    matrix = images.new_tensor([[math.cos(angle), -math.sin(angle), 0],
+                                [math.sin(angle), math.cos(angle), 0]])
+    batches = []
+    for start in range(0, len(images), 512):
+        batch = images[start:start+512, None]
+        grid = F.affine_grid(matrix[None].expand(len(batch), -1, -1), batch.shape, align_corners=False)
+        batches.append(F.grid_sample(batch, grid, mode='bilinear', padding_mode='zeros', align_corners=False)[:, 0])
+    return torch.cat(batches)
+
+
 def load_data(root, full_test=False):
+    """Disjoint raw-image identities across pretraining, both experts, and dev."""
+    train_x, train_y, test_x, test_y = raw_data(root, 'MNIST')
+    ids = split_indices(train_y, (2000, 5000, 5000, 1000, 1000))
+    test_ids = split_indices(test_y, (2000, 2000))
     data, manifest = {}, {}
-    for task in TASKS:
-        train_x, train_y, test_x, test_y = raw_data(root, task)
-        ids = split_indices(train_y, (2000, 5000, 1000))
-        test_ids = torch.arange(len(test_y)) if full_test else split_indices(test_y, (2000,))[0]
-        manifest[task] = {key: value.tolist() for key, value in zip(('base', 'train', 'dev', 'test'), [*ids, test_ids])}
+    for index, task in enumerate(TASKS):
+        selected = {'base': ids[0], 'train': ids[1+index], 'dev': ids[3+index],
+                    'test': torch.arange(len(test_y)) if full_test else test_ids[index]}
+        manifest[task] = {key: value.tolist() for key, value in selected.items()}
         data[task] = {}
-        for key, index in zip(('base', 'train', 'dev'), ids):
-            data[task][key] = (train_x[index].float().div(255), train_y[index].long())
-        data[task]['test'] = (test_x[test_ids].float().div(255), test_y[test_ids].long())
+        for key, indices in selected.items():
+            x, y = (test_x, test_y) if key == 'test' else (train_x, train_y)
+            images = x[indices].float().div(255)
+            if key != 'base':
+                images = rotate_images(images, ANGLES[task])
+            data[task][key] = (images, y[indices].long())
     return data, manifest
 
 @torch.no_grad()
