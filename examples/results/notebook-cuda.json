@@ -1,0 +1,9 @@
+{
+  "device": "cuda",
+  "wall_seconds": 21.42523593828082,
+  "code_cells": 12,
+  "errors": [],
+  "peak_rss_mib": 1293.95703125,
+  "research_packages_loaded": [],
+  "code_sha256": "58037d5f6abbb699c6ac317a566b8cadc3fa562067ec6ac1b332e41c895352b9"
+}

@@ -95,3 +95,10 @@ Five-seed held-out test accuracy (mean ± sample standard deviation):
 The shared base scores **81.400%**. The mean gains exceed 3 points for both
 mergers and devices; individual runs are not guaranteed to do so (CPU AVG
 seed 1: +2.625 points). These results apply to this fixed stress-test recipe.
+
+Actual notebook acceptance on dgx44 (cached data, including kernel startup):
+CPU **25.1 s**, peak RSS **810 MiB**, two CPU threads; CUDA **21.4 s**.
+Both completed all 12 code cells without errors and loaded none of `smat`,
+`transformers`, `datasets`, `accelerate`, or `torchvision`. Hardware and cache
+state affect timing; these are not promises for a laptop or Colab runtime.
+Execution records and the executed-code hash are in `results/notebook-*.json`.
