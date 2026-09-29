@@ -109,3 +109,19 @@ python examples/validate_demo.py --device cuda
 python -m unittest discover -s tests -p 'test_demo.py'
 python -m unittest discover -s tests -p 'test_updates.py'
 ```
+
+## Notebook acceptance
+
+Actual **Restart Kernel and Run All** on dgx44, including kernel startup and
+using cached data: CPU **23.2 s**, peak RSS **844 MiB**, two CPU threads; CUDA
+**20.1 s**. Downloads and package installation are excluded. Laptop/Colab
+runtime depends on hardware and cache state.
+
+Both runs completed all **12 code cells** without errors. Notebook results
+exactly match seed 0 of the corresponding validation run. The executed code
+hash is identical on CPU/CUDA, and all four visible training/merging functions
+match the executable source. Neither run imported `smat`, `transformers`,
+`datasets`, `accelerate`, or `torchvision`. Twelve method/data tests and separate
+CPU/CUDA eager-stepper parity checks passed. Execution records are in
+[`results/notebook-cpu.json`](results/notebook-cpu.json) and
+[`results/notebook-cuda.json`](results/notebook-cuda.json).
