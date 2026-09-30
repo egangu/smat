@@ -1,11 +1,11 @@
 {
   "device": "cpu",
-  "wall_seconds": 179.41164462082088,
+  "wall_seconds": 174.18912467360497,
   "threads": 4,
-  "executed_code_sha256": "e3fc89b1475765db26cd32d2634c4dbca429015c46e6e898cb3c8f9b1709a26f",
+  "executed_code_sha256": "33bd12a76636876075d737c1387c0c8098001a34d2faf04706471757d6266af3",
   "code_cells": 11,
   "errors": [],
-  "peak_rss_MiB": 1200.62890625,
+  "peak_rss_MiB": 1197.87890625,
   "peak_cuda_allocated_MiB": null,
   "external_smat_commit": "4681a8c40998f59d7b0759ee44cebfa791b47409",
   "rows": {

@@ -11,7 +11,10 @@ experts train during Run All; no trained expert is downloaded.
 
 ## Run
 
-Open Colab, or use Python 3.10+ locally:
+In Colab, select a GPU runtime and run all cells. Keep its preinstalled PyTorch;
+do not run the CPU installation command below.
+
+For a **local CPU-only** environment with Python 3.10+:
 
 ```bash
 # A CPU wheel avoids downloading CUDA libraries on a CPU-only machine.
@@ -20,12 +23,24 @@ python -m pip install -r requirements/demo.txt
 jupyter lab examples/smat_image_demo.ipynb
 ```
 
-On macOS, install PyTorch from the default pip index instead. Choose **Restart
+For a local NVIDIA GPU, install a matching CUDA build from the
+[PyTorch installer](https://pytorch.org/get-started/locally/) instead of the CPU
+wheel above. On macOS, install PyTorch from the default pip index. Choose **Restart
 Kernel and Run All**. The notebook automatically uses CUDA when available, otherwise CPU, with
 four CPU threads, FP32 and seed 0. Select a GPU runtime in Colab before running;
 set `SMAT_DEMO_DEVICE=cpu` to force CPU. The saved notebook outputs are from CPU. It installs the SMAT package from a pinned GitHub
 commit with `--no-deps`, so the full research dependencies are unnecessary.
 First-run downloads are approximately **23 MB of model weights + 22 MB of data**.
+
+If Colab reports **Torch not compiled with CUDA enabled**, its current PyTorch
+installation is CPU-only. Use **Runtime → Disconnect and delete runtime**,
+select a GPU under **Change runtime type**, reconnect and run the latest
+notebook from the beginning. A plain kernel restart does not undo pip installs.
+The setup preserves existing torch/torchvision versions, and the device check
+prints the PyTorch version, CUDA build and selected device. If CUDA is unusable,
+the demo reports why and runs on CPU instead.
+See [Colab's runtime reset guidance](https://research.google.com/colaboratory/faq.html)
+and [PyTorch installation options](https://pytorch.org/get-started/locally/).
 
 The visible notebook code covers the model, expert training, merging and
 evaluation. Helpers handle downloads, linear-head calibration and plots.
@@ -104,15 +119,13 @@ python -m unittest discover -s tests -p 'test_demo.py'
 
 The notebook's visible core functions are checked against the executable
 source. Tests also check frozen heads/common initialization, disabled-SMAT
-parity with FT, merge arithmetic, and routing each task to its own expert. The CPU/GPU training paths were fully validated before the automatic device
-selection edit; the archived reports retain the original executed code hashes.
-Execution reports are in
+parity with FT, merge arithmetic, and routing each task to its own expert. Execution reports are in
 [CPU Run All](results/notebook-cpu.json) and [CUDA Run All](results/notebook-cuda.json).
 
 Actual Restart Kernel and Run All on dgx44, with cached downloads/installations:
-**CPU 179.4 seconds**, four threads, peak RSS **1,201 MiB**; **CUDA 81.4 seconds**,
+**CPU 174.2 seconds**, four threads, peak RSS **1,198 MiB**; **CUDA 61.0 seconds**,
 peak allocated GPU memory **433 MiB**. First-run downloads/installations and
 laptop speed vary. Both executions completed the same **11 code cells** with
 no errors and matched the corresponding seed-0 reference results exactly.
-All six contract/code-consistency tests passed. `recipe.json` is the immutable
+All 15 contract, runtime and code-consistency tests passed. `recipe.json` is the immutable
 pre-test snapshot; completed test outcomes are recorded under `results/`.

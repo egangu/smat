@@ -1,11 +1,11 @@
 {
   "device": "cuda",
-  "wall_seconds": 81.37867256812751,
+  "wall_seconds": 60.95143157802522,
   "threads": 4,
-  "executed_code_sha256": "e3fc89b1475765db26cd32d2634c4dbca429015c46e6e898cb3c8f9b1709a26f",
+  "executed_code_sha256": "33bd12a76636876075d737c1387c0c8098001a34d2faf04706471757d6266af3",
   "code_cells": 11,
   "errors": [],
-  "peak_rss_MiB": 1468.56640625,
+  "peak_rss_MiB": 1468.94921875,
   "peak_cuda_allocated_MiB": 433.1728515625,
   "external_smat_commit": "4681a8c40998f59d7b0759ee44cebfa791b47409",
   "rows": {

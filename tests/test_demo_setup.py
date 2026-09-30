@@ -55,6 +55,29 @@ class RuntimeTest(unittest.TestCase):
         with self.assertRaises(ValueError):
             self.select("12.8", True, "typo")
 
+    def test_missing_torch_in_colab_requests_clean_runtime(self):
+        with patch.object(setup.importlib.util, "find_spec", return_value=None), \
+             patch.dict(sys.modules, {"google.colab": SimpleNamespace()}), \
+             patch.object(setup.subprocess, "check_call") as pip:
+            with self.assertRaisesRegex(RuntimeError, "Disconnect and delete runtime"):
+                setup.ensure_runtime()
+            pip.assert_not_called()
+
+    def test_missing_local_torch_does_not_force_cpu_wheel(self):
+        updates = SimpleNamespace(FTStepper=object, SMATStepper=object)
+        modules = {name: value for name, value in sys.modules.items() if name != "google.colab"}
+        modules["smat.train.updates"] = updates
+        with patch.dict(sys.modules, modules, clear=True), \
+             patch.object(setup.importlib.util, "find_spec",
+                          side_effect=lambda name: None if name == "torch" else object()), \
+             patch.object(setup.importlib.metadata, "version", return_value="1.0.30"), \
+             patch.object(setup.subprocess, "check_call") as pip:
+            setup.ensure_runtime()
+        command = pip.call_args.args[0]
+        self.assertIn("torch>=2.9", command)
+        self.assertIn("torchvision", command)
+        self.assertNotIn("--index-url", command)
+
     def test_dependency_install_pins_existing_torch(self):
         commands = []
         def pip(command):
