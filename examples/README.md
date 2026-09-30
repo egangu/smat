@@ -21,8 +21,9 @@ jupyter lab examples/smat_image_demo.ipynb
 ```
 
 On macOS, install PyTorch from the default pip index instead. Choose **Restart
-Kernel and Run All**. The notebook defaults to CPU, four threads, FP32, seed 0;
-set `DEVICE="cuda"` to use a GPU. It installs the SMAT package from a pinned GitHub
+Kernel and Run All**. The notebook automatically uses CUDA when available, otherwise CPU, with
+four CPU threads, FP32 and seed 0. Select a GPU runtime in Colab before running;
+set `SMAT_DEMO_DEVICE=cpu` to force CPU. The saved notebook outputs are from CPU. It installs the SMAT package from a pinned GitHub
 commit with `--no-deps`, so the full research dependencies are unnecessary.
 First-run downloads are approximately **23 MB of model weights + 22 MB of data**.
 
@@ -77,7 +78,7 @@ all five CUDA seeds. All gains are positive; an individual gain can be below
 3 points (TA, seed 4: +2.65). Variation covers expert-training RNGs, not
 multiple bases or data splits.
 
-In the CPU default run, the own-task expert accuracies are:
+In the CPU seed-0 run, the own-task expert accuracies are:
 
 | Experts (two encoders) | CIFAR-10 | SVHN | Mean |
 |---|---:|---:|---:|
@@ -87,9 +88,9 @@ In the CPU default run, the own-task expert accuracies are:
 These are single-seed results; the five-seed table above reports merged models.
 Both CPU and CUDA Run All records below include the expert evaluations.
 
-The CPU default seed gives AVG **59.750 → 66.150 (+6.400)** and TA
+The CPU seed 0 gives AVG **59.750 → 66.150 (+6.400)** and TA
 **64.875 → 69.725 (+4.850)**. CPU/CUDA floating-point and random streams differ.
-Full records: [CUDA](results/test-cuda.json), [CPU default](results/test-cpu.json).
+Full records: [CUDA](results/test-cuda.json), [CPU seed 0](results/test-cpu.json).
 This demo does not reproduce the paper's benchmark scores or measure its
 **<2% training-overhead** claim.
 
@@ -97,13 +98,15 @@ This demo does not reproduce the paper's benchmark scores or measure its
 
 ```bash
 python examples/validate_demo.py --device cuda            # five seeds
-python examples/validate_demo.py --device cpu --seeds 0    # notebook default
+python examples/validate_demo.py --device cpu --seeds 0    # CPU, seed 0
 python -m unittest discover -s tests -p 'test_demo.py'
 ```
 
 The notebook's visible core functions are checked against the executable
 source. Tests also check frozen heads/common initialization, disabled-SMAT
-parity with FT, merge arithmetic, and routing each task to its own expert. Execution reports are in
+parity with FT, merge arithmetic, and routing each task to its own expert. The CPU/GPU training paths were fully validated before the automatic device
+selection edit; the archived reports retain the original executed code hashes.
+Execution reports are in
 [CPU Run All](results/notebook-cpu.json) and [CUDA Run All](results/notebook-cuda.json).
 
 Actual Restart Kernel and Run All on dgx44, with cached downloads/installations:
