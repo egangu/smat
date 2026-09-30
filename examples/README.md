@@ -5,7 +5,9 @@
 Start with the existing [HF ViT-Tiny](https://huggingface.co/timm/vit_tiny_patch16_224.augreg_in21k_ft_in1k),
 then train two experts: **CIFAR-10 object recognition** and **SVHN digit recognition**.
 Compare Adam FT against Adam + the published `SMATStepper`, using AVG and Task
-Arithmetic. All four experts train during Run All; no trained expert is downloaded.
+Arithmetic. Evaluate each expert on its own task before merging, then compare
+the base, separate experts and merged models in one table and figure. All four
+experts train during Run All; no trained expert is downloaded.
 
 ## Run
 
@@ -57,6 +59,12 @@ it is not a comparison against every separately tuned FT configuration.
 
 ## Held-out results
 
+The notebook reports **FT experts** and **SMAT experts** on their own tasks:
+the CIFAR-10 column uses the object expert, and the SVHN column uses the digit
+expert. Each expert row therefore uses **two encoders**. Base, AVG and TA each
+use **one encoder** with two task heads. The Mean column averages the two task
+accuracies; it does not imply that one specialist solves both tasks.
+
 Mean task accuracy ± sample standard deviation across five CUDA training seeds:
 
 | Merger | FT | SMAT | Paired gain (points) |
@@ -68,6 +76,16 @@ Base: **32.90%**. Every FT/SMAT merged model beats Base **on each task** for
 all five CUDA seeds. All gains are positive; an individual gain can be below
 3 points (TA, seed 4: +2.65). Variation covers expert-training RNGs, not
 multiple bases or data splits.
+
+In the CPU default run, the own-task expert accuracies are:
+
+| Experts (two encoders) | CIFAR-10 | SVHN | Mean |
+|---|---:|---:|---:|
+| FT | 65.30 | 71.35 | 68.325 |
+| SMAT | 70.45 | 77.90 | 74.175 |
+
+These are single-seed results; the five-seed table above reports merged models.
+Both CPU and CUDA Run All records below include the expert evaluations.
 
 The CPU default seed gives AVG **59.750 → 66.150 (+6.400)** and TA
 **64.875 → 69.725 (+4.850)**. CPU/CUDA floating-point and random streams differ.
@@ -85,13 +103,13 @@ python -m unittest discover -s tests -p 'test_demo.py'
 
 The notebook's visible core functions are checked against the executable
 source. Tests also check frozen heads/common initialization, disabled-SMAT
-parity with FT, and merge arithmetic. Execution reports are in
+parity with FT, merge arithmetic, and routing each task to its own expert. Execution reports are in
 [CPU Run All](results/notebook-cpu.json) and [CUDA Run All](results/notebook-cuda.json).
 
 Actual Restart Kernel and Run All on dgx44, with cached downloads/installations:
-**CPU 177.6 seconds**, four threads, peak RSS **1,205 MiB**; **CUDA 71.3 seconds**,
+**CPU 179.4 seconds**, four threads, peak RSS **1,201 MiB**; **CUDA 81.4 seconds**,
 peak allocated GPU memory **433 MiB**. First-run downloads/installations and
-laptop speed vary. Both executions completed the same **9 code cells** with
+laptop speed vary. Both executions completed the same **11 code cells** with
 no errors and matched the corresponding seed-0 reference results exactly.
-All five contract/code-consistency tests passed. `recipe.json` is the immutable
+All six contract/code-consistency tests passed. `recipe.json` is the immutable
 pre-test snapshot; completed test outcomes are recorded under `results/`.

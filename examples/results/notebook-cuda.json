@@ -1,11 +1,11 @@
 {
   "device": "cuda",
-  "wall_seconds": 71.27836240455508,
+  "wall_seconds": 81.37867256812751,
   "threads": 4,
-  "executed_code_sha256": "92dd52eede1b2c5c3129f0f9142fb8cf965c6c8d5206a9b786cdcd561b12c9fd",
-  "code_cells": 9,
+  "executed_code_sha256": "e3fc89b1475765db26cd32d2634c4dbca429015c46e6e898cb3c8f9b1709a26f",
+  "code_cells": 11,
   "errors": [],
-  "peak_rss_MiB": 1468.17578125,
+  "peak_rss_MiB": 1468.56640625,
   "peak_cuda_allocated_MiB": 433.1728515625,
   "external_smat_commit": "4681a8c40998f59d7b0759ee44cebfa791b47409",
   "rows": {
@@ -13,6 +13,16 @@
       "cifar10": 44.6,
       "svhn": 21.2,
       "Mean": 32.9
+    },
+    "FT experts": {
+      "cifar10": 68.1,
+      "svhn": 72.8,
+      "Mean": 70.44999999999999
+    },
+    "SMAT experts": {
+      "cifar10": 70.8,
+      "svhn": 78.8,
+      "Mean": 74.8
     },
     "FT AVG": {
       "cifar10": 61.85,

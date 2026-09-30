@@ -70,10 +70,11 @@ ablations, and measurement details.
 [Open the demo notebook](examples/smat_image_demo.ipynb) ·
 [Run in Colab](https://colab.research.google.com/github/egangu/smat/blob/main/examples/smat_image_demo.ipynb)
 
-Start from an existing **HF ViT-Tiny** and train two genuinely different
+Start from an existing **HF ViT-Tiny** and train two
 experts: **CIFAR-10 object recognition** and **SVHN digit recognition**.
 Merge them with **AVG** and **Task Arithmetic**, using the published SMAT
-stepper directly. On five fixed CUDA seeds, SMAT improves mean test accuracy
+stepper directly. Compare each expert on its own task, then check how much
+accuracy one merged encoder retains. On five fixed CUDA seeds, SMAT improves mean test accuracy
 by **+5.07 points (AVG)** and **+4.07 (TA)**; FT and SMAT both beat the base
 on each task. All four experts train during Run All, including on CPU.
 [Recipe and validation](examples/README.md) ·

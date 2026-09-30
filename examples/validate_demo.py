@@ -34,6 +34,7 @@ def main():
         rows = {"Base": base_scores}
         for method in ("FT", "SMAT"):
             experts = [train_expert(base, data, task, method, seed) for task in TASKS]
+            rows[f"{method} experts"] = evaluate(dict(zip(TASKS, experts)), data)
             for merger, coefficient in (("AVG", .5), ("TA", .75)):
                 rows[f"{method} {merger}"] = evaluate(merge_experts(base, experts, coefficient), data)
             del experts

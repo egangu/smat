@@ -1,11 +1,11 @@
 {
   "device": "cpu",
-  "wall_seconds": 177.59796698205173,
+  "wall_seconds": 179.41164462082088,
   "threads": 4,
-  "executed_code_sha256": "92dd52eede1b2c5c3129f0f9142fb8cf965c6c8d5206a9b786cdcd561b12c9fd",
-  "code_cells": 9,
+  "executed_code_sha256": "e3fc89b1475765db26cd32d2634c4dbca429015c46e6e898cb3c8f9b1709a26f",
+  "code_cells": 11,
   "errors": [],
-  "peak_rss_MiB": 1204.8515625,
+  "peak_rss_MiB": 1200.62890625,
   "peak_cuda_allocated_MiB": null,
   "external_smat_commit": "4681a8c40998f59d7b0759ee44cebfa791b47409",
   "rows": {
@@ -13,6 +13,16 @@
       "cifar10": 44.55,
       "svhn": 21.25,
       "Mean": 32.9
+    },
+    "FT experts": {
+      "cifar10": 65.3,
+      "svhn": 71.35,
+      "Mean": 68.32499999999999
+    },
+    "SMAT experts": {
+      "cifar10": 70.45,
+      "svhn": 77.9,
+      "Mean": 74.17500000000001
     },
     "FT AVG": {
       "cifar10": 61.2,
