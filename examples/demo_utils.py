@@ -71,18 +71,18 @@ def show_examples():
 
 def show_results(rows):
     import matplotlib.pyplot as plt
-    fig, ax = plt.subplots(figsize=(7, 4))
+    fig, ax = plt.subplots(figsize=(9, 4.5))
     for offset, method, color in [(-.18, "FT", "#e19b43"), (.18, "SMAT", "#2779bb")]:
-        values = [rows[f"{method} {merger}"]["Mean"] for merger in ("AVG", "TA")]
-        bars = ax.bar(np.arange(2) + offset, values, width=.33, label=method, color=color)
+        values = [rows[f"{method} {merger}"]["Mean"] for merger in ("experts", "AVG", "TA")]
+        bars = ax.bar(np.arange(3) + offset, values, width=.33, label=method, color=color)
         ax.bar_label(bars, fmt="%.2f", padding=3, fontsize=10)
     baseline = rows["Base"]["Mean"]
     ax.axhline(baseline, color="#6b7280", linestyle="--", label=f"Base: {baseline:.2f}%")
-    for index, merger in enumerate(("AVG", "TA")):
+    for index, merger in enumerate(("experts", "AVG", "TA")):
         gain = rows[f"SMAT {merger}"]["Mean"] - rows[f"FT {merger}"]["Mean"]
         ax.text(index, 88, f"{gain:+.2f} points", ha="center", fontsize=12, color="#226a9f")
-    ax.set(xticks=[0, 1], xticklabels=["AVG", "TA (coefficient 0.75)"], ylim=(0, 100),
-           ylabel="Mean test accuracy (%)", title="Two tasks · one merged encoder")
+    ax.set(xticks=[0, 1, 2], xticklabels=["Own-task experts\n2 encoders", "AVG\n1 encoder", "TA (0.75)\n1 encoder"], ylim=(0, 100),
+           ylabel="Mean test accuracy (%)", title="From separate experts to one merged encoder")
     ax.spines[["top", "right"]].set_visible(False)
     ax.legend(loc="upper left", bbox_to_anchor=(0, -.15), ncol=3, frameon=False)
     fig.tight_layout()

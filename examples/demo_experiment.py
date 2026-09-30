@@ -85,10 +85,12 @@ def merge_experts(base, experts, coefficient):
 
 @torch.no_grad()
 def evaluate(model, data):
+    """Evaluate one shared model, or a mapping of task to its own expert."""
     scores = {}
     for task in TASKS:
+        task_model = model[task] if isinstance(model, dict) else model
         x, y = data[task]["test"]
-        predictions = torch.cat([model(batch, task).argmax(1) for batch in x.split(128)])
+        predictions = torch.cat([task_model(batch, task).argmax(1) for batch in x.split(128)])
         scores[task] = 100 * (predictions == y).sum().item() / len(y)
     scores["Mean"] = sum(scores.values()) / len(TASKS)
     return scores

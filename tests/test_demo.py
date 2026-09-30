@@ -64,6 +64,27 @@ class DemoTest(unittest.TestCase):
                 expected = initial if name.startswith("heads.") else initial + 3 * coefficient
                 torch.testing.assert_close(merged.state_dict()[name], expected)
 
+    def test_evaluate_routes_each_task_to_its_own_expert(self):
+        class ConstantExpert(nn.Module):
+            def __init__(self, expected_task, label):
+                super().__init__()
+                self.expected_task, self.label = expected_task, label
+
+            def forward(self, x, task):
+                assert task == self.expected_task
+                return torch.nn.functional.one_hot(
+                    torch.full((len(x),), self.label), 10
+                ).float()
+
+        data = {
+            "cifar10": {"test": (torch.zeros(3, 1), torch.tensor([0, 0, 0]))},
+            "svhn": {"test": (torch.zeros(4, 1), torch.tensor([1, 1, 0, 0]))},
+        }
+        experts = {task: ConstantExpert(task, label)
+                   for task, label in zip(demo.TASKS, (0, 1))}
+        self.assertEqual(demo.evaluate(experts, data),
+                         {"cifar10": 100.0, "svhn": 50.0, "Mean": 75.0})
+
     def test_unknown_training_method_is_rejected(self):
         with self.assertRaises(ValueError):
             demo.train_expert(self.base, self.data, "cifar10", "other")
